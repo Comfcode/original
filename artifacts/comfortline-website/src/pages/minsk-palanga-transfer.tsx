@@ -2,6 +2,7 @@ import { MapPin, ShieldCheck, Waves } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 const data: RoutePageData = {
+  disclaimerBanner: true,
   ru: {
     badge: "Трансфер в Палангу",
     title: "Минск — Паланга",

@@ -1,8 +1,8 @@
 import { useRoute } from "wouter";
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowLeft, ArrowRight, Tag, BookOpen, PhoneCall, AlertTriangle, ChevronDown, ChevronUp } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ArrowRight, Tag, BookOpen, PhoneCall, AlertTriangle } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
+import { DisclaimerBanner } from "@/components/layout/DisclaimerBanner";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import NotFound from "@/pages/not-found";
@@ -156,70 +156,6 @@ function renderBlock(block: Block, idx: number) {
   }
 }
 
-function DisclaimerBanner({ isRu }: { isRu: boolean }) {
-  const [expanded, setExpanded] = useState(false);
-
-  const shortRu =
-    "Важно: ComfortLine — частный перевозчик, а не таможенный, пограничный, миграционный или юридический орган. Материалы статьи носят исключительно информационный характер. Правила могут измениться без уведомления.";
-  const shortEn =
-    "Important: ComfortLine is a private transport company, not a customs, border, immigration or legal authority. This article is for information purposes only. Rules may change without notice.";
-
-  const fullRu = [
-    "ComfortLine является частным перевозчиком и не является государственным, таможенным, пограничным, миграционным или юридическим консультативным органом.",
-    "Материалы статьи представлены только в информационных целях. Правила ввоза товаров, санкционные ограничения, таможенные нормы и процедуры на границе могут изменяться без предварительного уведомления.",
-    "Перед поездкой обязательно проверьте требования на официальных сайтах таможенных и государственных органов страны въезда.",
-    "При поездке с ComfortLine пассажир может попросить водителя предоставить последнюю доступную нам практическую информацию. Такая помощь предоставляется только для удобства клиента и не является официальной консультацией или гарантией допуска товара через границу.",
-  ];
-  const fullEn = [
-    "ComfortLine is a private transport company and is not a government, customs, border, immigration or legal advisory body.",
-    "The content of this article is provided for information purposes only. Import rules, sanctions restrictions, customs allowances and border procedures may change without prior notice.",
-    "Before travelling, please verify the requirements on the official websites of the customs and government authorities of your country of entry.",
-    "When travelling with ComfortLine, passengers may ask the driver to share the latest practical information available to us. This assistance is provided for the passenger's convenience only and does not constitute official advice or a guarantee of clearance at the border.",
-  ];
-
-  return (
-    <div className="bg-amber-50 dark:bg-amber-950/30 border-b border-amber-200 dark:border-amber-800">
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl py-3">
-        <div className="flex items-start gap-2.5">
-          <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-          <div className="flex-1 min-w-0">
-            <p className="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
-              {isRu ? shortRu : shortEn}
-            </p>
-            {expanded && (
-              <div className="mt-2 text-sm text-amber-800 dark:text-amber-300 leading-relaxed space-y-1.5">
-                {(isRu ? fullRu : fullEn).map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
-              </div>
-            )}
-            <div className="flex flex-wrap items-center gap-3 mt-2">
-              <button
-                onClick={() => setExpanded((e) => !e)}
-                className="inline-flex items-center gap-1 text-xs text-amber-700 dark:text-amber-400 hover:underline"
-                aria-expanded={expanded}
-              >
-                {expanded ? (
-                  <><ChevronUp className="h-3 w-3" />{isRu ? "Свернуть" : "Collapse"}</>
-                ) : (
-                  <><ChevronDown className="h-3 w-3" />{isRu ? "Подробнее" : "Read more"}</>
-                )}
-              </button>
-              <a
-                href="#official-sources"
-                aria-label={isRu ? "Перейти к официальным источникам (откроется в этом окне)" : "Jump to official sources (opens in this window)"}
-                className="inline-flex items-center gap-1 text-xs font-semibold text-amber-700 dark:text-amber-400 border border-amber-400/60 rounded-md px-2.5 py-1 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-colors"
-              >
-                {isRu ? "Проверить официальные источники" : "Check official sources"} ↓
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function BlogArticlePage() {
   const { lang } = useLang();
   const isRu = lang === "ru";
@@ -293,7 +229,7 @@ export default function BlogArticlePage() {
         jsonLd={articleJsonLd}
       />
       <Navbar />
-      {article.disclaimerBanner && <DisclaimerBanner isRu={isRu} />}
+      {article.disclaimerBanner && <DisclaimerBanner />}
 
       <article className="pt-28 pb-14">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">

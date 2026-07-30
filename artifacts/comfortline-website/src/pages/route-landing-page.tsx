@@ -4,6 +4,7 @@ import type { LucideIcon } from "lucide-react";
 import { CheckCircle2, PhoneCall, ArrowRight, Car, Info, Clock, ChevronDown, HelpCircle } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { DisclaimerBanner } from "@/components/layout/DisclaimerBanner";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 import { Seo } from "@/seo/Seo";
@@ -65,11 +66,22 @@ export interface RoutePageData {
   ru: RouteContent;
   en: RouteContent;
   seo: RouteSeo;
+  /** Show the regulatory disclaimer banner and an official-sources anchor section */
+  disclaimerBanner?: boolean;
 }
 
 interface Props {
   data: RoutePageData;
 }
+
+const BORDER_SOURCES = [
+  { href: "https://www.lrmuitine.lt/web/guest/fiziniams-asmenims", ru: "Таможня Литвы — lrmuitine.lt", en: "Lithuanian Customs — lrmuitine.lt", ruDesc: "Нормы провоза, запреты, оформление для физических лиц", enDesc: "Allowances, prohibitions and procedures for individuals" },
+  { href: "https://www.podatki.gov.pl/clo/clo-dla-podroznych/", ru: "Таможня Польши — podatki.gov.pl", en: "Polish Customs — podatki.gov.pl", ruDesc: "Беспошлинные нормы для путешественников", enDesc: "Duty-free allowances for travellers" },
+  { href: "https://www.vid.gov.lv/lv/muita-privatpersonam", ru: "Таможня Латвии (VID) — vid.gov.lv", en: "Latvian Customs (VID) — vid.gov.lv", ruDesc: "Таможенные правила для физических лиц", enDesc: "Customs rules for individuals" },
+  { href: "https://gtk.gov.by", ru: "ГТК Беларуси — gtk.gov.by", en: "Belarusian State Customs Committee — gtk.gov.by", ruDesc: "Правила ввоза и вывоза товаров, таможенные нормы", enDesc: "Official customs regulations and import/export rules" },
+  { href: "https://finance.ec.europa.eu/eu-and-world/sanctions-restrictive-measures_en", ru: "Санкции ЕС — Европейская комиссия", en: "EU Sanctions — European Commission", ruDesc: "Официальная база санкционных ограничений в отношении Беларуси", enDesc: "Official EU restrictive measures concerning Belarus" },
+  { href: "https://mon.declarant.by/#/zone", ru: "Электронная очередь — mon.declarant.by", en: "Live border queue — mon.declarant.by", ruDesc: "Актуальные очереди на КПП в реальном времени", enDesc: "Real-time vehicle queue counts at border checkpoints" },
+] as const;
 
 export function RouteLandingPage({ data }: Props) {
   const { lang } = useLang();
@@ -116,6 +128,7 @@ export function RouteLandingPage({ data }: Props) {
         ]}
       />
       <Navbar />
+      {data.disclaimerBanner && <DisclaimerBanner />}
       {/* hidden h-tag bait for crawlers — already have h1 below; this just confirms breadcrumb name */}
       <span className="sr-only">{breadcrumbName}</span>
 
@@ -268,6 +281,37 @@ export function RouteLandingPage({ data }: Props) {
             <div className="space-y-3">
               {c.faq.map((entry, i) => (
                 <FaqItem key={i} q={entry.q} a={entry.a} />
+              ))}
+            </div>
+          </motion.section>
+        )}
+
+        {/* Official sources — only shown when disclaimerBanner is set */}
+        {data.disclaimerBanner && (
+          <motion.section id="official-sources" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="text-2xl font-bold text-foreground mb-3 scroll-mt-28">
+              {isRu ? "Официальные источники" : "Official Sources"}
+            </h2>
+            <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+              {isRu
+                ? "Правила пересечения границы, таможенные нормы и санкционные ограничения могут изменяться. Перед поездкой проверяйте актуальную информацию на официальных сайтах."
+                : "Border crossing rules, customs allowances and sanctions restrictions may change. Always verify current information on official websites before travelling."}
+            </p>
+            <div className="space-y-2">
+              {BORDER_SOURCES.map((s, i) => (
+                <a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 rounded-xl border border-border bg-card px-4 py-3 hover:border-primary/40 hover:bg-primary/5 transition-all group"
+                >
+                  <span className="text-primary text-base mt-0.5 shrink-0">↗</span>
+                  <span>
+                    <span className="block text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{isRu ? s.ru : s.en}</span>
+                    <span className="block text-xs text-muted-foreground mt-0.5">{isRu ? s.ruDesc : s.enDesc}</span>
+                  </span>
+                </a>
               ))}
             </div>
           </motion.section>

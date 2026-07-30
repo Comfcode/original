@@ -2,6 +2,7 @@ import { MapPin, ShieldCheck, Castle } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 const data: RoutePageData = {
+  disclaimerBanner: true,
   ru: {
     badge: "Трансфер в Тракай",
     title: "Минск — Тракай",
