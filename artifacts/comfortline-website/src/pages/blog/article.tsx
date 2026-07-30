@@ -1,6 +1,7 @@
 import { useRoute } from "wouter";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowLeft, ArrowRight, Tag, BookOpen, PhoneCall } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ArrowRight, Tag, BookOpen, PhoneCall, AlertTriangle, ChevronDown, ChevronUp } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
@@ -19,9 +20,27 @@ import { SITE_URL, BUSINESS } from "@/seo/seo-config";
 
 function renderBlock(block: Block, idx: number) {
   switch (block.type) {
+    case "editorial-correction":
+      return (
+        <div key={idx} className="rounded-2xl border border-amber-400/60 bg-amber-50 dark:bg-amber-950/30 dark:border-amber-700/50 px-5 py-5 my-6">
+          <div className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
+            {block.heading}
+          </div>
+          <div className="text-sm text-amber-900 dark:text-amber-200 leading-relaxed space-y-2">
+            {block.text.split("\n\n").map((para, i) => <p key={i}>{para}</p>)}
+          </div>
+        </div>
+      );
+    case "info-notice":
+      return (
+        <div key={idx} className="rounded-xl border border-border bg-muted/50 px-4 py-3 my-4 text-sm text-foreground/70 leading-relaxed italic">
+          {block.text}
+        </div>
+      );
     case "h2":
       return (
-        <h2 key={idx} className="text-2xl font-bold text-foreground mt-10 mb-4">
+        <h2 key={idx} id={block.id} className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-28">
           {block.text}
         </h2>
       );
@@ -63,9 +82,9 @@ function renderBlock(block: Block, idx: number) {
       return (
         <div
           key={idx}
-          className="rounded-2xl border border-primary/30 bg-primary/5 px-5 py-4 my-6 text-foreground/90 text-sm leading-relaxed"
+          className="rounded-2xl border border-primary/30 bg-primary/5 px-5 py-4 my-6 text-foreground/90 text-sm leading-relaxed space-y-2"
         >
-          {block.text}
+          {block.text.split("\n\n").map((para, i) => <p key={i}>{para}</p>)}
         </div>
       );
     case "table":
@@ -137,6 +156,70 @@ function renderBlock(block: Block, idx: number) {
   }
 }
 
+function DisclaimerBanner({ isRu }: { isRu: boolean }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const shortRu =
+    "Важно: ComfortLine — частный перевозчик, а не таможенный, пограничный, миграционный или юридический орган. Материалы статьи носят исключительно информационный характер. Правила могут измениться без уведомления.";
+  const shortEn =
+    "Important: ComfortLine is a private transport company, not a customs, border, immigration or legal authority. This article is for information purposes only. Rules may change without notice.";
+
+  const fullRu = [
+    "ComfortLine является частным перевозчиком и не является государственным, таможенным, пограничным, миграционным или юридическим консультативным органом.",
+    "Материалы статьи представлены только в информационных целях. Правила ввоза товаров, санкционные ограничения, таможенные нормы и процедуры на границе могут изменяться без предварительного уведомления.",
+    "Перед поездкой обязательно проверьте требования на официальных сайтах таможенных и государственных органов страны въезда.",
+    "При поездке с ComfortLine пассажир может попросить водителя предоставить последнюю доступную нам практическую информацию. Такая помощь предоставляется только для удобства клиента и не является официальной консультацией или гарантией допуска товара через границу.",
+  ];
+  const fullEn = [
+    "ComfortLine is a private transport company and is not a government, customs, border, immigration or legal advisory body.",
+    "The content of this article is provided for information purposes only. Import rules, sanctions restrictions, customs allowances and border procedures may change without prior notice.",
+    "Before travelling, please verify the requirements on the official websites of the customs and government authorities of your country of entry.",
+    "When travelling with ComfortLine, passengers may ask the driver to share the latest practical information available to us. This assistance is provided for the passenger's convenience only and does not constitute official advice or a guarantee of clearance at the border.",
+  ];
+
+  return (
+    <div className="bg-amber-50 dark:bg-amber-950/30 border-b border-amber-200 dark:border-amber-800">
+      <div className="container mx-auto px-4 md:px-6 max-w-3xl py-3">
+        <div className="flex items-start gap-2.5">
+          <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+              {isRu ? shortRu : shortEn}
+            </p>
+            {expanded && (
+              <div className="mt-2 text-sm text-amber-800 dark:text-amber-300 leading-relaxed space-y-1.5">
+                {(isRu ? fullRu : fullEn).map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
+            )}
+            <div className="flex flex-wrap items-center gap-3 mt-2">
+              <button
+                onClick={() => setExpanded((e) => !e)}
+                className="inline-flex items-center gap-1 text-xs text-amber-700 dark:text-amber-400 hover:underline"
+                aria-expanded={expanded}
+              >
+                {expanded ? (
+                  <><ChevronUp className="h-3 w-3" />{isRu ? "Свернуть" : "Collapse"}</>
+                ) : (
+                  <><ChevronDown className="h-3 w-3" />{isRu ? "Подробнее" : "Read more"}</>
+                )}
+              </button>
+              <a
+                href="#official-sources"
+                aria-label={isRu ? "Перейти к официальным источникам (откроется в этом окне)" : "Jump to official sources (opens in this window)"}
+                className="inline-flex items-center gap-1 text-xs font-semibold text-amber-700 dark:text-amber-400 border border-amber-400/60 rounded-md px-2.5 py-1 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-colors"
+              >
+                {isRu ? "Проверить официальные источники" : "Check official sources"} ↓
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function BlogArticlePage() {
   const { lang } = useLang();
   const isRu = lang === "ru";
@@ -154,16 +237,16 @@ export default function BlogArticlePage() {
     ? SITE_URL + BLOG_BASE_RU + "/" + encodeURI(article.slug)
     : SITE_URL + BLOG_BASE_EN + "/" + enSlug;
 
-  const articleJsonLd = {
+  const articleJsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: isRu ? article.title : (article.titleEn ?? article.title),
     description: isRu ? article.description : (article.descriptionEn ?? article.description),
     datePublished: article.dateISO,
-    dateModified: article.dateISO,
+    dateModified: article.dateModified ?? article.dateISO,
     author: {
       "@type": "Organization",
-      name: BUSINESS.name,
+      name: article.dateModified ? "ComfortLine Editorial Team" : BUSINESS.name,
       url: SITE_URL,
     },
     publisher: {
@@ -176,6 +259,9 @@ export default function BlogArticlePage() {
     inLanguage: isRu ? "ru" : "en",
     keywords: article.tags.join(", "),
   };
+  if (article.citation && article.citation.length > 0) {
+    articleJsonLd["citation"] = article.citation;
+  }
 
   const relatedArticles = article.related
     .map((s) => ARTICLES.find((a) => a.slug === s))
@@ -207,6 +293,7 @@ export default function BlogArticlePage() {
         jsonLd={articleJsonLd}
       />
       <Navbar />
+      {article.disclaimerBanner && <DisclaimerBanner isRu={isRu} />}
 
       <article className="pt-28 pb-14">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">

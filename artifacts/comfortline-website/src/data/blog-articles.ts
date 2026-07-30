@@ -4,7 +4,7 @@
 
 export type Block =
   | { type: "p"; text: string }
-  | { type: "h2"; text: string }
+  | { type: "h2"; text: string; id?: string }
   | { type: "h3"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
@@ -12,7 +12,9 @@ export type Block =
   | { type: "table"; headers: string[]; rows: string[][] }
   | { type: "link"; href: string; label: string; description?: string }
   | { type: "img"; src: string; alt: string; caption?: string }
-  | { type: "liveQueue" };
+  | { type: "liveQueue" }
+  | { type: "editorial-correction"; heading: string; text: string }
+  | { type: "info-notice"; text: string };
 
 export interface Article {
   slug: string;
@@ -25,14 +27,17 @@ export interface Article {
   intro: string;
   introEn?: string;
   dateISO: string;
+  dateModified?: string;
   readingMin: number;
   category: string;
   categoryEn?: string;
   tags: string[];
   body: Block[];
   bodyEn?: Block[];
-  related: string[]; // slugs of related articles
-  ctaRoute?: { label: string; labelEn?: string; path: string }; // internal link to a money page
+  related: string[];
+  ctaRoute?: { label: string; labelEn?: string; path: string };
+  disclaimerBanner?: boolean;
+  citation?: string[];
 }
 
 export const BLOG_BASE_RU = "/блог";
@@ -333,64 +338,96 @@ export const ARTICLES: Article[] = [
   {
     slug: "что-нельзя-ввозить-в-ес",
     slugEn: "what-not-to-bring-from-belarus-to-eu",
-    titleEn: "What You Cannot Bring from Belarus into the EU: 2026 Customs Rules & Limits",
-    descriptionEn: "Full list of prohibited and restricted items when crossing from Belarus to the EU: cash limits, alcohol, tobacco, food, valuables and customs rules explained.",
+    titleEn: "What You Cannot Bring from Belarus into the EU: Limits & Prohibitions 2026",
+    descriptionEn: "Current customs rules for entering Lithuania, Poland and Latvia from Belarus: sanctions prohibitions, alcohol, tobacco, fuel, purchases and official sources.",
     ogSlug: "blog-chto-nelzya-vvozit-v-es",
-    title: "Что нельзя ввозить из Беларуси в ЕС в 2026: полный список с лимитами",
+    title: "Что нельзя ввозить из Беларуси в ЕС в 2026 году: правила Литвы, Польши и Латвии",
     description:
-      "Полный список запрещённых и ограниченных товаров при пересечении границы Беларусь–ЕС в 2026. Лимиты на алкоголь, сигареты, наличные, продукты питания, посылки. Что проверяют на границе и чем грозит нарушение.",
+      "Актуальные правила ввоза из Беларуси в Литву, Польшу и Латвию: санкционные запреты, алкоголь, табак, топливо, покупки и официальные источники.",
     intro:
-      "Литва, Польша и Латвия применяют санкционные правила ЕС на въезд из Беларуси очень строго. Даже один лишний блок сигарет или 200 мл духов сверх нормы могут привести к конфискации. Ниже — исчерпывающий список запретов, актуальные лимиты и советы, как проехать без проблем.",
+      "Литва, Польша и Латвия применяют санкционные правила ЕС при въезде из Беларуси. Ниже — актуальные лимиты, запреты, отличия по странам и официальные источники для проверки перед поездкой.",
     dateISO: "2026-05-20",
-    readingMin: 12,
+    dateModified: "2026-07-30",
+    readingMin: 15,
     category: "Таможня",
+    categoryEn: "Customs",
     tags: ["таможня", "ЕС", "санкции", "запреты", "граница", "Литва", "Польша", "Латвия", "декларирование", "нормы ввоза", "таможенные правила 2026"],
+    disclaimerBanner: true,
+    citation: [
+      "https://www.customs.gov.by/fizicheskim-litsam/besposhlinnyy-vvoz-vyvoz-tovarov-dlya-lichnogo-polzovaniya/",
+      "https://www.customs.gov.by/fizicheskim-litsam/vvoz-tovarov-dlya-lichnogo-polzovaniya-s-uplatoy-tamozhennykh-platezhey/",
+      "https://europa.eu/youreurope/citizens/travel/carry/alcohol-tobacco-cash/index_en.htm",
+      "https://eur-lex.europa.eu/eli/reg/2006/765/oj/eng",
+      "https://eur-lex.europa.eu/eli/reg/2026/1846/oj/eng",
+      "https://muitine.lrv.lt/en/for-passengers/coming-from-third-countries/",
+      "https://podatki.gov.pl/informacje-o-cle/podstawowe-informacje-o-cle/informacje-dla-osob-fizycznych/towary-przywozone-przez-podroznych-zwolnione-z-oplat",
+      "https://www.vid.gov.lv/en/excise-goods",
+    ],
     body: [
-      { type: "h2", text: "Полностью запрещено к ввозу в ЕС из Беларуси" },
+      { type: "editorial-correction", heading: "Обновление редакции от 30 июля 2026 года", text: "Ранее опубликованная таблица показывала общие беспошлинные нормы для въезда в ЕС из третьих стран, но недостаточно учитывала санкционные запреты для товаров белорусского происхождения, дополнительные ограничения Литвы, правила для частых пересечений границы и транспортных экипажей, а также действующие правила для парфюмерии.\n\nТаблица и пояснения ниже были исправлены. Общие беспошлинные нормы применяются только к товарам, ввоз которых не запрещён санкциями или национальным законодательством страны въезда." },
+      { type: "info-notice", text: "Информация предназначена для обычных пассажиров, перевозящих товары для личного пользования. Для водителей, транспортных экипажей, приграничных работников и лиц, часто пересекающих границу, могут действовать другие нормы." },
+      { type: "h2", text: "Товары, запрещённые к ввозу из Беларуси в ЕС" },
       {
         type: "p",
-        text: "Следующие категории товаров запрещены к ввозу в страны ЕС из Беларуси вне зависимости от количества и стоимости — в рамках санкционного пакета ЕС:",
+        text: "Следующие категории запрещены санкциями ЕС или национальным законодательством стран въезда. Наличие общей беспошлинной нормы не отменяет санкционный запрет.",
       },
       {
         type: "ul",
         items: [
-          "Бензин и дизельное топливо в канистрах сверх топливного бака автомобиля (Литва — 0 л, Польша — до 10 л, Латвия — 0 л).",
-          "Табачные изделия сверх установленного лимита (см. таблицу ниже).",
-          "Любая военная и охотничья техника, пневматика, газовые баллончики самообороны.",
-          "Лекарственные препараты без рецепта в количестве, превышающем личные нужды на поездку.",
-          "Продукты животного происхождения: мясо, колбасные изделия, молоко, сыр, творог, мёд — запрещены к ввозу в ЕС.",
-          "Свежие фрукты, овощи, растения, семена, саженцы, почва.",
-          "Товары под санкциями ЕС: отдельные виды стали, древесины, калийных удобрений, техники.",
-          "Электроника на сумму свыше 750 € — требует письменной декларации.",
+          "Спиртные напитки по коду CN 2208 (крепкий алкоголь и ликёры), происходящие из Беларуси или вывозимые из Беларуси — запрещены санкциями ЕС.",
+          "Сигареты, сигариллы и сигары (код CN 2402) белорусского происхождения или экспорта — запрещены санкциями ЕС. Литва применяет более широкий национальный запрет на табак и произведённые заменители табака белорусского происхождения.",
+          "Нефтепродукты (топливо) белорусского происхождения или экспорта в переносных канистрах — Литва и Латвия: 0 л. К Польше: общий лимит в 10 л не применяется к запрещённому топливу белорусского происхождения.",
+          "Военная техника, охотничье оружие, пневматика, газовые баллончики самообороны.",
+          "Лекарственные препараты в количестве, превышающем личные нужды на поездку.",
+          "Продукты животного происхождения (мясо, мясопродукты, молоко и молочные продукты) — запрещены к ввозу в ЕС из Беларуси как из третьей страны без ветеринарного сертификата. Таможенный орган вправе оценивать конкретный товар, его количество, происхождение, стоимость, упаковку и заявленную цель ввоза.",
+          "Свежие фрукты, овощи, растения, семена, саженцы, почва — действуют фитосанитарные ограничения ЕС; таможня оценивает каждый случай.",
+          "Товары под санкциями ЕС: отдельные виды стали, древесины, калийных удобрений, техники — перечень определяется актуальным регламентом (последнее изменение: Регламент ЕС 2026/1846 от 23 июля 2026 года).",
         ],
       },
-      { type: "h2", text: "Таможенные лимиты для физических лиц: Литва, Польша, Латвия" },
+      { type: "h2", id: "eu-entry-allowances", text: "Въезд из Беларуси в ЕС по земле: нормы для обычных пассажиров" },
       {
         type: "p",
-        text: "Нормы действительны для совершеннолетних пассажиров при въезде из третьих стран (Беларусь — не член ЕС и не ЕАЭС для целей европейской таможни). Сниженные лимиты применяются при поездках короче 24 часов.",
+        text: "Нормы действительны для совершеннолетних обычных пассажиров при въезде из третьих стран наземным транспортом. Могут применяться сниженные нормы в зависимости от статуса пересекающего границу лица (см. раздел о водителях ниже).",
+      },
+      {
+        type: "callout",
+        text: "Значение «0» означает, что обычная беспошлинная норма не применяется к товару, запрещённому из-за его происхождения, страны экспорта или товарной классификации. Если происхождение или код товара неясны, необходимо заранее обратиться в таможенный орган страны въезда.",
       },
       {
         type: "table",
-        headers: ["Категория", "Лимит для Литвы", "Лимит для Польши", "Лимит для Латвии"],
+        headers: ["Категория", "Литва", "Польша", "Латвия"],
         rows: [
-          ["Сигареты", "40 шт", "40 шт", "40 шт"],
-          ["Сигары (малые, до 3 г)", "20 шт", "20 шт", "20 шт"],
-          ["Сигары (обычные)", "10 шт", "10 шт", "10 шт"],
-          ["Табак для самокруток", "50 г", "50 г", "50 г"],
-          ["Крепкий алкоголь (>22%)", "1 л", "1 л", "1 л"],
-          ["Вино (негазированное)", "4 л", "4 л", "4 л"],
-          ["Пиво", "16 л", "16 л", "16 л"],
-          ["Парфюмерия (духи)", "50 мл", "50 мл", "50 мл"],
-          ["Туалетная вода", "250 мл", "250 мл", "250 мл"],
-          ["Товары/подарки (стоимость)", "до 300 €", "до 300 €", "до 300 €"],
-          ["Топливо в канистре", "0 л", "до 10 л", "0 л"],
+          ["Сигареты, сигариллы и сигары", "0, если товар происходит из Беларуси или вывозится из Беларуси", "0, если товар происходит из Беларуси или вывозится из Беларуси", "0 для сигарет, сигарилл и сигар из Беларуси"],
+          ["Курительный или самокруточный табак", "Табак белорусского происхождения подпадает под более широкий национальный запрет Литвы", "Общая норма — до 50 г, если товар разрешён с учётом происхождения, классификации и санкций", "До 50 г или пропорциональная комбинация разрешённых табачных изделий; обычно не чаще одного раза в 30 дней"],
+          ["Крепкий алкоголь и ликёры, CN 2208", "0, если происходит из Беларуси или вывозится из Беларуси", "0, если происходит из Беларуси или вывозится из Беларуси", "0, если происходит из Беларуси или вывозится из Беларуси"],
+          ["Алкоголь до 22%", "Общая норма — до 2 л, однако алкоголь белорусского происхождения охватывается более широким национальным запретом Литвы", "До 2 л, только если товар не запрещён; некоторые ликёры относятся к запрещённой категории CN 2208", "До 2 л разрешённых напитков, если они не относятся к запрещённым спиртным напиткам"],
+          ["Тихое вино", "До 4 л, только если товар не имеет запрещённого происхождения и не подпадает под национальные ограничения", "До 4 л", "До 4 л натурального негазированного виноградного вина"],
+          ["Пиво", "До 16 л, только если товар не имеет запрещённого происхождения и не подпадает под национальные ограничения", "До 16 л", "До 16 л; натурально ферментированное пиво исключено из конкретного латвийского запрета на спиртные напитки"],
+          ["Духи и туалетная вода", "Отдельного лимита в миллилитрах нет; стоимость входит в общий лимит товаров", "Отдельного лимита в миллилитрах нет; стоимость входит в общий лимит товаров", "Отдельного лимита в миллилитрах нет; стоимость входит в общий лимит товаров"],
+          ["Другие покупки и подарки", "До €300 для обычного пассажира, въезжающего наземным транспортом", "До €300 при въезде наземным транспортом", "До €300 при въезде наземным транспортом"],
+          ["Топливо в переносной канистре", "0 л для топлива из Беларуси", "Не применять общий лимит 10 л к запрещённому топливу белорусского происхождения или экспорта", "0 л для топлива из Беларуси"],
+          ["Топливо в штатном баке автомобиля", "Допускается с учётом условий и санкционных исключений", "Обычно допускается для собственного использования транспортным средством, с учётом санкций и проверки таможней", "Возможно только для обоснованных основных потребностей поездки; таможня может запросить пояснения или подтверждение"],
         ],
       },
       {
         type: "callout",
-        text: "Лимиты не суммируются: нельзя взять 0 сигарет и 2 л крепкого вместо 1 л. Каждая категория — независимая норма.",
+        text: "Важно: указанные нормы действуют только для разрешённых товаров некоммерческого характера и не отменяют санкционные запреты. Табачные изделия — 40 сигарет, 20 сигарилл, 10 сигар или 50 г табака — являются альтернативными нормами. Допускается пропорциональное сочетание в пределах 100% общей нормы.\n\nДля алкоголя 1 л напитков крепостью свыше 22% или 2 л напитков крепостью до 22% — альтернативная норма, допускающая пропорциональное сочетание. Дополнительно разрешаются 4 л тихого вина и 16 л пива, если соответствующий товар не подпадает под санкционный или национальный запрет.",
       },
-      { type: "h2", text: "Лимиты на беспошлинный ввоз товаров в Беларусь" },
+      { type: "h2", text: "Отдельные правила для водителей и транспортных экипажей" },
+      {
+        type: "p",
+        text: "Таблица выше предназначена для обычных пассажиров. Водители, члены экипажей транспортных средств, работники приграничной зоны, жители приграничной зоны и лица, регулярно пересекающие границу, могут подпадать под отдельные или сниженные нормы.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Литва устанавливает для некоторых членов экипажей регулярных международных маршрутов общий стоимостной лимит €150 и сниженные нормы на алкоголь.",
+          "Польша указывает для членов экипажей, приграничных работников и жителей приграничной зоны сниженные нормы: 0,5 л крепкого либо более слабого алкоголя, дополнительно 0,5 л вина и 2 л пива.",
+          "В Латвии ввоз отдельных подакцизных товаров для личного пользования обычно допускается не чаще одного раза в 30 дней. При более частом пересечении границы или по требованию таможни может потребоваться письменное заявление.",
+          "Классификация водителя частного трансфера как члена экипажа регулярного международного транспорта может зависеть от характера перевозки и решения таможенного органа.",
+        ],
+      },
+      { type: "h2", text: "Европейский союз → Беларусь: беспошлинный ввоз" },
       {
         type: "p",
         text: "Норма беспошлинного ввоза зависит от способа пересечения границы. Для наземного транспорта (машина, автобус) и пешего перехода — то есть для всех пассажиров ComfortLine — с 1 апреля 2024 года действует сниженная норма: стоимость товаров не выше 500 € и вес не более 25 кг на одного взрослого пассажира.",
@@ -430,30 +467,24 @@ export const ARTICLES: Article[] = [
         type: "p",
         text: "Правила вывоза наличных из Беларуси и ввоза в ЕС регулируются независимо — белорусской таможней (ГТК) и таможней страны въезда в ЕС.",
       },
-      {
-        type: "h3",
-        text: "Вывоз наличных из Беларуси",
-      },
+      { type: "h3", text: "Вывоз наличных из Беларуси" },
       {
         type: "ul",
         items: [
           "До 10 000 USD (или эквивалент в любой валюте) — без декларации.",
           "Свыше 10 000 USD — обязательная письменная таможенная декларация при пересечении белорусской границы.",
-          "Не задекларированные суммы сверх лимита подлежат полной конфискации.",
+          "Незадекларированные суммы сверх лимита подлежат взысканию в соответствии с законодательством Беларуси.",
           "Ювелирные украшения для личного пользования, банковские карты и дорожные чеки к денежному лимиту не относятся.",
         ],
       },
-      {
-        type: "h3",
-        text: "Ввоз наличных в ЕС (Литва, Польша, Латвия)",
-      },
+      { type: "h3", text: "Ввоз наличных в ЕС (Литва, Польша, Латвия)" },
       {
         type: "ul",
         items: [
           "До 10 000 € (или эквивалент) — без декларации на стороне ЕС.",
           "Свыше 10 000 € — обязательная декларация EU Cash Declaration при въезде в зону ЕС.",
           "Декларация подаётся таможне страны въезда (литовской, польской или латвийской).",
-          "Сокрытие суммы свыше лимита — штраф и конфискация всей суммы.",
+          "Незадекларированные суммы сверх лимита могут быть задержаны и стать предметом административного или уголовного производства.",
         ],
       },
       {
@@ -487,12 +518,11 @@ export const ARTICLES: Article[] = [
         type: "ul",
         items: [
           "Топливные баки — пограничники Литвы и Латвии могут запросить открыть бак для проверки.",
-          "Сигареты и табак — сканируют штрих-коды акцизных марок, считают пачки.",
+          "Сигареты и табак — пограничники проверяют акцизные марки и считают количество.",
           "Алкоголь — проверяют наличие акцизных марок, сверяют количество.",
-          "Электроника — могут запросить чеки или выписки для оценки стоимости.",
+          "Электроника и покупки — могут запросить чеки или выписки для оценки стоимости относительно общей нормы ввоза.",
           "Продукты питания — холодильники и сумки с едой осматриваются на наличие запрещённых категорий.",
           "Содержимое багажника и чемоданов — рентгеновский сканер, иногда ручной досмотр.",
-          "Банковские карты и телефоны — крайне редко, только при подозрении в контрабанде.",
         ],
       },
       { type: "h2", text: "Что будет за нарушение таможенных правил" },
@@ -500,101 +530,168 @@ export const ARTICLES: Article[] = [
         type: "table",
         headers: ["Нарушение", "Последствие"],
         rows: [
-          ["Незадекларированные сигареты сверх нормы", "Конфискация всей партии табака"],
-          ["Алкоголь сверх лимита", "Конфискация излишка + штраф"],
-          ["Незадекларированные наличные > 10 000 €", "Конфискация всей суммы, задержание"],
-          ["Запрещённые продукты питания", "Конфискация на месте, штраф"],
-          ["Топливо в канистре (Литва/Латвия)", "Конфискация канистры с топливом"],
-          ["Незадекларированная электроника свыше 750 €", "Задержание товара, оформление, пошлина"],
+          ["Сигареты и табак, запрещённые из-за происхождения или сверх нормы", "Конфискация"],
+          ["Алкоголь сверх лимита или запрещённого происхождения", "Конфискация + возможный штраф"],
+          ["Незадекларированные наличные свыше 10 000 €", "Задержание суммы и административное/уголовное производство"],
+          ["Запрещённые продукты питания", "Конфискация на месте"],
+          ["Топливо в канистре из Беларуси (Литва/Латвия)", "Конфискация канистры с топливом"],
+          ["Товары с признаками коммерческой партии без декларации", "Задержание товара, оформление, возможная пошлина"],
         ],
       },
       { type: "h2", text: "Частые вопросы о таможне на границе Беларусь–ЕС" },
-      {
-        type: "h3",
-        text: "Можно ли везти домашнюю еду в Литву или Польшу?",
-      },
+      { type: "h3", text: "Можно ли везти домашнюю еду в Литву или Польшу?" },
       {
         type: "p",
-        text: "Нет. Продукты животного происхождения (мясо, молочное, яйца, мёд) запрещены к ввозу в ЕС из Беларуси без исключений. Консервы в заводской упаковке — в ограниченном количестве, но пограничники нередко конфискуют и их. Безопаснее не везти ничего.",
+        text: "Продукты животного происхождения (мясо, молочное, яйца) запрещены к ввозу в ЕС из Беларуси. В отношении других продуктов питания таможенный орган вправе оценивать конкретный товар, его количество, происхождение, стоимость, упаковку и заявленную цель ввоза. При сомнениях необходимо заранее обратиться в таможню страны въезда.",
       },
-      {
-        type: "h3",
-        text: "Считаются ли сигареты в кармане отдельно от сигарет в чемодане?",
-      },
+      { type: "h3", text: "Считаются ли сигареты в кармане отдельно от сигарет в чемодане?" },
       {
         type: "p",
-        text: "Нет, лимит суммарный на человека. 40 сигарет — это 2 пачки суммарно, независимо от того, где они находятся.",
+        text: "Нет, лимит суммарный на человека. 40 сигарет (при условии, что они разрешены к ввозу по происхождению) — это 2 пачки суммарно, независимо от того, где они находятся.",
       },
-      {
-        type: "h3",
-        text: "Нужно ли декларировать ноутбук или телефон?",
-      },
+      { type: "h3", text: "Нужно ли декларировать ноутбук или телефон?" },
       {
         type: "p",
-        text: "Один ноутбук и один телефон для личного пользования — без декларации. Несколько ноутбуков или новые устройства в заводской упаковке на сумму свыше 750 € — требуют письменной декларации.",
+        text: "Новая электроника, подарки и другие покупки учитываются в рамках общей стоимостной нормы (до 300 € при въезде наземным транспортом). Таможня вправе оценивать, предназначены ли товары для личного или коммерческого использования. При сомнениях рекомендуется заранее проконсультироваться с таможней страны въезда.",
       },
-      {
-        type: "h3",
-        text: "Есть ли разница между Каменным Логом, Терехово и Брузги?",
-      },
+      { type: "h3", text: "Есть ли разница между Каменным Логом, Терехово и Брузги?" },
       {
         type: "p",
-        text: "Таможенные правила одинаковы на всех КПП — разница только в загруженности и скорости прохождения. Выбор КПП влияет на время ожидания, а не на нормы ввоза.",
+        text: "Общие нормы ЕС применяются на всех КПП, однако конкретные процедуры и интенсивность проверок могут различаться. Выбор КПП влияет на время ожидания. Для уточнения требований конкретного пункта пропуска рекомендуется обращаться в таможенную службу соответствующей страны.",
       },
       {
         type: "callout",
-        text: "Правила меняются: санкционные пакеты ЕС обновляются несколько раз в год. Перед поездкой проверяйте актуальные нормы на сайтах таможни Беларуси и страны въезда. Водители ComfortLine следят за изменениями и предупредят о актуальных ограничениях.",
+        text: "Правила меняются: санкционные пакеты ЕС обновляются несколько раз в год. Перед поездкой проверяйте актуальные нормы на официальных сайтах таможни Беларуси и страны въезда.",
+      },
+      { type: "h2", id: "official-sources", text: "Официальные источники и дата проверки" },
+      { type: "h3", text: "Беларусь" },
+      {
+        type: "link",
+        href: "https://www.customs.gov.by/fizicheskim-litsam/besposhlinnyy-vvoz-vyvoz-tovarov-dlya-lichnogo-polzovaniya/",
+        label: "Государственный таможенный комитет Республики Беларусь — беспошлинный ввоз и вывоз товаров для личного пользования",
+      },
+      {
+        type: "link",
+        href: "https://www.customs.gov.by/fizicheskim-litsam/vvoz-tovarov-dlya-lichnogo-polzovaniya-s-uplatoy-tamozhennykh-platezhey/",
+        label: "Государственный таможенный комитет Республики Беларусь — ввоз товаров с уплатой таможенных платежей",
+      },
+      { type: "h3", text: "Европейский союз" },
+      {
+        type: "link",
+        href: "https://europa.eu/youreurope/citizens/travel/carry/alcohol-tobacco-cash/index_en.htm",
+        label: "Your Europe — правила перевозки алкоголя, табака и других товаров",
+        description: "Официальный портал ЕС",
+      },
+      {
+        type: "link",
+        href: "https://trade.ec.europa.eu/access-to-markets/en/content/guide-import-goods",
+        label: "European Commission Access2Markets — руководство по импорту товаров",
+      },
+      {
+        type: "link",
+        href: "https://eur-lex.europa.eu/eli/reg/2006/765/oj/eng",
+        label: "Council Regulation (EC) No 765/2006 — restrictive measures concerning Belarus",
+        description: "EUR-Lex — официальный текст",
+      },
+      {
+        type: "link",
+        href: "https://eur-lex.europa.eu/eli/reg/2026/1846/oj/eng",
+        label: "Council Regulation (EU) 2026/1846 of 23 July 2026 — latest amendment",
+        description: "EUR-Lex — официальный текст",
+      },
+      { type: "h3", text: "Литва" },
+      {
+        type: "link",
+        href: "https://muitine.lrv.lt/en/for-passengers/coming-from-third-countries/",
+        label: "Lietuvos Respublikos muitinė — Coming from third countries",
+        description: "Официальный сайт Таможни Литовской Республики",
+      },
+      { type: "h3", text: "Польша" },
+      {
+        type: "link",
+        href: "https://podatki.gov.pl/informacje-o-cle/podstawowe-informacje-o-cle/informacje-dla-osob-fizycznych/towary-przywozone-przez-podroznych-zwolnione-z-oplat",
+        label: "Ministerstwo Finansów / Krajowa Administracja Skarbowa — товары, ввозимые путешественниками без пошлин",
+        description: "Официальный сайт налоговой администрации Польши",
+      },
+      { type: "h3", text: "Латвия" },
+      {
+        type: "link",
+        href: "https://www.vid.gov.lv/en/excise-goods",
+        label: "Valsts ieņēmumu dienests — Excise goods",
+        description: "Официальный сайт Службы государственных доходов Латвии",
+      },
+      {
+        type: "callout",
+        text: "Информация проверена: 30 июля 2026 года. Следующая редакционная проверка: 30 января 2027 года.\n\nПравила могли измениться после указанной даты. Перед выездом откройте официальные источники и проверьте требования повторно.",
       },
     ],
-    categoryEn: "Customs",
     introEn:
-      "Lithuania, Poland and Latvia enforce EU sanction rules on entry from Belarus very strictly. Even one extra packet of cigarettes or 200 ml of perfume over the limit can lead to confiscation. Below is the complete list of prohibitions, current limits and advice on how to cross without issues.",
+      "Lithuania, Poland and Latvia enforce EU sanctions rules on entry from Belarus. Below are current allowances, prohibitions, country-by-country differences and official sources to check before travel.",
     bodyEn: [
-      { type: "h2", text: "Items Completely Prohibited from Belarus into the EU" },
+      { type: "editorial-correction", heading: "Editorial correction, 30 July 2026", text: "The previously published table showed general EU duty-free allowances for travellers arriving from third countries, but did not adequately reflect the sanctions-based prohibitions for goods of Belarusian origin, Lithuania's additional national restrictions, rules for frequent border crossings and transport crews, or the current rules for perfume and eau de toilette.\n\nThe table and explanations below have been corrected. General duty-free allowances apply only to goods whose import is not prohibited by sanctions or the national legislation of the country of entry." },
+      { type: "info-notice", text: "The information is intended for ordinary passengers carrying goods for personal use. Different rules may apply to drivers, transport crew members, border workers and persons who cross the border frequently." },
+      { type: "h2", text: "Goods Prohibited from Belarus into the EU" },
       {
         type: "p",
-        text: "The following categories of goods are banned from import into EU countries from Belarus regardless of quantity or value, under the EU sanctions package:",
+        text: "The following categories are prohibited under EU sanctions or the national legislation of the entry country. A general duty-free allowance does not override a sanctions prohibition.",
       },
       {
         type: "ul",
         items: [
-          "Petrol and diesel in canisters beyond the vehicle fuel tank (Lithuania — 0 l, Poland — up to 10 l, Latvia — 0 l).",
-          "Tobacco products over the established limit (see table below).",
-          "Any military or hunting equipment, air guns, self-defence gas sprays.",
-          "Prescription medications in quantities exceeding personal needs for the trip.",
-          "Animal-origin food: meat, sausages, dairy (milk, cheese, cottage cheese), honey — prohibited from import into the EU.",
-          "Fresh fruit, vegetables, plants, seeds, seedlings, soil.",
-          "EU-sanctioned goods: certain types of steel, timber, potassium fertilisers, machinery.",
-          "Electronics worth over €750 — requires a written declaration.",
+          "Spirit drinks under CN 2208 (spirits and liqueurs) originating in or exported from Belarus — prohibited under EU sanctions.",
+          "Cigarettes, cigarillos and cigars (CN 2402) of Belarusian origin or export — prohibited under EU sanctions. Lithuania applies a broader national prohibition covering Belarus-origin tobacco and manufactured tobacco substitutes.",
+          "Petroleum products (fuel) of Belarusian origin or export in portable containers — Lithuania and Latvia: 0 l. For Poland: the general 10 l allowance does not apply to prohibited fuel of Belarusian origin.",
+          "Military equipment, hunting weapons, air guns, self-defence gas sprays.",
+          "Medicinal products in quantities exceeding personal needs for the trip.",
+          "Animal-origin food (meat, meat products, milk and dairy products) — prohibited from import into the EU from Belarus as a third country without a veterinary certificate. Customs may assess a specific product on its quantity, origin, value, packaging and declared purpose.",
+          "Fresh fruit, vegetables, plants, seeds, seedlings, soil — EU phytosanitary restrictions apply; customs assesses each case.",
+          "EU-sanctioned goods: certain types of steel, timber, potassium fertilisers, machinery — the list is set by the current EU regulation (latest amendment: Council Regulation (EU) 2026/1846 of 23 July 2026).",
         ],
       },
-      { type: "h2", text: "Personal Customs Allowances: Lithuania, Poland, Latvia" },
+      { type: "h2", id: "eu-entry-allowances", text: "Entry from Belarus into the EU by land: allowances for ordinary passengers" },
       {
         type: "p",
-        text: "Allowances apply to adult passengers entering from third countries (Belarus is not an EU member). Reduced limits apply for trips shorter than 24 hours.",
+        text: "Allowances apply to adult ordinary passengers entering from third countries by land. Reduced or different allowances may apply depending on the traveller's status (see the section on drivers below).",
+      },
+      {
+        type: "callout",
+        text: "A value of '0' means that the standard duty-free allowance does not apply to a product prohibited because of its origin, country of export or tariff classification. If the origin or product code is unclear, contact the customs authority of the entry country before travelling.",
       },
       {
         type: "table",
         headers: ["Category", "Lithuania", "Poland", "Latvia"],
         rows: [
-          ["Cigarettes", "40", "40", "40"],
-          ["Cigarillos (up to 3 g)", "20", "20", "20"],
-          ["Cigars", "10", "10", "10"],
-          ["Rolling tobacco", "50 g", "50 g", "50 g"],
-          ["Spirits (>22% ABV)", "1 l", "1 l", "1 l"],
-          ["Still wine", "4 l", "4 l", "4 l"],
-          ["Beer", "16 l", "16 l", "16 l"],
-          ["Perfume (eau de parfum)", "50 ml", "50 ml", "50 ml"],
-          ["Eau de toilette", "250 ml", "250 ml", "250 ml"],
-          ["Goods / gifts (value)", "up to €300", "up to €300", "up to €300"],
-          ["Fuel in canister", "0 l", "up to 10 l", "0 l"],
+          ["Cigarettes, cigarillos and cigars", "0 if goods originate in or are exported from Belarus", "0 if goods originate in or are exported from Belarus", "0 for cigarettes, cigarillos and cigars from Belarus"],
+          ["Smoking or hand-rolling tobacco", "Belarus-origin tobacco is covered by Lithuania's broader national prohibition", "General allowance — up to 50 g, if the goods are permitted having regard to origin, classification and sanctions", "Up to 50 g or a proportional combination of permitted tobacco products; normally not more than once every 30 days"],
+          ["Spirits and liqueurs, CN 2208", "0 if originating in or exported from Belarus", "0 if originating in or exported from Belarus", "0 if originating in or exported from Belarus"],
+          ["Alcohol up to 22% ABV", "General allowance — up to 2 l, however Belarus-origin alcohol is covered by Lithuania's broader national prohibition", "Up to 2 l, only if the goods are not prohibited; some liqueurs fall under the prohibited CN 2208 category", "Up to 2 l of permitted beverages, provided they are not prohibited spirits"],
+          ["Still wine", "Up to 4 l, only if the goods do not have a prohibited origin and are not subject to national restrictions", "Up to 4 l", "Up to 4 l of naturally fermented still grape wine"],
+          ["Beer", "Up to 16 l, only if the goods do not have a prohibited origin and are not subject to national restrictions", "Up to 16 l", "Up to 16 l; naturally fermented beer is excluded from Latvia's specific prohibition on spirit drinks"],
+          ["Perfume and eau de toilette", "No separate millilitre allowance; value counts towards the general goods allowance", "No separate millilitre allowance; value counts towards the general goods allowance", "No separate millilitre allowance; value counts towards the general goods allowance"],
+          ["Other purchases and gifts", "Up to €300 for an ordinary passenger arriving by land", "Up to €300 when arriving by land", "Up to €300 when arriving by land"],
+          ["Fuel in a portable container", "0 l for Belarus-origin fuel", "Do not apply the general 10 l allowance to prohibited fuel of Belarusian origin or export", "0 l for Belarus-origin fuel"],
+          ["Fuel in the vehicle's standard tank", "Permitted subject to conditions and sanctions exceptions", "Normally permitted for the vehicle's own use, subject to sanctions and customs assessment", "Permitted only for legitimate essential travel needs; customs may request an explanation or supporting evidence"],
         ],
       },
       {
         type: "callout",
-        text: "Allowances are not interchangeable: you cannot skip cigarettes and bring 2 l of spirits instead of 1 l. Each category is an independent limit.",
+        text: "Important: these allowances apply only to permitted goods of a non-commercial nature and do not override sanctions prohibitions. The tobacco figures — 40 cigarettes, 20 cigarillos, 10 cigars or 50 g of smoking tobacco — are alternative allowances. Proportional combinations within 100% of the total allowance are permitted.\n\nFor alcohol, 1 l of drinks above 22% ABV or 2 l of drinks up to 22% ABV is an alternative allowance and may be used in proportional combination. An additional 4 l of still wine and 16 l of beer are permitted, provided the product is not subject to a sanctions or national prohibition.",
       },
-      { type: "h2", text: "Duty-Free Import Allowances into Belarus" },
+      { type: "h2", text: "Separate Rules for Drivers and Transport Crews" },
+      {
+        type: "p",
+        text: "The table above is for ordinary passengers. Drivers, transport crew members, border workers, border-area residents and persons who cross the border regularly may be subject to separate or reduced allowances.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Lithuania sets a general value allowance of €150 and reduced alcohol allowances for certain crew members on regular international routes.",
+          "Poland states reduced allowances for crew members, border workers and border-area residents: 0.5 l of spirits or lower-alcohol equivalent, plus 0.5 l of wine and 2 l of beer.",
+          "In Latvia, import of certain excisable goods for personal use is normally permitted no more than once every 30 days. A written declaration may be required for more frequent crossings or at customs' request.",
+          "Whether a private-transfer driver qualifies as a crew member of a regular international service may depend on the nature of the journey and the decision of the customs authority.",
+        ],
+      },
+      { type: "h2", text: "European Union → Belarus: duty-free import" },
       {
         type: "p",
         text: "The duty-free allowance depends on how you cross the border. For land transport (car, bus) or on foot — which covers all ComfortLine passengers — a reduced allowance has applied since 1 April 2024: goods worth no more than €500 and weighing no more than 25 kg per adult passenger.",
@@ -611,11 +708,11 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "Tobacco products have a separate allowance that's the same for every mode of entry: 200 cigarettes, or 50 cigars (cigarillos), or 200 heated-tobacco sticks, or 250 g of tobacco (or an assortment of these totalling no more than 250 g). Alcoholic drinks over 0.5% ABV — no more than 3 l when carried in baggage. Alcohol and tobacco allowances apply to travellers aged 18 and over.",
+        text: "Tobacco products have a separate allowance that is the same for every mode of entry: 200 cigarettes, or 50 cigars (cigarillos), or 200 heated-tobacco sticks, or 250 g of tobacco (or an assortment totalling no more than 250 g). Alcoholic drinks over 0.5% ABV — no more than 3 l when carried in baggage. Alcohol and tobacco allowances apply to travellers aged 18 and over.",
       },
       {
         type: "p",
-        text: "Above these limits, customs duty applies: for goods in baggage entering by land, the rate is 30% of the excess value, but no less than €4 per kilogram over the weight limit. For goods delivered by a carrier or by post, the rate is lower — 15% of the excess, but no less than €2 per kilogram. Alcohol between 3 and 5 l is charged at €10 per litre over the 3 l allowance; ethyl spirit (up to 5 l) is charged at €22 per litre. Goods showing signs of a commercial shipment (wholesale quantities, multiple identical items) are declared and processed separately as goods not intended for personal use.",
+        text: "Above these limits, customs duty applies: for goods in baggage entering by land, the rate is 30% of the excess value, but no less than €4 per kilogram over the weight limit. For goods delivered by a carrier or by post, the rate is lower — 15% of the excess, but no less than €2 per kilogram. Alcohol between 3 and 5 l is charged at €10 per litre over the 3 l allowance; ethyl spirit (up to 5 l) is charged at €22 per litre. Goods showing signs of a commercial shipment (wholesale quantities, multiple identical items) are declared and processed separately.",
       },
       {
         type: "link",
@@ -640,7 +737,7 @@ export const ARTICLES: Article[] = [
         items: [
           "Up to USD 10,000 (or equivalent in any currency) — no declaration required.",
           "Over USD 10,000 — mandatory written customs declaration at the Belarusian border.",
-          "Undeclared amounts above the limit are subject to full confiscation.",
+          "Undeclared amounts above the limit may be subject to enforcement action under Belarusian law.",
           "Personal jewellery, bank cards and traveller's cheques do not count towards the cash limit.",
         ],
       },
@@ -651,7 +748,7 @@ export const ARTICLES: Article[] = [
           "Up to €10,000 (or equivalent) — no declaration required on the EU side.",
           "Over €10,000 — mandatory EU Cash Declaration upon entering the EU zone.",
           "The declaration is submitted to the customs of the entry country (Lithuanian, Polish or Latvian).",
-          "Concealing amounts above the limit — fine and confiscation of the entire sum.",
+          "Undeclared amounts above the limit may be detained and become subject to administrative or criminal proceedings.",
         ],
       },
       {
@@ -685,12 +782,11 @@ export const ARTICLES: Article[] = [
         type: "ul",
         items: [
           "Fuel tanks — Lithuanian and Latvian border guards may ask you to open the tank for inspection.",
-          "Cigarettes and tobacco — excise stamp barcodes are scanned, packs are counted.",
+          "Cigarettes and tobacco — border guards check excise stamps and count quantities.",
           "Alcohol — excise stamps are checked and quantities verified.",
-          "Electronics — receipts or bank statements may be requested to assess value.",
+          "Electronics and purchases — receipts or bank statements may be requested to assess value against the general goods allowance.",
           "Food — coolers and food bags are inspected for prohibited categories.",
           "Boot and luggage — X-ray scanner, sometimes manual search.",
-          "Bank cards and phones — very rarely, only on suspicion of smuggling.",
         ],
       },
       { type: "h2", text: "Consequences of Customs Violations" },
@@ -698,38 +794,99 @@ export const ARTICLES: Article[] = [
         type: "table",
         headers: ["Violation", "Consequence"],
         rows: [
-          ["Undeclared cigarettes over the limit", "Confiscation of the entire tobacco batch"],
-          ["Alcohol over the limit", "Confiscation of excess + fine"],
-          ["Undeclared cash over €10,000", "Confiscation of entire sum, possible detention"],
-          ["Prohibited food products", "On-the-spot confiscation, fine"],
-          ["Fuel in canister (Lithuania/Latvia)", "Confiscation of canister and fuel"],
-          ["Undeclared electronics over €750", "Item held, customs processing, duty charge"],
+          ["Cigarettes and tobacco prohibited due to origin or above the limit", "Confiscation"],
+          ["Alcohol above the limit or of prohibited origin", "Confiscation + possible fine"],
+          ["Undeclared cash over €10,000", "Amount detained; administrative or criminal proceedings"],
+          ["Prohibited food products", "On-the-spot confiscation"],
+          ["Belarus-origin fuel in a portable container (Lithuania/Latvia)", "Confiscation of container and fuel"],
+          ["Goods showing commercial characteristics without declaration", "Goods detained; customs processing; possible duty"],
         ],
       },
       { type: "h2", text: "Frequently Asked Questions" },
       { type: "h3", text: "Can I bring home-cooked food into Lithuania or Poland?" },
       {
         type: "p",
-        text: "No. Animal-origin products (meat, dairy, eggs, honey) are banned from import into the EU from Belarus with no exceptions. Factory-sealed preserves are allowed in limited quantities, but border guards often confiscate them too. The safest option is to bring nothing.",
+        text: "Animal-origin products (meat, dairy, eggs) are prohibited from import into the EU from Belarus. For other food products, customs may assess the specific item on its quantity, origin, value, packaging and declared purpose. If in doubt, contact the customs authority of your entry country before travelling.",
       },
       { type: "h3", text: "Do cigarettes in my pocket count separately from those in my suitcase?" },
       {
         type: "p",
-        text: "No, the limit is total per person. 40 cigarettes means 2 packs in total, regardless of where they are.",
+        text: "No, the limit is total per person. 40 cigarettes (provided they are permitted having regard to origin) means 2 packs in total, regardless of where they are.",
       },
       { type: "h3", text: "Do I need to declare a laptop or phone?" },
       {
         type: "p",
-        text: "One laptop and one phone for personal use — no declaration needed. Multiple laptops or new devices in factory packaging worth over €750 in total require a written declaration.",
+        text: "New electronics, gifts and other purchases normally count towards the general value allowance (up to €300 when entering by land). Customs may assess whether goods are for personal or commercial use. If you are unsure whether a specific item falls within the allowance, contact the customs authority of your entry country.",
       },
       { type: "h3", text: "Is there a difference between Kamenny Log, Terekhovka and Bruzgi?" },
       {
         type: "p",
-        text: "Customs rules are identical at all checkpoints — the difference is only in traffic volume and processing speed. Your choice of crossing affects waiting time, not import allowances.",
+        text: "General EU rules apply at all checkpoints, but specific procedures and inspection intensity may vary. Your choice of crossing affects waiting time. To clarify requirements at a specific checkpoint, contact the customs service of the relevant country.",
       },
       {
         type: "callout",
-        text: "Rules change: EU sanctions packages are updated several times a year. Check the current limits on the Belarusian customs website and the entry country's customs authority before every trip. ComfortLine drivers monitor updates and will alert you to current restrictions.",
+        text: "Rules change: EU sanctions packages are updated several times a year. Check the current limits on the official customs websites of Belarus and your entry country before every trip.",
+      },
+      { type: "h2", id: "official-sources", text: "Official Sources and Verification Date" },
+      { type: "h3", text: "Belarus" },
+      {
+        type: "link",
+        href: "https://www.customs.gov.by/fizicheskim-litsam/besposhlinnyy-vvoz-vyvoz-tovarov-dlya-lichnogo-polzovaniya/",
+        label: "State Customs Committee of the Republic of Belarus — duty-free import and export of goods for personal use",
+      },
+      {
+        type: "link",
+        href: "https://www.customs.gov.by/fizicheskim-litsam/vvoz-tovarov-dlya-lichnogo-polzovaniya-s-uplatoy-tamozhennykh-platezhey/",
+        label: "State Customs Committee of the Republic of Belarus — import of goods with payment of customs duties",
+      },
+      { type: "h3", text: "European Union" },
+      {
+        type: "link",
+        href: "https://europa.eu/youreurope/citizens/travel/carry/alcohol-tobacco-cash/index_en.htm",
+        label: "Your Europe — alcohol, tobacco and other goods",
+        description: "Official EU citizens' portal",
+      },
+      {
+        type: "link",
+        href: "https://trade.ec.europa.eu/access-to-markets/en/content/guide-import-goods",
+        label: "European Commission Access2Markets — guide to importing goods",
+      },
+      {
+        type: "link",
+        href: "https://eur-lex.europa.eu/eli/reg/2006/765/oj/eng",
+        label: "Council Regulation (EC) No 765/2006 — restrictive measures concerning Belarus",
+        description: "EUR-Lex — official text",
+      },
+      {
+        type: "link",
+        href: "https://eur-lex.europa.eu/eli/reg/2026/1846/oj/eng",
+        label: "Council Regulation (EU) 2026/1846 of 23 July 2026 — latest amendment",
+        description: "EUR-Lex — official text",
+      },
+      { type: "h3", text: "Lithuania" },
+      {
+        type: "link",
+        href: "https://muitine.lrv.lt/en/for-passengers/coming-from-third-countries/",
+        label: "Lietuvos Respublikos muitinė — Coming from third countries",
+        description: "Official website of Lithuanian Customs",
+      },
+      { type: "h3", text: "Poland" },
+      {
+        type: "link",
+        href: "https://podatki.gov.pl/informacje-o-cle/podstawowe-informacje-o-cle/informacje-dla-osob-fizycznych/towary-przywozone-przez-podroznych-zwolnione-z-oplat",
+        label: "Ministerstwo Finansów / Krajowa Administracja Skarbowa — goods brought by travellers free of duty",
+        description: "Official Polish tax administration website",
+      },
+      { type: "h3", text: "Latvia" },
+      {
+        type: "link",
+        href: "https://www.vid.gov.lv/en/excise-goods",
+        label: "Valsts ieņēmumu dienests — Excise goods",
+        description: "Official website of the State Revenue Service of Latvia",
+      },
+      {
+        type: "callout",
+        text: "Information verified: 30 July 2026. Next editorial review: 30 January 2027.\n\nRules may have changed since this date. Before travelling, open the official sources above and verify the current requirements.",
       },
     ],
     related: ["граница-беларусь-литва", "какой-кпп-выбрать", "граница-беларусь-польша"],
