@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall, ShieldCheck, HelpCircle, ChevronDown, Wallet } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
-import { DisclaimerBanner, BorderOfficialSources } from "@/components/layout/DisclaimerBanner";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
@@ -204,7 +203,6 @@ export default function MinskVilniusAirportPage() {
         ]}
       />
       <Navbar />
-      <DisclaimerBanner />
 
       {/* Hero */}
       <div className="pt-28 pb-14 border-b border-border/40 relative overflow-hidden">
@@ -439,12 +437,7 @@ export default function MinskVilniusAirportPage() {
         </motion.section>
 
 
-        {/* Official sources */}
-        <motion.section id="official-sources" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <BorderOfficialSources isRu={isRu} />
-        </motion.section>
-
-                {/* CTA */}
+        {/* CTA */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-8 md:p-10 text-center">
             <PhoneCall className="h-8 w-8 text-primary mx-auto mb-4" />

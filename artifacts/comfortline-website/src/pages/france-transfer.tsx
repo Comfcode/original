@@ -1,7 +1,6 @@
 import { CountryTransferPage, CountryPageData } from "./country-transfer-page";
 
 const data: CountryPageData = {
-  disclaimerBanner: true,
   ru: {
     badge: "Трансферы во Францию",
     title: "Минск — Франция",

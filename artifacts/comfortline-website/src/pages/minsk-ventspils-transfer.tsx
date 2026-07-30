@@ -2,7 +2,6 @@ import { MapPin, ShieldCheck, Building2 } from "lucide-react";
 import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 const data: RoutePageData = {
-  disclaimerBanner: true,
   ru: {
     badge: "Трансфер в Вентспилс",
     title: "Минск — Вентспилс",

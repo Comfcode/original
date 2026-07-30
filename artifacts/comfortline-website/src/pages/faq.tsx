@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { DisclaimerBanner } from "@/components/layout/DisclaimerBanner";
 import { useLang } from "@/context/language-context";
 import { Seo } from "@/seo/Seo";
 import { faqJsonLd } from "@/seo/jsonld";
@@ -607,6 +608,7 @@ export default function FaqPage() {
         jsonLd={faqJsonLd(faqEntries)}
       />
       <Navbar />
+      <DisclaimerBanner />
 
       {/* Hero */}
       <div className="pt-28 pb-14 border-b border-border/40 relative overflow-hidden">
