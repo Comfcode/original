@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { PhoneCall, Send } from "lucide-react";
 import { Instagram } from "lucide-react";
-import { SiTelegram, SiViber, SiWhatsapp, SiMessenger } from "react-icons/si";
+import { SiTelegram, SiViber, SiWhatsapp, SiMessenger, SiThreads } from "react-icons/si";
 import { useTheme } from "next-themes";
 import { useLang } from "@/context/language-context";
 import { Logo } from "@/components/brand/Logo";
@@ -69,8 +69,11 @@ export function Footer() {
               {f.tagline}
             </p>
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/transfer_comfortline/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a href="https://www.instagram.com/transferWarsaw_taxi" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Instagram className="h-5 w-5" />
+              </a>
+              <a href="https://www.threads.com/@transferwarsaw_taxi" target="_blank" rel="noopener noreferrer" aria-label="Threads" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+                <SiThreads className="h-5 w-5" />
               </a>
               <a href="https://t.me/+375447620649" target="_blank" rel="noopener noreferrer" aria-label="Telegram" onClick={() => gtagEvent("contact", { event_category: "messenger", event_label: "Telegram" })} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <SiTelegram className="h-5 w-5" />

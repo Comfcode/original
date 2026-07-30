@@ -1,7 +1,7 @@
 import { useState, useEffect, ElementType } from "react";
 import { Menu, X, Phone, Sun, Moon } from "lucide-react";
 import { useLang } from "@/context/language-context";
-import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
+import { SiWhatsapp, SiTelegram, SiViber, SiMessenger, SiThreads } from "react-icons/si";
 import { Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -110,7 +110,8 @@ export function Navbar() {
     { icon: SiTelegram,  href: "https://t.me/+375447620649",              label: "Telegram",  bg: "#229ED9" },
     { icon: SiViber,     href: "viber://chat?number=%2B375447620649",             label: "Viber",     bg: "#7360F2" },
     { icon: SiWhatsapp,  href: "https://wa.me/375447620649",                      label: "WhatsApp",  bg: "#25D366" },
-    { icon: Instagram,   href: "https://www.instagram.com/transfer_comfortline/", label: "Instagram", bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)" },
+    { icon: Instagram,   href: "https://www.instagram.com/transferWarsaw_taxi",   label: "Instagram", bg: "linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)" },
+    { icon: SiThreads,   href: "https://www.threads.com/@transferwarsaw_taxi",    label: "Threads",   bg: "#000000" },
     { icon: SiMessenger, href: "https://m.me/103816619260365",                    label: "Messenger", bg: "linear-gradient(45deg,#0084FF,#B34FFF)" },
   ];
 
