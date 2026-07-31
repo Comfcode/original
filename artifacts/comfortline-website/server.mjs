@@ -90,6 +90,26 @@ function loadBlogSlugPaths() {
 
 const BLOG_SLUG_PATHS = loadBlogSlugPaths();
 
+// ---------------------------------------------------------------------------
+// Legacy URL redirects — old slugs whose paths changed since launch.
+// Keys are the DECODED, trailing-slash-stripped old path. Redirect fires
+// before trailing-slash normalisation so e.g. /old-path/ → /new-path in
+// one 301 instead of two.
+// ---------------------------------------------------------------------------
+const LEGACY_REDIRECTS = new Map([
+  // Old Warsaw airport paths (before the page was renamed/repathed)
+  ["/трансфер-варшава-аэропорт",         "/трансфер-минск-варшава-шопен"],
+  ["/минск-варшава-аэропорт",            "/трансфер-минск-варшава-шопен"],
+  // Old Riga airport paths
+  ["/трансфер-беларусь-рига-аэропорт",   "/трансфер-минск-рига-аэропорт"],
+  ["/трансфер-минск-рига-ниекс",         "/трансфер-минск-рига-аэропорт"],
+  // Old Prague path (mixed-language slug)
+  ["/прага-transfer",                    "/трансфер-прага"],
+  // Old blog article slugs that were renamed
+  ["/blog/which-belarus-border-crossing-for-EU",  "/blog/which-belarus-border-crossing-to-choose"],
+  ["/blog/what-to-do-long-from-belarus-in-eu",    "/blog/what-not-to-bring-from-belarus-to-eu"],
+]);
+
 const MIME = {
   ".html":  "text/html; charset=utf-8",
   ".css":   "text/css; charset=utf-8",
@@ -214,7 +234,19 @@ const server = http.createServer((req, res) => {
       return;
     }
 
-    // --- 0. Normalise trailing slashes: /path/ → /path (permanent redirect) ---
+    // --- 0a. Legacy URL redirects (old slugs → current slugs) ---
+    // Strip trailing slash before lookup so /old-path/ and /old-path both match
+    // in one step (avoids a two-hop redirect chain).
+    const cleanRaw = rawPath.length > 1 ? rawPath.replace(/\/+$/, "") : rawPath;
+    const cleanDecoded = decodeURIComponent(cleanRaw);
+    const legacyTarget = LEGACY_REDIRECTS.get(cleanDecoded) ?? LEGACY_REDIRECTS.get(cleanRaw);
+    if (legacyTarget) {
+      res.writeHead(301, { "Location": legacyTarget, "Cache-Control": "public, max-age=86400" });
+      res.end();
+      return;
+    }
+
+    // --- 0b. Normalise trailing slashes: /path/ → /path (permanent redirect) ---
     if (rawPath !== "/" && rawPath.endsWith("/")) {
       const canonical = rawPath.replace(/\/+$/, "") + (url.search || "");
       res.writeHead(301, { "Location": canonical, "Cache-Control": "public, max-age=86400" });
