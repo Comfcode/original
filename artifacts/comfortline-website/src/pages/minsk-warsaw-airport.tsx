@@ -132,8 +132,8 @@ function WarsawAirportSeo() {
       descEn="Private transfer from Minsk to Warsaw Chopin Airport (WAW). Fixed price, professional driver, assistance at Belarus–Poland border. ~550 km, 6–10 hrs. Book online or call +375 (44) 762-06-49."
       pathRu="/трансфер-минск-варшава-шопен"
       pathEn="/minsk-warsaw-airport"
-      keywordsRu="трансфер минск варшава, трансфер минск варшава аэропорт, такси минск варшава шопен, waw трансфер, минск warsaw chopin, аэропорт шопен из минска"
-      keywordsEn="minsk warsaw airport transfer, minsk to waw taxi, warsaw chopin airport transfer, private transfer minsk warsaw, belarus poland border transfer"
+      keywordsRu="минск варшава индивидуальный трансфер такси, трансфер минск варшава, трансфер минск варшава аэропорт, такси минск варшава шопен, waw трансфер, индивидуальное такси минск варшава шопен"
+      keywordsEn="minsk warsaw private transfer taxi, minsk warsaw airport transfer, minsk to waw taxi, warsaw chopin airport transfer, private transfer minsk warsaw, belarus poland border transfer"
       breadcrumbsRu={[
         { name: "Главная", path: "/" },
         { name: "Трансфер Минск — Аэропорт Варшавы Шопен (WAW)", path: "/трансфер-минск-варшава-шопен" },

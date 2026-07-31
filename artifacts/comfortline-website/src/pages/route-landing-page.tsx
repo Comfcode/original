@@ -60,6 +60,8 @@ export interface RouteSeo {
   breadcrumbEn?: string;
   priceFrom?: number;
   priceCurrency?: string;
+  keywordsRu?: string;
+  keywordsEn?: string;
 }
 
 export interface RoutePageData {
@@ -117,6 +119,8 @@ export function RouteLandingPage({ data }: Props) {
         descEn={data.seo.descEn}
         pathRu={data.seo.pathRu}
         pathEn={data.seo.pathEn}
+        keywordsRu={data.seo.keywordsRu}
+        keywordsEn={data.seo.keywordsEn}
         jsonLd={allJsonLd}
         breadcrumbsRu={[
           { name: "Главная", path: "/" },

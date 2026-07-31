@@ -4,7 +4,7 @@ const data: CountryPageData = {
   ru: {
     badge: "Трансферы в Польшу",
     title: "Минск — Польша",
-    subtitle: "Варшава и её аэропорты — самое популярное европейское направление из Минска. Трансфер к аэропортам Шопен (WAW) и Модлин, а также в центр города.",
+    subtitle: "Варшава и её аэропорты — самое популярное европейское направление из Минска. Индивидуальный трансфер-такси к аэропортам Шопен (WAW) и Модлин, а также в центр города. Машина только для вас.",
     destinationsTitle: "Направления в Польше",
     destinations: [
       {
@@ -264,10 +264,10 @@ const data: CountryPageData = {
     detailsLabel: "View details",
   },
   seo: {
-    titleRu: "Трансфер Минск — Польша | Варшава, WAW, Модлин | ComfortLine",
-    titleEn: "Minsk to Poland Transfer | Warsaw, WAW, Modlin | ComfortLine",
-    descRu: "Прямые трансферы из Минска в Польшу: аэропорт Шопен (WAW), аэропорт Модлин, центр Варшавы. Фиксированная цена, без пересадок.",
-    descEn: "Direct transfers from Minsk to Poland: Warsaw Chopin (WAW), Modlin Airport, Warsaw city centre. Fixed prices, door-to-door.",
+    titleRu: "Индивидуальный трансфер Минск — Польша | Варшава, WAW, Модлин | ComfortLine",
+    titleEn: "Minsk to Poland Private Transfer | Warsaw, WAW, Modlin | ComfortLine",
+    descRu: "Индивидуальный трансфер-такси из Минска в Польшу: аэропорт Шопен (WAW), аэропорт Модлин, центр Варшавы. Фиксированная цена, прямой маршрут без пересадок.",
+    descEn: "Private transfer from Minsk to Poland: Warsaw Chopin (WAW), Modlin Airport, Warsaw city centre. Fixed prices, direct door-to-door.",
     pathRu: "/трансфер-в-польшу",
     pathEn: "/poland-transfer",
     breadcrumbRu: "Трансферы в Польшу",
