@@ -1,27 +1,28 @@
 import { motion } from "framer-motion";
-import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall, ShieldCheck } from "lucide-react";
+import { Plane, Clock, MapPin, Car, ArrowRight, Info, CheckCircle2, PhoneCall, ShieldCheck, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { DisclaimerBanner, BorderOfficialSources } from "@/components/layout/DisclaimerBanner";
 import { Footer } from "@/components/layout/Footer";
 import { useLang } from "@/context/language-context";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
 import { Seo } from "@/seo/Seo";
-import { taxiServiceJsonLd } from "@/seo/jsonld";
+import { taxiServiceJsonLd, faqJsonLd } from "@/seo/jsonld";
 import { SITE_URL } from "@/seo/seo-config";
 import { getHomeSectionHref } from "@/lib/lang-urls";
 
 const content = {
   ru: {
-    badge: "Трансфер",
-    title: "Минск — Аэропорт Варшавы",
-    subtitle: "Индивидуальный трансфер на рейс из Варшавы. Международный опыт, фиксированная цена, профессиональный водитель.",
+    badge: "Индивидуальный трансфер-такси",
+    title: "Индивидуальный трансфер Минск — Аэропорт Варшавы Шопен",
+    subtitle: "Комфортное такси из Минска до аэропорта WAW по фиксированной цене. Опытный водитель, помощь на границе Беларусь–Польша, подача от двери.",
     stats: [
       { label: "Расстояние", value: "~550 км" },
       { label: "Время в пути", value: "6–10 ч" },
       { label: "Класс авто", value: "Комфорт / Бизнес" },
       { label: "Подача машины", value: "До двери" },
     ],
-    howTitle: "Как проходит трансфер",
+    howTitle: "Как работает индивидуальный трансфер Минск–Варшава",
     steps: [
       { icon: MapPin, title: "Подача от двери", desc: "Водитель приедет к вашему адресу в Минске точно в назначенное время." },
       { icon: ShieldCheck, title: "Граница Беларусь–Польша", desc: "Водитель знает все КПП, отслеживает очереди и выбирает оптимальный пропускной пункт." },
@@ -42,7 +43,7 @@ const content = {
       { src: "/img/warsaw/chopin-terminal.png", caption: "Терминал аэропорта Шопен (WAW)" },
       { src: "/img/warsaw/chopin-international.png", caption: "Международный терминал" },
     ],
-    tipsTitle: "Полезная информация",
+    tipsTitle: "Важно знать перед поездкой",
     tips: [
       "Граница Беларусь–Польша: среднее время 3–8 часов. В пиковые дни — до 12 часов.",
       "Рекомендуем выезжать с запасом 8–10 часов до вылета.",
@@ -51,7 +52,7 @@ const content = {
       "Бесплатная парковка первые 15 минут (для высадки).",
       "В Терминале A работает ресторан открытый 24/7.",
     ],
-    whyTitle: "Почему ComfortLine",
+    whyTitle: "Почему ComfortLine — индивидуальный трансфер, а не автобус",
     whyItems: [
       "Фиксированная цена без счётчика и скрытых доплат",
       "Опытный водитель, знающий все погранпереходы",
@@ -60,22 +61,49 @@ const content = {
       "Помощь с багажом",
       "Работаем 24/7, включая праздники",
     ],
+    faqTitle: "Частые вопросы о трансфере Минск–Варшава",
+    faqs: [
+      {
+        question: "Сколько стоит индивидуальный трансфер-такси из Минска до аэропорта Варшавы Шопен?",
+        answer: "Стоимость рассчитывается индивидуально и зависит от класса автомобиля, количества пассажиров и даты поездки. Итоговая цена фиксируется при бронировании — никакого счётчика и скрытых доплат. Оставьте заявку или позвоните нам, и менеджер назовёт точную стоимость.",
+      },
+      {
+        question: "Сколько времени занимает такси из Минска до аэропорта Варшавы?",
+        answer: "В среднем 6–10 часов. Большую часть этого времени занимает ожидание на границе Беларусь–Польша (3–8 часов, в пиковые дни — до 12 часов). Расстояние Минск–Варшава составляет около 550 км. Рекомендуем выезжать за 8–10 часов до вылета.",
+      },
+      {
+        question: "Как заказать индивидуальный трансфер-такси Минск–Варшава?",
+        answer: "Оставьте заявку на сайте, напишите в WhatsApp или позвоните по номеру +375 (44) 762-06-49. Менеджер уточнит адрес подачи, дату и время вылета, класс авто, а затем подтвердит бронирование. Предоплата не требуется.",
+      },
+      {
+        question: "Включена ли помощь на границе Беларусь–Польша в стоимость трансфера?",
+        answer: "Да. Водитель отслеживает ситуацию на всех погранпереходах в режиме реального времени и выбирает оптимальный КПП. Мы на связи 24/7 на протяжении всей поездки.",
+      },
+      {
+        question: "Чем отличается аэропорт Шопен (WAW) от аэропорта Модлин (WMI)?",
+        answer: "Это два разных аэропорта. Аэропорт Шопен (WAW) расположен в 10 км от центра Варшавы и обслуживает большинство авиакомпаний: LOT, Lufthansa, Emirates, British Airways, Ryanair. Аэропорт Модлин (WMI) — в 35 км к северу от Варшавы, используется преимущественно Ryanair и Wizz Air. Обязательно уточните, откуда вылетает ваш рейс.",
+      },
+      {
+        question: "Можно ли взять детское кресло или перевезти крупный багаж?",
+        answer: "Да, детские кресла доступны по запросу — уточните при бронировании. Для крупного багажа (лыжи, самокаты, коляски) рекомендуем минивэн Kia Carnival или Mercedes V-Class: 7–8 мест и большой багажник.",
+      },
+    ],
     ctaTitle: "Забронировать трансфер",
     ctaDesc: "Оставьте заявку — менеджер свяжется с вами в ближайшее время и назовёт точную стоимость.",
     ctaBtn: "Оставить заявку",
     backBtn: "← Все услуги",
   },
   en: {
-    badge: "Transfer",
-    title: "Minsk — Warsaw Airport",
-    subtitle: "Private transfer to your Warsaw flight. International expertise, fixed price, professional chauffeur.",
+    badge: "Private Transfer",
+    title: "Private Transfer Minsk — Warsaw Chopin Airport (WAW)",
+    subtitle: "Door-to-door taxi from Minsk to Warsaw Chopin Airport. Fixed price, professional driver, real-time border assistance.",
     stats: [
       { label: "Distance", value: "~550 km" },
       { label: "Travel time", value: "6–10 hrs" },
       { label: "Vehicle class", value: "Comfort / Business" },
       { label: "Pickup", value: "Door-to-door" },
     ],
-    howTitle: "How the transfer works",
+    howTitle: "How your private transfer from Minsk to Warsaw works",
     steps: [
       { icon: MapPin, title: "Door pickup", desc: "Your driver arrives at your Minsk address exactly on time." },
       { icon: ShieldCheck, title: "Belarus–Poland border", desc: "Your driver monitors all border checkpoints in real time and selects the fastest crossing." },
@@ -96,7 +124,7 @@ const content = {
       { src: "/img/warsaw/chopin-terminal.png", caption: "Warsaw Chopin Airport terminal (WAW)" },
       { src: "/img/warsaw/chopin-international.png", caption: "International terminal" },
     ],
-    tipsTitle: "Useful Information",
+    tipsTitle: "What to know before your trip",
     tips: [
       "Belarus–Poland border crossing: average 3–8 hours. Can be up to 12 hours on peak days.",
       "We recommend departing 8–10 hours before your flight.",
@@ -105,7 +133,7 @@ const content = {
       "Free parking for the first 15 minutes (drop-off zone).",
       "A 24/7 restaurant is available in Terminal A.",
     ],
-    whyTitle: "Why ComfortLine",
+    whyTitle: "Why choose a private transfer instead of a coach",
     whyItems: [
       "Fixed price — no meter, no hidden extras",
       "Driver experienced in all Belarus–Poland border crossings",
@@ -114,6 +142,33 @@ const content = {
       "Luggage assistance included",
       "Available 24/7 including holidays",
     ],
+    faqTitle: "Frequently asked questions about the Minsk–Warsaw transfer",
+    faqs: [
+      {
+        question: "How much does a private transfer from Minsk to Warsaw Chopin Airport cost?",
+        answer: "The price depends on the vehicle class, number of passengers, and travel date. You receive a fixed quote at booking — no meter, no hidden charges. Submit a request or call +375 (44) 762-06-49 for an exact price.",
+      },
+      {
+        question: "How long does the taxi ride from Minsk to Warsaw Chopin Airport take?",
+        answer: "On average 6–10 hours. Most of this time is spent at the Belarus–Poland border crossing (3–8 hours on normal days, up to 12 hours during peak periods). The Minsk–Warsaw distance is approximately 550 km. We recommend departing at least 8–10 hours before your flight.",
+      },
+      {
+        question: "How do I book a private transfer from Minsk to Warsaw?",
+        answer: "Submit a request on the website, message us on WhatsApp, or call +375 (44) 762-06-49. Our manager will confirm the pickup address, flight date/time, and vehicle class, then send a booking confirmation. No prepayment required.",
+      },
+      {
+        question: "Is border assistance at Belarus–Poland included in the transfer price?",
+        answer: "Yes. Your driver monitors all border crossing queues in real time and selects the fastest checkpoint. Our team is available 24/7 throughout the journey.",
+      },
+      {
+        question: "What is the difference between Warsaw Chopin Airport (WAW) and Warsaw Modlin Airport (WMI)?",
+        answer: "They are two separate airports. Chopin Airport (WAW) is 10 km from central Warsaw and handles most airlines: LOT, Lufthansa, Emirates, British Airways, and Ryanair. Modlin Airport (WMI) is 35 km north of Warsaw and is used primarily by Ryanair and Wizz Air. Please verify your departure airport before booking.",
+      },
+      {
+        question: "Can I request a child seat or transport oversized luggage?",
+        answer: "Yes, child seats are available on request — just mention it when booking. For large items such as skis, bicycles, or strollers, we recommend the Kia Carnival or Mercedes V-Class minivan, which accommodates 7–8 passengers and has a generous luggage compartment.",
+      },
+    ],
     ctaTitle: "Book your transfer",
     ctaDesc: "Submit a request and our manager will contact you shortly with an exact price.",
     ctaBtn: "Request a booking",
@@ -121,19 +176,46 @@ const content = {
   },
 };
 
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border border-border rounded-xl overflow-hidden">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-start justify-between gap-4 px-5 py-4 text-left bg-card hover:bg-primary/5 transition-colors"
+        aria-expanded={open}
+      >
+        <span className="font-semibold text-foreground text-sm leading-snug">{question}</span>
+        <ChevronDown
+          className={`h-4 w-4 text-primary shrink-0 mt-0.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div className="px-5 pb-5 pt-2 bg-card border-t border-border/40">
+          <p className="text-muted-foreground text-sm leading-relaxed">{answer}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function WarsawAirportSeo() {
   const { lang } = useLang();
   const isRu = lang === "ru";
+
+  const faqsRu = content.ru.faqs;
+  const faqsEn = content.en.faqs;
+
   return (
     <Seo
-      titleRu="Трансфер Минск — Аэропорт Варшавы Шопен (WAW) | ComfortLine"
-      titleEn="Minsk to Warsaw Chopin Airport (WAW) Private Transfer | ComfortLine"
-      descRu="Индивидуальный трансфер из Минска в аэропорт Варшавы Шопен (WAW). Фиксированная цена, опытный водитель, помощь на границе Беларусь–Польша. ~550 км, 6–10 ч. Заказ онлайн или +375 (44) 762-06-49."
-      descEn="Private transfer from Minsk to Warsaw Chopin Airport (WAW). Fixed price, professional driver, assistance at Belarus–Poland border. ~550 km, 6–10 hrs. Book online or call +375 (44) 762-06-49."
+      titleRu="Индивидуальный трансфер-такси Минск — Аэропорт Варшавы Шопен (WAW) | ComfortLine"
+      titleEn="Private Transfer Minsk to Warsaw Chopin Airport (WAW) | ComfortLine"
+      descRu="Индивидуальный трансфер-такси из Минска в аэропорт Варшавы Шопен (WAW). Фиксированная цена, опытный водитель, помощь на границе Беларусь–Польша. ~550 км, 6–10 ч. Заказ онлайн или +375 (44) 762-06-49."
+      descEn="Private taxi transfer from Minsk to Warsaw Chopin Airport (WAW). Fixed price, professional driver, Belarus–Poland border assistance included. ~550 km, 6–10 hrs. Book online or call +375 (44) 762-06-49."
       pathRu="/трансфер-минск-варшава-шопен"
       pathEn="/minsk-warsaw-airport"
-      keywordsRu="минск варшава индивидуальный трансфер такси, трансфер минск варшава, трансфер минск варшава аэропорт, такси минск варшава шопен, waw трансфер, индивидуальное такси минск варшава шопен"
-      keywordsEn="minsk warsaw private transfer taxi, minsk warsaw airport transfer, minsk to waw taxi, warsaw chopin airport transfer, private transfer minsk warsaw, belarus poland border transfer"
+      keywordsRu="минск варшава индивидуальный трансфер такси, трансфер минск варшава, трансфер минск варшава аэропорт, такси минск варшава шопен, waw трансфер, индивидуальный трансфер минск варшава шопен, такси минск варшава цена"
+      keywordsEn="minsk warsaw private transfer taxi, minsk warsaw airport transfer, minsk to waw taxi, warsaw chopin airport private transfer, minsk warsaw transfer price, belarus poland border transfer"
       breadcrumbsRu={[
         { name: "Главная", path: "/" },
         { name: "Трансфер Минск — Аэропорт Варшавы Шопен (WAW)", path: "/трансфер-минск-варшава-шопен" },
@@ -142,16 +224,23 @@ function WarsawAirportSeo() {
         { name: "Home", path: "/" },
         { name: "Minsk — Warsaw Chopin Airport (WAW)", path: "/minsk-warsaw-airport" },
       ]}
-      jsonLd={taxiServiceJsonLd({
-        lang,
-        name: isRu ? "Трансфер Минск — Аэропорт Варшавы Шопен (WAW)" : "Minsk to Warsaw Chopin Airport (WAW) Transfer",
-        description: isRu
-          ? "Индивидуальный трансфер из Минска в аэропорт Варшавы Шопен (WAW). Фиксированная цена, опытный водитель."
-          : "Private transfer from Minsk to Warsaw Chopin Airport (WAW). Fixed price, professional driver.",
-        url: SITE_URL + (isRu ? "/трансфер-минск-варшава-шопен" : "/minsk-warsaw-airport"),
-        fromName: isRu ? "Минск" : "Minsk",
-        toName: isRu ? "Аэропорт Варшавы Шопен (WAW)" : "Warsaw Chopin Airport (WAW)",
-      })}
+      jsonLd={[
+        taxiServiceJsonLd({
+          lang,
+          name: isRu
+            ? "Индивидуальный трансфер-такси Минск — Аэропорт Варшавы Шопен (WAW)"
+            : "Private Transfer Minsk to Warsaw Chopin Airport (WAW)",
+          description: isRu
+            ? "Индивидуальный трансфер-такси из Минска в аэропорт Варшавы Шопен (WAW). Фиксированная цена, опытный водитель, помощь на границе Беларусь–Польша."
+            : "Private taxi transfer from Minsk to Warsaw Chopin Airport (WAW). Fixed price, professional driver, border assistance included.",
+          url: SITE_URL + (isRu ? "/трансфер-минск-варшава-шопен" : "/minsk-warsaw-airport"),
+          fromName: isRu ? "Минск" : "Minsk",
+          toName: isRu ? "Аэропорт Варшавы Шопен (WAW)" : "Warsaw Chopin Airport (WAW)",
+          distanceKm: "550",
+          durationIso: "PT8H",
+        }),
+        faqJsonLd(isRu ? faqsRu : faqsEn),
+      ]}
     />
   );
 }
@@ -306,6 +395,32 @@ export default function MinskWarsawAirportPage() {
           </ul>
         </motion.section>
 
+        {/* Why ComfortLine */}
+        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+            <Car className="h-5 w-5 text-primary" />
+            {c.whyTitle}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {c.whyItems.map((item, i) => (
+              <div key={i} className="flex items-start gap-3 bg-card border border-border rounded-xl px-5 py-4">
+                <span className="text-primary mt-0.5 shrink-0">▸</span>
+                <span className="text-sm text-foreground">{item}</span>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* FAQ */}
+        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <h2 className="text-2xl font-bold text-foreground mb-6">{c.faqTitle}</h2>
+          <div className="space-y-3">
+            {c.faqs.map((faq, i) => (
+              <FaqItem key={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </motion.section>
+
         {/* Related routes — internal SEO links */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
@@ -353,29 +468,12 @@ export default function MinskWarsawAirportPage() {
           </div>
         </motion.section>
 
-        {/* Why ComfortLine */}
-        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-            <Car className="h-5 w-5 text-primary" />
-            {c.whyTitle}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {c.whyItems.map((item, i) => (
-              <div key={i} className="flex items-start gap-3 bg-card border border-border rounded-xl px-5 py-4">
-                <span className="text-primary mt-0.5 shrink-0">▸</span>
-                <span className="text-sm text-foreground">{item}</span>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
-
         {/* Official sources */}
         <motion.section id="official-sources" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <BorderOfficialSources isRu={isRu} />
         </motion.section>
 
-                {/* CTA */}
+        {/* CTA */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-8 md:p-10 text-center">
             <PhoneCall className="h-8 w-8 text-primary mx-auto mb-4" />
