@@ -137,7 +137,7 @@ export function RouteLandingPage({ data }: Props) {
       <span className="sr-only">{breadcrumbName}</span>
 
       {/* Hero */}
-      <div className="pt-28 pb-14 border-b border-border/40 relative overflow-hidden">
+        <div className="pt-24 sm:pt-28 pb-10 sm:pb-14 border-b border-border/40 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-4 md:px-6 max-w-4xl relative">
           <a href={getHomeSectionHref(lang, "services")} className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors mb-6">
@@ -146,9 +146,9 @@ export function RouteLandingPage({ data }: Props) {
           <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-primary mb-4">
             {c.badge}
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">{c.title}</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight text-balance">{c.title}</h1>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mb-10">{c.subtitle}</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {c.stats.map((s) => (
               <div key={s.label} className="bg-card border border-border rounded-xl p-4 overflow-hidden">
                 <p className="text-primary font-bold text-sm leading-snug break-words">{s.value}</p>
@@ -161,7 +161,7 @@ export function RouteLandingPage({ data }: Props) {
               onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {
                 detail: { prefilledFrom: c.prefilledFrom, prefilledTo: c.prefilledTo }
               }))}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer"
+              className="inline-flex w-full sm:w-auto min-h-11 items-center justify-center gap-2 px-6 sm:px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity motion-reduce:transition-none shadow-lg shadow-primary/20 cursor-pointer"
             >
               {isRu ? "Забронировать трансфер" : "Book transfer"}
               <ArrowRight className="h-4 w-4" />
@@ -170,39 +170,7 @@ export function RouteLandingPage({ data }: Props) {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl py-14 space-y-16">
-
-        {/* Landmark photo gallery — hidden when no verified photos available */}
-        {c.photos.length > 0 && (
-        <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="text-2xl font-bold text-foreground mb-6">{c.photosTitle}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {c.photos.map((photo, i) => (
-              <div key={i} className="relative rounded-2xl overflow-hidden border border-border bg-muted" style={{ height: 220 }}>
-                <img
-                  src={photo.src}
-                  alt={photo.caption}
-                  className="w-full h-full object-cover object-center"
-                  onError={(e) => {
-                    const el = e.target as HTMLImageElement;
-                    el.style.display = "none";
-                    const parent = el.parentElement!;
-                    parent.style.background = "linear-gradient(135deg, #1C1B24 0%, #2a2535 100%)";
-                    const span = document.createElement("span");
-                    span.textContent = photo.caption;
-                    span.className = "absolute inset-0 flex items-center justify-center text-primary/70 text-sm font-semibold text-center p-4";
-                    parent.appendChild(span);
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <span className="absolute bottom-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-black/60 text-white/90 backdrop-blur-sm">
-                  {photo.caption}
-                </span>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-        )}
+          <div className="container mx-auto px-4 md:px-6 max-w-4xl py-10 sm:py-14 space-y-12 sm:space-y-16">
 
         {/* How it works */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -235,7 +203,7 @@ export function RouteLandingPage({ data }: Props) {
           </h2>
           <div className="bg-card border border-border rounded-2xl overflow-hidden">
             {c.infoRows.map((row, i) => (
-              <div key={i} className={`flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-6 py-4 ${i < c.infoRows.length - 1 ? "border-b border-border/50" : ""}`}>
+              <div key={i} className={`flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 sm:px-6 py-4 ${i < c.infoRows.length - 1 ? "border-b border-border/50" : ""}`}>
                 <span className="text-muted-foreground text-sm min-w-[200px] shrink-0">{row.label}</span>
                 <span className="text-foreground text-sm font-medium">{row.value}</span>
               </div>
@@ -274,6 +242,64 @@ export function RouteLandingPage({ data }: Props) {
             ))}
           </div>
         </motion.section>
+
+        {/* Route photo gallery — placed after commercial information */}
+        {c.photos.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-5 sm:mb-6">
+              {c.photosTitle}
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {c.photos.map((photo, i) => (
+                <figure
+                  key={`${photo.src}-${i}`}
+                  className="relative aspect-[4/3] sm:aspect-[3/2] rounded-2xl overflow-hidden border border-border bg-muted"
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.caption}
+                    width={800}
+                    height={533}
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                    className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      el.style.display = "none";
+
+                      const parent = el.parentElement;
+                      if (!parent) return;
+
+                      parent.style.background =
+                        "linear-gradient(135deg, #1C1B24 0%, #2a2535 100%)";
+
+                      if (!parent.querySelector("[data-image-fallback]")) {
+                        const span = document.createElement("span");
+                        span.dataset.imageFallback = "true";
+                        span.textContent = photo.caption;
+                        span.className =
+                          "absolute inset-0 flex items-center justify-center text-primary/70 text-sm font-semibold text-center p-4";
+                        parent.appendChild(span);
+                      }
+                    }}
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+
+                  <figcaption className="absolute bottom-3 left-3 right-3 text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-black/60 text-white/90 backdrop-blur-sm">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </motion.section>
+        )}
 
         {/* FAQ */}
         {c.faq && c.faq.length > 0 && (
@@ -323,7 +349,7 @@ export function RouteLandingPage({ data }: Props) {
 
         {/* CTA */}
         <motion.section initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-8 md:p-10 text-center">
+          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6 sm:p-8 md:p-10 text-center">
             <PhoneCall className="h-8 w-8 text-primary mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-foreground mb-3">{c.ctaTitle}</h2>
             <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">{c.ctaDesc}</p>
@@ -331,7 +357,7 @@ export function RouteLandingPage({ data }: Props) {
               onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {
                 detail: { prefilledFrom: c.prefilledFrom, prefilledTo: c.prefilledTo }
               }))}
-              className="inline-block px-10 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 cursor-pointer"
+              className="inline-flex w-full sm:w-auto min-h-11 items-center justify-center px-8 sm:px-10 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity motion-reduce:transition-none shadow-lg shadow-primary/20 cursor-pointer"
             >
               {c.ctaBtn}
             </button>
@@ -347,26 +373,49 @@ export function RouteLandingPage({ data }: Props) {
 }
 
 let faqUid = 0;
+
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   const [id] = useState(() => `faq-${++faqUid}`);
+
   return (
     <div className="bg-card border border-border rounded-xl overflow-hidden">
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-primary/5 transition-colors"
+        onClick={() => setOpen((value) => !value)}
+        className="w-full min-h-11 flex items-center justify-between gap-4 px-4 sm:px-5 py-4 text-left hover:bg-primary/5 transition-colors motion-reduce:transition-none"
         aria-expanded={open}
         aria-controls={id}
       >
-        <span className="text-sm font-semibold text-foreground">{q}</span>
+        <span className="text-sm font-semibold text-foreground leading-snug">
+          {q}
+        </span>
+
         <ChevronDown
-          className={`h-4 w-4 text-primary shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+          aria-hidden="true"
+          className={`h-4 w-4 text-primary shrink-0 transition-transform duration-300 motion-reduce:transition-none ${
+            open ? "rotate-180" : ""
+          }`}
         />
       </button>
-      {open && (
-        <div id={id} role="region" className="px-5 pb-4 -mt-1 text-sm text-muted-foreground leading-relaxed">{a}</div>
-      )}
+
+      <div
+        id={id}
+        role="region"
+        aria-hidden={!open}
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none ${
+          open
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-4 sm:px-5 pb-4 -mt-1 text-sm text-muted-foreground leading-relaxed">
+            {a}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
+
