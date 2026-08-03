@@ -7,6 +7,11 @@
  * Usage:
  *   node scripts/indexnow.mjs              # submit all sitemap URLs
  *   node scripts/indexnow.mjs <url> <url>  # submit specific URLs only
+ *
+ * Failure policy: IndexNow submission is best-effort. A rejected or slow
+ * response from the API logs a warning but does NOT fail the build
+ * (process.exitCode is never set to 1). This prevents intermittent
+ * IndexNow API issues from blocking a publish.
  */
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -23,6 +28,7 @@ const HOST = "comfortline.by";
 // each console track submissions made "with its own" key.
 const KEYS = ["c8f3d2a1b94e47f6ae7c1d0b5a8e3c92", "6b6701907fdc44cfbf707eda79e5fd70"];
 const ENDPOINT = "https://api.indexnow.org/indexnow";
+const TIMEOUT_MS = 20_000; // 20-second hard limit per request — never block the build
 
 async function readSitemapUrls() {
   const sitemapPath = resolve(__dirname, "..", "public", "sitemap.xml");
@@ -34,17 +40,31 @@ async function readSitemapUrls() {
 async function submitWithKey(key, urls) {
   const keyLocation = `https://${HOST}/${key}.txt`;
   const body = { host: HOST, key, keyLocation, urlList: urls };
-  const res = await fetch(ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json; charset=utf-8" },
-    body: JSON.stringify(body),
-  });
-  const text = await res.text().catch(() => "");
-  if (res.ok || res.status === 202) {
-    console.log(`IndexNow accepted (${res.status}) for key ${key}.`);
-  } else {
-    console.error(`IndexNow rejected (${res.status}) for key ${key}: ${text}`);
-    process.exitCode = 1;
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+    clearTimeout(timer);
+    const text = await res.text().catch(() => "");
+    if (res.ok || res.status === 202) {
+      console.log(`IndexNow accepted (${res.status}) for key ${key}.`);
+    } else {
+      // Non-fatal: log a warning but do not set process.exitCode.
+      // IndexNow rejection (e.g. 429 rate-limit, 400 bad key) must not
+      // block the publish — the site is already live, pings are advisory.
+      console.warn(`IndexNow warning (${res.status}) for key ${key}: ${text}`);
+    }
+  } catch (err) {
+    clearTimeout(timer);
+    const reason = err.name === "AbortError" ? `timed out after ${TIMEOUT_MS}ms` : String(err);
+    console.warn(`IndexNow warning: request failed for key ${key}: ${reason}`);
   }
 }
 

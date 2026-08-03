@@ -245,7 +245,13 @@ const server = http.createServer((req, res) => {
     const cleanDecoded = decodeURIComponent(cleanRaw);
     const legacyTarget = LEGACY_REDIRECTS.get(cleanDecoded) ?? LEGACY_REDIRECTS.get(cleanRaw);
     if (legacyTarget) {
-      res.writeHead(301, { "Location": legacyTarget, "Cache-Control": "public, max-age=86400" });
+      const encodedLocation = encodeURI(legacyTarget);
+
+      res.writeHead(301, {
+        Location: encodedLocation,
+        "Cache-Control": "public, max-age=86400",
+      });
+
       res.end();
       return;
     }
