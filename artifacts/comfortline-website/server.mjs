@@ -108,6 +108,10 @@ const LEGACY_REDIRECTS = new Map([
   // Old blog article slugs that were renamed
   ["/blog/which-belarus-border-crossing-for-EU",  "/blog/which-belarus-border-crossing-to-choose"],
   ["/blog/what-to-do-long-from-belarus-in-eu",    "/blog/what-not-to-bring-from-belarus-to-eu"],
+  [
+    "/blog/как-добраться-до-аэропорта-вильнюса",
+    "/блог/как-добраться-до-аэропорта-вильнюса",
+  ],
 ]);
 
 const MIME = {
