@@ -36,7 +36,20 @@ const data: RoutePageData = {
 
     // Пока не добавляйте сюда фотографии аэропортов WAW/WMI.
     // Для городской страницы позже используйте только локальные фото Варшавы.
-    photos: [],
+    photos: [
+      {
+        src: "/img/warsaw/warsaw-old-town.webp",
+        caption: "Старый город и Замковая площадь Варшавы",
+      },
+      {
+        src: "/img/warsaw/warsaw-royal-castle.webp",
+        caption: "Королевский замок в Варшаве",
+      },
+      {
+        src: "/img/warsaw/warsaw-city-centre.webp",
+        caption: "Современный центр Варшавы",
+      },
+    ],
 
     howTitle: "Как проходит трансфер Минск — Варшава",
 
@@ -218,7 +231,20 @@ const data: RoutePageData = {
 
     photosTitle: "Your destination — Warsaw",
 
-    photos: [],
+    photos: [
+      {
+        src: "/img/warsaw/warsaw-old-town.webp",
+        caption: "Warsaw Old Town and Castle Square",
+      },
+      {
+        src: "/img/warsaw/warsaw-royal-castle.webp",
+        caption: "Royal Castle in Warsaw",
+      },
+      {
+        src: "/img/warsaw/warsaw-city-centre.webp",
+        caption: "Warsaw city centre skyline",
+      },
+    ],
 
     howTitle: "How the Minsk to Warsaw transfer works",
 

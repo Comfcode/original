@@ -65,6 +65,13 @@ const serviceRoutes: Record<"ru" | "en", RouteItem[][]> = {
     [
       { from: "Minsk", to: "Lithuania 🇱🇹",  code: "VNO · KUN", meta: "Vilnius, Kaunas, Klaipėda",     href: "/lithuania-transfer" },
       { from: "Minsk", to: "Latvia 🇱🇻",    code: "RIX",       meta: "Riga, Jūrmala",                href: "/latvia-transfer" },
+      {
+        from: "Minsk",
+        to: "Warsaw",
+        code: "CITY",
+        meta: "Private transfer · door to door",
+        href: "/warsaw-transfer",
+      },
       { from: "Minsk", to: "Poland 🇵🇱",    code: "WAW · WMI", meta: "Warsaw Chopin, Warsaw Modlin",  href: "/poland-transfer" },
       { from: "Minsk", to: "Germany 🇩🇪",   code: "BER",       meta: "Berlin and more",               href: "/germany-transfer" },
       { from: "Minsk", to: "France 🇫🇷",    code: "CDG",       meta: "Paris — on request",            href: "/france-transfer" },
