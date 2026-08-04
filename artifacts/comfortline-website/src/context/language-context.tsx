@@ -382,6 +382,7 @@ const ru: Translations = {
     servicesHeading: "Направления",
     serviceLinks: [
       { label: "Минск — Вильнюс (VNO)", href: "/трансфер-минск-вильнюс-аэропорт" },
+      { label: "Такси Минск — Варшава", href: "/трансфер-варшава" },
       { label: "Минск — Варшава (WAW)", href: "/трансфер-минск-варшава-шопен" },
       { label: "Минск — Варшава (Модлин)", href: "/трансфер-минск-варшава-модлин" },
       { label: "Минск — Каунас (KUN)", href: "/трансфер-минск-каунас-аэропорт" },
@@ -618,6 +619,7 @@ const en: Translations = {
     servicesHeading: "Routes",
     serviceLinks: [
       { label: "Minsk — Vilnius (VNO)", href: "/minsk-vilnius-airport" },
+      { label: "Minsk — Warsaw city transfer", href: "/warsaw-transfer" },
       { label: "Minsk — Warsaw (WAW)", href: "/minsk-warsaw-airport" },
       { label: "Minsk — Warsaw (Modlin)", href: "/minsk-warsaw-modlin-airport" },
       { label: "Minsk — Kaunas (KUN)", href: "/minsk-kaunas-airport" },

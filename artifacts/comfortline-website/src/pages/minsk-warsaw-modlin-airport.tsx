@@ -63,7 +63,14 @@ const content = {
     ],
     alsoTitle: "Также смотрите",
     alsoLinks: [
-      { label: "Минск — Аэропорт Варшавы Шопен (WAW)", href: "/трансфер-минск-варшава-шопен" },
+      {
+        label: "Минск — Аэропорт Варшавы Шопен (WAW)",
+        href: "/трансфер-минск-варшава-шопен",
+      },
+      {
+        label: "Трансфер Варшава — Минск и Минск — Варшава",
+        href: "/трансфер-варшава",
+      },
     ],
     ctaTitle: "Забронировать трансфер",
     ctaDesc: "Оставьте заявку — менеджер свяжется с вами в ближайшее время и назовёт точную стоимость.",
@@ -123,7 +130,14 @@ const content = {
     ],
     alsoTitle: "Also see",
     alsoLinks: [
-      { label: "Minsk — Warsaw Chopin Airport (WAW)", href: "/minsk-warsaw-airport" },
+      {
+        label: "Minsk — Warsaw Chopin Airport (WAW)",
+        href: "/minsk-warsaw-airport",
+      },
+      {
+        label: "Warsaw — Minsk and Minsk — Warsaw transfer",
+        href: "/warsaw-transfer",
+      },
     ],
     ctaTitle: "Book your transfer",
     ctaDesc: "Submit a request and our manager will contact you shortly with an exact price.",

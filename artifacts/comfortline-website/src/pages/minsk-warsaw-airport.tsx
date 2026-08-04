@@ -432,7 +432,7 @@ export default function MinskWarsawAirportPage() {
               ? "Альтернативные аэропорты с прямым трансфером из Минска — иногда выгоднее по цене билета и расписанию:"
               : "Alternative airports with direct transfer from Minsk — sometimes a better deal on ticket price or schedule:"}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <a
               href={lang === "ru" ? "/трансфер-минск-вильнюс-аэропорт" : "/minsk-vilnius-airport"}
               className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
@@ -463,6 +463,26 @@ export default function MinskWarsawAirportPage() {
                 {lang === "ru"
                   ? "~600 км, 7–10 ч. Бюджетный хаб Ryanair и Wizz Air, в 35 км от центра Варшавы."
                   : "~600 km, 7–10 hrs. Ryanair and Wizz Air budget hub, 35 km from central Warsaw."}
+              </p>
+            </a>
+            <a
+              href={lang === "ru" ? "/трансфер-варшава" : "/warsaw-transfer"}
+              className="block bg-card border border-border rounded-2xl p-5 hover:border-primary/50 hover:bg-primary/5 transition-colors group"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <p className="font-bold text-foreground group-hover:text-primary transition-colors">
+                  {lang === "ru"
+                    ? "Такси Минск — Варшава, центр города"
+                    : "Minsk — Warsaw city transfer"}
+                </p>
+
+                <ArrowRight className="h-4 w-4 text-primary shrink-0 mt-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+
+              <p className="text-muted-foreground text-xs leading-relaxed">
+                {lang === "ru"
+                  ? "До отеля, квартиры, офиса, Warszawa Centralna или Warszawa Zachodnia. Поездка без попутчиков."
+                  : "Door-to-door service to a hotel, apartment, office, Warszawa Centralna or Warszawa Zachodnia."}
               </p>
             </a>
           </div>
