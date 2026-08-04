@@ -90,9 +90,8 @@ export function localBusinessJsonLd(lang: "ru" | "en") {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: lang === "ru" ? "Популярные направления" : "Popular routes",
-      itemListElement: popularRoutes.map((r, i) => ({
+      itemListElement: popularRoutes.map((r) => ({
         "@type": "Offer",
-        position: i + 1,
         itemOffered: {
           "@type": "Service",
           name: r[lang].name,
