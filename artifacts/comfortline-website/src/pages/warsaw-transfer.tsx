@@ -6,12 +6,12 @@ import {
 
 const data: RoutePageData = {
   ru: {
-    badge: "Индивидуальный трансфер в Варшаву",
+    badge: "Такси и индивидуальный трансфер в Варшаву",
 
-    title: "Индивидуальный трансфер-такси Минск — Варшава",
+    title: "Индивидуальное такси Минск — Варшава",
 
     subtitle:
-      "Индивидуальный трансфер из Минска в Варшаву от двери до двери. Отдельный автомобиль без попутчиков, согласованное время выезда, фиксированная стоимость после подтверждения и доставка к гостинице, квартире, офису, вокзалу или другому адресу в Варшаве.",
+      "Индивидуальное такси Минск — Варшава и обратно от двери до двери. Отдельный автомобиль без попутчиков, подача по адресу и базовая цена от 400 € за весь автомобиль в одну сторону.",
 
     stats: [
       {
@@ -28,7 +28,7 @@ const data: RoutePageData = {
       },
       {
         label: "Стоимость",
-        value: "Фиксируется заранее",
+        value: "От 400 € за автомобиль",
       },
     ],
 
@@ -51,7 +51,7 @@ const data: RoutePageData = {
       },
     ],
 
-    howTitle: "Как проходит трансфер Минск — Варшава",
+    howTitle: "Как проходит индивидуальное такси Минск — Варшава",
 
     steps: [
       {
@@ -70,13 +70,42 @@ const data: RoutePageData = {
         icon: Building2,
         title: "Доставка по адресу в Варшаве",
         desc:
-          "Довезём до центра Варшавы, гостиницы, квартиры, офиса, клиники, вокзала или другого адреса. Дополнительные остановки согласовываются при бронировании.",
+          "Довезём в центр Варшавы, Śródmieście, Mokotów, Wola, к Warszawa Centralna, Warszawa Zachodnia, гостинице, квартире, офису или другому согласованному адресу.",
       },
     ],
 
-    infoTitle: "Информация о маршруте Минск — Варшава",
+    infoTitle: "Цены на индивидуальное такси Минск — Варшава",
 
     infoRows: [
+      {
+        label: "Легковой Эконом",
+        value: "От 400 € за автомобиль · до 3 пассажиров · до 2 чемоданов",
+      },
+      {
+        label: "Легковой Комфорт",
+        value: "От 500 € за автомобиль · до 3 пассажиров · до 2 чемоданов",
+      },
+      {
+        label: "Легковой Бизнес",
+        value: "От 650 € за автомобиль · до 3 пассажиров · до 2 чемоданов",
+      },
+      {
+        label: "Легковой VIP",
+        value: "От 800 € за автомобиль · до 3 пассажиров · до 2 чемоданов",
+      },
+      {
+        label: "Минивэн Комфорт",
+        value: "От 550 € за автомобиль · до 8 пассажиров · до 4 чемоданов",
+      },
+      {
+        label: "Минивэн Бизнес",
+        value: "От 700 € за автомобиль · до 7 пассажиров · до 4 чемоданов",
+      },
+      {
+        label: "Как указана цена",
+        value:
+          "За весь автомобиль в одну сторону, а не за одного пассажира. Итоговая фиксированная стоимость подтверждается до выезда.",
+      },
       {
         label: "Направление",
         value: "Минск → граница Беларусь–Польша → Варшава",
@@ -87,28 +116,14 @@ const data: RoutePageData = {
           "Около 550–600 км в зависимости от адресов подачи и прибытия",
       },
       {
-        label: "Время поездки",
-        value:
-          "Зависит от дорожной обстановки, маршрута и продолжительности пограничного контроля",
-      },
-      {
-        label: "Пограничный переход",
-        value:
-          "Выбирается с учётом официального статуса пассажирских пунктов пропуска",
-      },
-      {
-        label: "Подача в Минске",
-        value: "Дом, гостиница, офис, вокзал или другой согласованный адрес",
-      },
-      {
         label: "Прибытие в Варшаве",
         value:
-          "Центр города, отель, квартира, офис, вокзал или другой адрес",
+          "Śródmieście, Mokotów, Wola, Warszawa Centralna, Warszawa Zachodnia, отель, квартира, офис или другой адрес",
       },
       {
         label: "Обратная поездка",
         value:
-          "Индивидуальный трансфер Варшава — Минск доступен по предварительному заказу",
+          "Индивидуальное такси Варшава — Минск доступно по предварительному заказу",
       },
     ],
 
@@ -143,9 +158,14 @@ const data: RoutePageData = {
 
     faq: [
       {
-        q: "Сколько стоит индивидуальный трансфер Минск — Варшава?",
+        q: "Сколько стоит индивидуальное такси Минск — Варшава?",
         a:
-          "Стоимость рассчитывается за автомобиль, а не за одного пассажира. Она зависит от даты и времени поездки, адресов подачи и прибытия, класса автомобиля, количества пассажиров, багажа и дополнительных остановок. После согласования менеджер подтверждает фиксированную сумму до выезда.",
+          "Базовая цена начинается от 400 € за легковой Эконом. Легковой Комфорт — от 500 €, Бизнес — от 650 €, VIP — от 800 €, Минивэн Комфорт — от 550 €, Минивэн Бизнес — от 700 €. Итоговая фиксированная стоимость подтверждается до выезда.",
+      },
+      {
+        q: "Цена указана за человека или за машину?",
+        a:
+          "Цена указана за весь автомобиль в одну сторону, а не за одного пассажира. При поездке семьёй или группой стоимость можно распределить между всеми пассажирами.",
       },
       {
         q: "Чем трансфер отличается от обычного такси или автобуса?",
@@ -170,7 +190,7 @@ const data: RoutePageData = {
       {
         q: "Можно ли заказать трансфер Варшава — Минск?",
         a:
-          "Да. Обратную поездку можно оформить одновременно с трансфером из Минска либо отдельным заказом. Водитель заберёт пассажиров от согласованного адреса в Варшаве.",
+          "Да. Обратную поездку можно оформить одновременно с поездкой из Минска либо отдельным заказом. Возможна подача в центре Варшавы, Śródmieście, Mokotów, Wola, у Warszawa Centralna, Warszawa Zachodnia, отеля или частного адреса.",
       },
       {
         q: "Можно ли ехать с ребёнком?",
@@ -192,9 +212,9 @@ const data: RoutePageData = {
     ctaTitle: "Заказать индивидуальный трансфер Минск — Варшава",
 
     ctaDesc:
-      "Укажите дату, время, адрес подачи, адрес прибытия, количество пассажиров и багажа. Менеджер рассчитает стоимость и подтвердит автомобиль.",
+      "Укажите дату, время, адреса, количество пассажиров и багажа. Базовая цена — от 400 € за автомобиль; менеджер подтвердит окончательную фиксированную стоимость.",
 
-    ctaBtn: "Рассчитать стоимость",
+    ctaBtn: "Заказать такси",
 
     prefilledFrom: "Минск",
     prefilledTo: "Варшава",
@@ -203,12 +223,12 @@ const data: RoutePageData = {
   },
 
   en: {
-    badge: "Private Transfer to Warsaw",
+    badge: "Private Taxi and Transfer to Warsaw",
 
-    title: "Private Taxi Transfer from Minsk to Warsaw",
+    title: "Private Taxi from Minsk to Warsaw",
 
     subtitle:
-      "Private door-to-door transfer from Minsk to Warsaw. Travel in a dedicated vehicle with no shared passengers, at an agreed departure time, with a price confirmed before the journey and direct drop-off at your hotel, apartment, office, station or another Warsaw address.",
+      "Private door-to-door taxi from Minsk to Warsaw and back. Travel in a dedicated vehicle with no shared passengers, pickup at your address and prices from €400 per vehicle one way.",
 
     stats: [
       {
@@ -225,7 +245,7 @@ const data: RoutePageData = {
       },
       {
         label: "Price",
-        value: "Confirmed in advance",
+        value: "From €400 per vehicle",
       },
     ],
 
@@ -246,7 +266,7 @@ const data: RoutePageData = {
       },
     ],
 
-    howTitle: "How the Minsk to Warsaw transfer works",
+    howTitle: "How the private Minsk to Warsaw taxi works",
 
     steps: [
       {
@@ -265,15 +285,44 @@ const data: RoutePageData = {
         icon: Building2,
         title: "Drop-off in Warsaw",
         desc:
-          "We take you directly to Warsaw city centre, a hotel, apartment, office, clinic, station or another agreed address.",
+          "We take you directly to central Warsaw, Śródmieście, Mokotów, Wola, Warszawa Centralna, Warszawa Zachodnia, a hotel, apartment, office or another agreed address.",
       },
     ],
 
-    infoTitle: "Minsk to Warsaw route information",
+    infoTitle: "Private taxi prices from Minsk to Warsaw",
 
     infoRows: [
       {
-        label: "Direction",
+        label: "Economy Sedan",
+        value: "From €400 per vehicle · up to 3 passengers · 2 suitcases",
+      },
+      {
+        label: "Comfort Sedan",
+        value: "From €500 per vehicle · up to 3 passengers · 2 suitcases",
+      },
+      {
+        label: "Business Sedan",
+        value: "From €650 per vehicle · up to 3 passengers · 2 suitcases",
+      },
+      {
+        label: "VIP Sedan",
+        value: "From €800 per vehicle · up to 3 passengers · 2 suitcases",
+      },
+      {
+        label: "Comfort Minivan",
+        value: "From €550 per vehicle · up to 8 passengers · 4 suitcases",
+      },
+      {
+        label: "Business Minivan",
+        value: "From €700 per vehicle · up to 7 passengers · 4 suitcases",
+      },
+      {
+        label: "How the price is shown",
+        value:
+          "Per vehicle for a one-way journey, not per passenger. The final fixed price is confirmed before departure.",
+      },
+      {
+        label: "Route",
         value: "Minsk → Belarus–Poland border → Warsaw",
       },
       {
@@ -282,27 +331,13 @@ const data: RoutePageData = {
           "Approximately 550–600 km depending on pickup and drop-off addresses",
       },
       {
-        label: "Journey time",
+        label: "Warsaw drop-off",
         value:
-          "Depends on the route, road conditions and duration of border formalities",
+          "Śródmieście, Mokotów, Wola, Warszawa Centralna, Warszawa Zachodnia, hotel, apartment, office or another address",
       },
       {
-        label: "Border checkpoint",
-        value:
-          "Selected according to the official status of passenger checkpoints",
-      },
-      {
-        label: "Pickup in Minsk",
-        value: "Home, hotel, office, railway station or another agreed address",
-      },
-      {
-        label: "Drop-off in Warsaw",
-        value:
-          "City centre, hotel, apartment, office, station or another address",
-      },
-      {
-        label: "Return transfer",
-        value: "Warsaw to Minsk journeys are available by advance booking",
+        label: "Return journey",
+        value: "Private Warsaw to Minsk taxi is available by advance booking",
       },
     ],
 
@@ -336,9 +371,14 @@ const data: RoutePageData = {
 
     faq: [
       {
-        q: "How much is a private transfer from Minsk to Warsaw?",
+        q: "How much is a private taxi from Minsk to Warsaw?",
         a:
-          "The price is calculated per vehicle rather than per passenger. It depends on the date and time, pickup and drop-off addresses, vehicle class, number of passengers, luggage and additional stops. The final amount is confirmed before departure.",
+          "Prices start from €400 for an Economy Sedan. Comfort Sedan starts from €500, Business Sedan from €650, VIP Sedan from €800, Comfort Minivan from €550 and Business Minivan from €700. The final fixed price is confirmed before departure.",
+      },
+      {
+        q: "Is the price per passenger or per vehicle?",
+        a:
+          "The listed price is for the whole vehicle for a one-way journey, not per passenger. Families and groups can share the total cost.",
       },
       {
         q: "How is a private transfer different from a taxi or bus?",
@@ -363,7 +403,7 @@ const data: RoutePageData = {
       {
         q: "Can I book a return transfer from Warsaw to Minsk?",
         a:
-          "Yes. The return journey can be booked together with the outbound transfer or as a separate reservation, with pickup from an agreed address in Warsaw.",
+          "Yes. The return journey can be booked with the outbound trip or separately. Pickup is available in central Warsaw, Śródmieście, Mokotów, Wola, at Warszawa Centralna, Warszawa Zachodnia, a hotel or a private address.",
       },
       {
         q: "Can I travel with children?",
@@ -385,9 +425,9 @@ const data: RoutePageData = {
     ctaTitle: "Book a private Minsk to Warsaw transfer",
 
     ctaDesc:
-      "Provide the date, preferred departure time, pickup and drop-off addresses, number of passengers and luggage. Our manager will calculate the price and confirm the vehicle.",
+      "Provide the date, time, addresses, passenger count and luggage. Prices start from €400 per vehicle; our manager will confirm the final fixed amount.",
 
-    ctaBtn: "Request a quote",
+    ctaBtn: "Book private taxi",
 
     prefilledFrom: "Minsk",
     prefilledTo: "Warsaw",
@@ -397,16 +437,16 @@ const data: RoutePageData = {
 
   seo: {
     titleRu:
-      "Трансфер Минск — Варшава: индивидуальное такси | ComfortLine",
+      "Такси Минск — Варшава: цены от 400 € | ComfortLine",
 
     titleEn:
-      "Private Minsk to Warsaw Transfer & Taxi | ComfortLine",
+      "Minsk to Warsaw Taxi: Prices from €400 | ComfortLine",
 
     descRu:
-      "Индивидуальный трансфер-такси Минск — Варшава от двери до двери. Машина без попутчиков, фиксированная цена, детские кресла и обратный маршрут.",
+      "Индивидуальное такси Минск — Варшава и обратно. Цена за автомобиль от 400 €, минивэн от 550 €. Без попутчиков, подача по адресу, фиксированная стоимость.",
 
     descEn:
-      "Private door-to-door transfer from Minsk to Warsaw. Dedicated vehicle, price confirmed in advance, child seats and return journeys available.",
+      "Private Minsk to Warsaw taxi and return journeys. Prices from €400 per vehicle and minivans from €550. Door-to-door service with no shared passengers.",
 
     pathRu: "/трансфер-варшава",
     pathEn: "/warsaw-transfer",
@@ -417,11 +457,14 @@ const data: RoutePageData = {
     fromName: "Минск",
     toName: "Варшава",
 
+    priceFrom: 400,
+    priceCurrency: "EUR",
+
     keywordsRu:
-      "трансфер минск варшава, индивидуальный трансфер минск варшава, такси минск варшава, минск варшава индивидуальный трансфер такси, трансфер из минска в варшаву, заказать такси минск варшава, трансфер варшава минск",
+      "такси минск варшава, индивидуальное такси минск варшава, индивидуальный трансфер минск варшава, трансфер минск варшава цена, такси варшава минск, частный трансфер варшава минск, минск варшава без попутчиков, заказать такси минск варшава",
 
     keywordsEn:
-      "minsk warsaw transfer, minsk to warsaw taxi, private transfer minsk warsaw, door to door minsk warsaw, warsaw to minsk transfer",
+      "minsk to warsaw taxi, minsk warsaw taxi price, private transfer minsk warsaw, warsaw to minsk taxi, door to door minsk warsaw, minsk warsaw transfer",
   },
 };
 
