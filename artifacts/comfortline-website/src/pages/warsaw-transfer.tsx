@@ -102,9 +102,9 @@ const data: RoutePageData = {
         value: "От 700 € за автомобиль · до 7 пассажиров · до 4 чемоданов",
       },
       {
-        label: "Как указана цена",
+        label: "Цены и валюта расчёта",
         value:
-          "За весь автомобиль в одну сторону, а не за одного пассажира. Итоговая фиксированная стоимость подтверждается до выезда.",
+          "Цены в евро указаны исключительно для информационного ориентирования и за весь автомобиль в одну сторону, а не за одного пассажира. Все расчёты и платежи производятся в белорусских рублях (BYN) по сумме, согласованной до поездки.",
       },
       {
         label: "Направление",
@@ -168,6 +168,11 @@ const data: RoutePageData = {
           "Цена указана за весь автомобиль в одну сторону, а не за одного пассажира. При поездке семьёй или группой стоимость можно распределить между всеми пассажирами.",
       },
       {
+        q: "В какой валюте производится расчёт и являются ли цены окончательными?",
+        a:
+          "Цены в евро приведены только в информационных целях. Все расчёты и платежи производятся в белорусских рублях (BYN). Информация на странице не является публичной офертой. Окончательная стоимость, автомобиль и условия поездки должны быть подтверждены водителем ComfortLine до выезда.",
+      },
+      {
         q: "Чем трансфер отличается от обычного такси или автобуса?",
         a:
           "Индивидуальный трансфер бронируется заранее на конкретную дату и маршрут. Машина предоставляется только вам и вашей группе, без подсадки посторонних пассажиров. Водитель забирает вас по адресу в Минске и доставляет непосредственно по адресу в Варшаве.",
@@ -212,7 +217,7 @@ const data: RoutePageData = {
     ctaTitle: "Заказать индивидуальный трансфер Минск — Варшава",
 
     ctaDesc:
-      "Укажите дату, время, адреса, количество пассажиров и багажа. Базовая цена — от 400 € за автомобиль; менеджер подтвердит окончательную фиксированную стоимость.",
+      "Укажите дату, время, адреса, количество пассажиров и багажа. Цены в евро приведены только для информации; все расчёты производятся в BYN. Информация не является публичной офертой, а окончательная стоимость подтверждается водителем до выезда.",
 
     ctaBtn: "Заказать такси",
 
@@ -317,9 +322,9 @@ const data: RoutePageData = {
         value: "From €700 per vehicle · up to 7 passengers · 4 suitcases",
       },
       {
-        label: "How the price is shown",
+        label: "Prices and settlement currency",
         value:
-          "Per vehicle for a one-way journey, not per passenger. The final fixed price is confirmed before departure.",
+          "Euro prices are shown for information only and apply to the whole vehicle for a one-way journey, not per passenger. All settlements and payments are made in Belarusian rubles (BYN) in the amount agreed before departure.",
       },
       {
         label: "Route",
@@ -381,6 +386,11 @@ const data: RoutePageData = {
           "The listed price is for the whole vehicle for a one-way journey, not per passenger. Families and groups can share the total cost.",
       },
       {
+        q: "Which currency is used, and are the displayed prices final?",
+        a:
+          "Euro prices are provided for information only. All settlements and payments are made in Belarusian rubles (BYN). The information on this page does not constitute a public offer. The final price, vehicle and journey conditions must be confirmed by the ComfortLine driver before departure.",
+      },
+      {
         q: "How is a private transfer different from a taxi or bus?",
         a:
           "The transfer is booked in advance for a specific date and route. The vehicle is dedicated exclusively to your group, with no shared passengers. Pickup and drop-off are provided directly at your agreed addresses.",
@@ -425,7 +435,7 @@ const data: RoutePageData = {
     ctaTitle: "Book a private Minsk to Warsaw transfer",
 
     ctaDesc:
-      "Provide the date, time, addresses, passenger count and luggage. Prices start from €400 per vehicle; our manager will confirm the final fixed amount.",
+      "Provide the date, time, addresses, passenger count and luggage. Euro prices are for information only; all settlements are made in BYN. This page is not a public offer, and the final price must be confirmed by the driver before departure.",
 
     ctaBtn: "Book private taxi",
 
@@ -457,8 +467,6 @@ const data: RoutePageData = {
     fromName: "Минск",
     toName: "Варшава",
 
-    priceFrom: 400,
-    priceCurrency: "EUR",
 
     keywordsRu:
       "такси минск варшава, индивидуальное такси минск варшава, индивидуальный трансфер минск варшава, трансфер минск варшава цена, такси варшава минск, частный трансфер варшава минск, минск варшава без попутчиков, заказать такси минск варшава",
