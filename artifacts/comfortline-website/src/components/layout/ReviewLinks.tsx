@@ -2,11 +2,33 @@ import { SiGoogle, SiTripadvisor } from "react-icons/si";
 import { useLang } from "@/context/language-context";
 import { gtagEvent } from "@/lib/gtag";
 
-const GOOGLE_REVIEW_URL = "https://maps.app.goo.gl/oBgzb3Z5maMfhbwc7";
-const TRIPADVISOR_REVIEW_URL = "https://www.tripadvisor.com/UserReviewEdit-d34505679?m=68676";
+const GOOGLE_REVIEW_URL =
+  "https://maps.app.goo.gl/oBgzb3Z5maMfhbwc7";
+
+const YANDEX_REVIEW_URL =
+  "https://yandex.by/profile/225346737717";
+
+const TRIPADVISOR_REVIEW_URL =
+  "https://www.tripadvisor.com/UserReviewEdit-d34505679?m=68676";
+
+function YandexIcon({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`${className} inline-flex items-center justify-center font-black leading-none`}
+    >
+      Я
+    </span>
+  );
+}
 
 interface ReviewLinksProps {
   variant?: "buttons" | "icons";
+  
   className?: string;
 }
 
@@ -21,6 +43,13 @@ export function ReviewLinks({ variant = "buttons", className = "" }: ReviewLinks
       href: GOOGLE_REVIEW_URL,
       label: r.google,
       cls: "hover:bg-[#4285F4] hover:text-white",
+    },
+    {
+      key: "yandex",
+      icon: YandexIcon,
+      href: YANDEX_REVIEW_URL,
+      label: r.yandex,
+      cls: "hover:bg-[#FC3F1D] hover:text-white",
     },
     {
       key: "tripadvisor",

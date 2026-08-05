@@ -152,6 +152,7 @@ interface Translations {
   reviewLinks: {
     heading: string;
     google: string;
+    yandex: string;
     tripadvisor: string;
   };
   footer: {
@@ -373,6 +374,7 @@ const ru: Translations = {
   reviewLinks: {
     heading: "Оставить отзыв",
     google: "Google Карты",
+    yandex: "Яндекс",
     tripadvisor: "Tripadvisor",
   },
   footer: {
@@ -610,6 +612,7 @@ const en: Translations = {
   reviewLinks: {
     heading: "Leave a Review",
     google: "Google Maps",
+    yandex: "Yandex",
     tripadvisor: "Tripadvisor",
   },
   footer: {
