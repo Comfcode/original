@@ -342,6 +342,20 @@ export function Navbar() {
                 </motion.div>
               </button>
             </div>
+            {/* Primary messengers in compact desktop header */}
+            <div className="hidden min-[900px]:flex items-center gap-1.5">
+              {socialLinks
+                .filter((social) =>
+                  ["Telegram", "Viber", "WhatsApp", "Instagram"].includes(social.label)
+                )
+                .map((social) => (
+                  <SocialIcon
+                    key={social.label}
+                    {...social}
+                    size={28}
+                  />
+                ))}
+            </div>
             <NavBorderQueueBadge variant="mobile" />
             <a
               href="tel:+375447620649"
