@@ -151,15 +151,15 @@ export function Navbar() {
             <Logo
               variant="full"
               scheme={isDark ? "dark" : "light"}
-              height={26}
-              className="hidden min-[1700px]:block"
+              height={34}
+              className="hidden min-[1700px]:block overflow-visible"
             />
 
             <Logo
               variant="full"
               scheme={isDark ? "dark" : "light"}
-              height={30}
-              className="block min-[1700px]:hidden"
+              height={40}
+              className="block min-[1700px]:hidden overflow-visible"
             />
           </a>
 

@@ -1,3 +1,4 @@
+import { useId } from "react";
 /**
  * ComfortLine Logo — 2025 Redesign
  * Inspired by LogoLounge 2025 trends:
@@ -37,14 +38,19 @@ interface MarkProps {
 }
 
 /** Stand-alone symbol mark — use for social avatars, favicons, compact lockups */
-export function LogoMark({
-  size = 40,
-  fillColor,
-  gradientId = "clm",
-  className = "",
-}: MarkProps) {
-  const useGrad = !fillColor;
-  const fill = fillColor ?? `url(#${gradientId})`;
+  export function LogoMark({
+    size = 40,
+    fillColor,
+    gradientId,
+    className = "",
+  }: MarkProps) {
+    const generatedId = useId().replace(/:/g, "");
+    const resolvedGradientId =
+      gradientId ?? `clm-${generatedId}`;
+
+    const useGrad = !fillColor;
+    const fill =
+      fillColor ?? `url(#${resolvedGradientId})`;
   const w = +(size * (80 / 70)).toFixed(2);
 
   return (
@@ -60,7 +66,7 @@ export function LogoMark({
       {useGrad && (
         <defs>
           <linearGradient
-            id={gradientId}
+            id={resolvedGradientId}
             x1={GRAD_X1} y1={GRAD_Y1}
             x2={GRAD_X2} y2={GRAD_Y2}
             gradientUnits="userSpaceOnUse"
@@ -94,10 +100,19 @@ export function Logo({
   className = "",
   showTagline = false,
 }: LogoProps) {
+  const generatedId = useId().replace(/:/g, "");
+
   const isDark = scheme === "dark";
-  const wordPrimary   = isDark ? "#F5F0E8" : "#131218";
-  const taglineColor  = isDark ? "rgba(245,240,232,0.38)" : "rgba(19,18,24,0.35)";
-  const gradId = `cl-logo-${variant}-${scheme}`;
+  const wordPrimary =
+    isDark ? "#F5F0E8" : "#131218";
+
+  const taglineColor =
+    isDark
+      ? "rgba(245,240,232,0.38)"
+      : "rgba(19,18,24,0.35)";
+
+  const gradId =
+    `cl-logo-${variant}-${scheme}-${generatedId}`;
 
   // ── Mark only ──
   if (variant === "mark") {
