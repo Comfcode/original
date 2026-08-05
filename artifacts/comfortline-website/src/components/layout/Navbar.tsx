@@ -144,19 +144,30 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-3 min-[400px]:px-4 lg:px-6">
-        <div className="flex items-center justify-between h-14 lg:h-9">
+          <div className="flex items-center justify-between h-14 min-[1700px]:h-9">
 
           {/* Logo */}
           <a href="/" className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
-            <Logo variant="full" scheme={isDark ? "dark" : "light"} height={26} className="hidden lg:block" />
-            <Logo variant="full" scheme={isDark ? "dark" : "light"} height={30} className="block lg:hidden" />
+            <Logo
+              variant="full"
+              scheme={isDark ? "dark" : "light"}
+              height={26}
+              className="hidden min-[1700px]:block"
+            />
+
+            <Logo
+              variant="full"
+              scheme={isDark ? "dark" : "light"}
+              height={30}
+              className="block min-[1700px]:hidden"
+            />
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+            <div className="hidden min-[1700px]:flex items-center gap-3 min-[1850px]:gap-4">
 
             {/* Nav links — hover: pen oval · active: pen underline */}
-            <div className="flex items-center gap-3 xl:gap-5">
+              <div className="flex items-center gap-1 min-[1850px]:gap-2">
               {navLinks.map((link) => {
                 const isActive  = activeHref  === link.href;
                 const isHovered = hoveredHref === link.href && !isActive;
@@ -166,7 +177,7 @@ export function Navbar() {
                     href={link.href}
                     onMouseEnter={() => setHoveredHref(link.href)}
                     onMouseLeave={() => setHoveredHref(null)}
-                    className={`relative text-[11px] tracking-[0.12em] uppercase font-medium transition-colors whitespace-nowrap px-3 py-1.5 ${
+                    className={`relative text-[11px] tracking-[0.12em] uppercase font-medium transition-colors whitespace-nowrap px-2 py-1.5 ${
                       isActive ? "text-foreground" : "text-foreground/55 hover:text-foreground"
                     }`}
                   >
@@ -248,13 +259,13 @@ export function Navbar() {
             {/* Border queue live status */}
             <NavBorderQueueBadge variant="desktop" />
 
-            <div className="h-4 w-px bg-border/50 hidden 2xl:block" />
+              <div className="h-4 w-px bg-border/50 hidden min-[1850px]:block" />
 
             {/* Phone — only visible at 2xl (1536px+) to keep RU/EN always in view */}
             <a
               href="tel:+375447620649"
               onClick={gtagPhoneConversion}
-              className="hidden 2xl:flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
+              className="hidden min-[1850px]:flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
             >
               <Phone className="h-3 w-3 text-primary" />
               +375 (44) 762-06-49
@@ -309,7 +320,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile right side */}
-          <div className="flex items-center lg:hidden gap-1 min-[400px]:gap-2">
+            <div className="flex items-center min-[1700px]:hidden gap-1 min-[400px]:gap-2">
             {/* Language + theme always visible in mobile header */}
             <div className="flex items-center gap-1 min-[400px]:gap-2">
               <div className="flex items-center gap-0.5 text-[10px] min-[400px]:text-[11px] tracking-[0.1em] uppercase font-medium">
@@ -364,7 +375,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.18 }}
-              className="lg:hidden fixed inset-0 top-full z-[-1]"
+              className="min-[1700px]:hidden fixed inset-0 top-full z-[-1]"
               onClick={() => setMobileMenuOpen(false)}
             />
           <motion.div
@@ -372,7 +383,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg border-b border-border shadow-lg"
+            className="min-[1700px]:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg border-b border-border shadow-lg"
           >
             <div className="container mx-auto px-6 py-6 flex flex-col gap-1">
               {navLinks.map((link) => (
