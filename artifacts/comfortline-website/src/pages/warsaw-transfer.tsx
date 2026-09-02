@@ -11,7 +11,7 @@ const data: RoutePageData = {
     title: "Индивидуальное такси Минск — Варшава",
 
     subtitle:
-      "Индивидуальное такси Минск — Варшава и обратно от двери до двери. Отдельный автомобиль без попутчиков, подача по адресу и базовая цена за весь автомобиль в одну сторону.",
+       "Индивидуальное такси Минск — Варшава и обратно от двери до двери. Отдельный автомобиль без попутчиков, подача по адресу и стоимость поездки по запросу.",
 
     stats: [
       {
@@ -28,7 +28,7 @@ const data: RoutePageData = {
       },
       {
         label: "Стоимость",
-        value: "От 400 € за автомобиль",
+        value: "По запросу",
       },
     ],
 
@@ -74,7 +74,7 @@ const data: RoutePageData = {
       },
     ],
 
-    infoTitle: "Цены на индивидуальное такси Минск — Варшава",
+     infoTitle: "Цены на такси Минск — Варшава по запросу",
 
     infoRows: [
       {
@@ -102,9 +102,9 @@ const data: RoutePageData = {
         value: "· до 7 пассажиров · до 4 чемоданов",
       },
       {
-        label: "Цены и валюта расчёта",
+        label: "Цена и валюта расчёта",
         value:
-          "Цены указаны исключительно для информационного ориентирования и за весь автомобиль в одну сторону, а не за одного пассажира. Все расчёты и платежи производятся в белорусских рублях (BYN) по сумме, согласованной до поездки.",
+          "Стоимость предоставляется по запросу и рассчитывается за весь автомобиль в одну сторону, а не за одного пассажира. Все расчёты и платежи производятся в белорусских рублях (BYN) по сумме, согласованной до поездки.",
       },
       {
         label: "Направление",
@@ -160,17 +160,17 @@ const data: RoutePageData = {
       {
         q: "Сколько стоит индивидуальное такси Минск — Варшава?",
         a:
-          "Базовая цена зависит от классв автомобиля: легковой Эконом. Легковой Комфорт, Бизнес, VIP, Минивэн Комфорт, Минивэн Бизнес. Итоговая фиксированная стоимость подтверждается до выезда.",
+          "Стоимость предоставляется по запросу и зависит от класса автомобиля: легковой Эконом, легковой Комфорт, Бизнес, VIP, Минивэн Комфорт или Минивэн Бизнес. Итоговая фиксированная стоимость подтверждается до выезда.",
       },
       {
         q: "Цена указана за человека или за машину?",
         a:
-          "Цена указана за весь автомобиль в одну сторону, а не за одного пассажира. При поездке семьёй или группой стоимость можно распределить между всеми пассажирами.",
+          "Стоимость рассчитывается за весь автомобиль в одну сторону, а не за одного пассажира. При поездке семьёй или группой итоговую сумму можно распределить между всеми пассажирами.",
       },
       {
         q: "В какой валюте производится расчёт и являются ли цены окончательными?",
         a:
-          "Цены в евро приведены только в информационных целях. Все расчёты и платежи производятся в белорусских рублях (BYN). Информация на странице не является публичной офертой. Окончательная стоимость, автомобиль и условия поездки должны быть подтверждены водителем ComfortLine до выезда.",
+          "Стоимость предоставляется по запросу. Все расчёты и платежи производятся в белорусских рублях (BYN). Информация на странице не является публичной офертой. Окончательная стоимость, автомобиль и условия поездки должны быть подтверждены водителем ComfortLine до выезда.",
       },
       {
         q: "Чем трансфер отличается от обычного такси или автобуса?",
@@ -223,7 +223,7 @@ const data: RoutePageData = {
     ctaTitle: "Заказать индивидуальный трансфер Минск — Варшава",
 
     ctaDesc:
-      "Укажите дату, время, адреса, количество пассажиров и багажа. Цены в евро приведены только для информации; все расчёты производятся в BYN. Информация не является публичной офертой, а окончательная стоимость подтверждается водителем до выезда.",
+      "Укажите дату, время, адреса, количество пассажиров и багажа — менеджер рассчитает стоимость по запросу. Все расчёты производятся в BYN. Информация не является публичной офертой, а окончательная стоимость подтверждается водителем до выезда.",
 
     ctaBtn: "Заказать такси",
 
@@ -239,7 +239,7 @@ const data: RoutePageData = {
     title: "Private Taxi from Minsk to Warsaw",
 
     subtitle:
-      "Private door-to-door taxi from Minsk to Warsaw and back. Travel in a dedicated vehicle with no shared passengers, pickup at your address and prices from €400 per vehicle one way.",
+       "Private door-to-door taxi from Minsk to Warsaw and back. Travel in a dedicated vehicle with no shared passengers, pickup at your address and a price provided on request.",
 
     stats: [
       {
@@ -256,7 +256,7 @@ const data: RoutePageData = {
       },
       {
         label: "Price",
-        value: "From €400 per vehicle",
+        value: "On request",
       },
     ],
 
@@ -300,37 +300,37 @@ const data: RoutePageData = {
       },
     ],
 
-    infoTitle: "Private taxi prices from Minsk to Warsaw",
+    infoTitle: "Private taxi prices from Minsk to Warsaw on request",
 
     infoRows: [
       {
         label: "Economy Sedan",
-        value: "From €400 per vehicle · up to 3 passengers · 2 suitcases",
+        value: "Price on request · up to 3 passengers · 2 suitcases",
       },
       {
         label: "Comfort Sedan",
-        value: "From €500 per vehicle · up to 3 passengers · 2 suitcases",
+        value: "Price on request · up to 3 passengers · 2 suitcases",
       },
       {
         label: "Business Sedan",
-        value: "From €650 per vehicle · up to 3 passengers · 2 suitcases",
+        value: "Price on request · up to 3 passengers · 2 suitcases",
       },
       {
         label: "VIP Sedan",
-        value: "From €800 per vehicle · up to 3 passengers · 2 suitcases",
+        value: "Price on request · up to 3 passengers · 2 suitcases",
       },
       {
         label: "Comfort Minivan",
-        value: "From €550 per vehicle · up to 8 passengers · 4 suitcases",
+        value: "Price on request · up to 8 passengers · 4 suitcases",
       },
       {
         label: "Business Minivan",
-        value: "From €700 per vehicle · up to 7 passengers · 4 suitcases",
+        value: "Price on request · up to 7 passengers · 4 suitcases",
       },
       {
-        label: "Prices and settlement currency",
+        label: "Price and settlement currency",
         value:
-          "Euro prices are shown for information only and apply to the whole vehicle for a one-way journey, not per passenger. All settlements and payments are made in Belarusian rubles (BYN) in the amount agreed before departure.",
+          "The price is provided on request and applies to the whole vehicle for a one-way journey, not per passenger. All settlements and payments are made in Belarusian rubles (BYN) in the amount agreed before departure.",
       },
       {
         label: "Route",
@@ -384,17 +384,17 @@ const data: RoutePageData = {
       {
         q: "How much is a private taxi from Minsk to Warsaw?",
         a:
-          "Prices start from €400 for an Economy Sedan. Comfort Sedan starts from €500, Business Sedan from €650, VIP Sedan from €800, Comfort Minivan from €550 and Business Minivan from €700. The final fixed price is confirmed before departure.",
+           "The price is provided on request and depends on the vehicle class, travel date, pickup and destination addresses, passenger count and luggage. The final fixed price is confirmed before departure.",
       },
       {
         q: "Is the price per passenger or per vehicle?",
         a:
-          "The listed price is for the whole vehicle for a one-way journey, not per passenger. Families and groups can share the total cost.",
+           "The requested price is for the whole vehicle for a one-way journey, not per passenger. Families and groups can share the total cost.",
       },
       {
         q: "Which currency is used, and are the displayed prices final?",
         a:
-          "Euro prices are provided for information only. All settlements and payments are made in Belarusian rubles (BYN). The information on this page does not constitute a public offer. The final price, vehicle and journey conditions must be confirmed by the ComfortLine driver before departure.",
+           "The price is provided on request. All settlements and payments are made in Belarusian rubles (BYN). The information on this page does not constitute a public offer. The final price, vehicle and journey conditions must be confirmed by the ComfortLine driver before departure.",
       },
       {
         q: "How is a private transfer different from a taxi or bus?",
@@ -441,7 +441,7 @@ const data: RoutePageData = {
     ctaTitle: "Book a private Minsk to Warsaw transfer",
 
     ctaDesc:
-      "Provide the date, time, addresses, passenger count and luggage. Euro prices are for information only; all settlements are made in BYN. This page is not a public offer, and the final price must be confirmed by the driver before departure.",
+       "Provide the date, time, addresses, passenger count and luggage to receive a price on request. All settlements are made in BYN. This page is not a public offer, and the final price must be confirmed by the driver before departure.",
 
     ctaBtn: "Book private taxi",
 
@@ -453,16 +453,16 @@ const data: RoutePageData = {
 
   seo: {
     titleRu:
-      "Такси Минск — Варшава: цены от 400 € | ComfortLine",
+       "Цены на такси Минск — Варшава по запросу | ComfortLine",
 
     titleEn:
-      "Minsk to Warsaw Taxi: Prices from €400 | ComfortLine",
+       "Minsk to Warsaw Taxi: Price on Request | ComfortLine",
 
     descRu:
-      "Индивидуальное такси Минск — Варшава и обратно. Цена за автомобиль от 400 €, минивэн от 550 €. Без попутчиков, подача по адресу, фиксированная стоимость.",
+       "Индивидуальное такси Минск — Варшава и обратно. Цены на такси по запросу: без попутчиков, подача по адресу, фиксированная стоимость после подтверждения.",
 
     descEn:
-      "Private Minsk to Warsaw taxi and return journeys. Prices from €400 per vehicle and minivans from €550. Door-to-door service with no shared passengers.",
+       "Private Minsk to Warsaw taxi and return journeys. Price on request, door-to-door service with no shared passengers and a fixed price after confirmation.",
 
     pathRu: "/трансфер-варшава",
     pathEn: "/warsaw-transfer",

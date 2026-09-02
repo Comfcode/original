@@ -217,15 +217,15 @@ export const ARTICLES: Article[] = [
   {
     slug: "стоимость-трансфер-минск-варшава",
     slugEn: "minsk-warsaw-transfer-price-2026",
-    titleEn: "Minsk to Warsaw Taxi Prices 2026: From €400 per Vehicle",
+    titleEn: "Minsk to Warsaw Taxi Prices 2026: On Request",
     descriptionEn:
-      "Private Minsk–Warsaw transfer prices by vehicle class: sedans from €400, minivans from €550, inclusions, booking terms and BYN settlement notice.",
+      "Private Minsk–Warsaw transfer prices are provided on request. Learn what affects the quote, what is included, booking terms and BYN settlement details.",
     ogSlug: "blog-stoimost-transfer-minsk-varshava",
-    title: "Цены на такси Минск — Варшава в 2026: от 400 €",
+    title: "Цены на такси Минск — Варшава в 2026: по запросу",
     description:
-      "Сколько стоит индивидуальный трансфер Минск — Варшава: цены от 400 € за автомобиль, минивэны от 550 €, что входит в стоимость и как заказать.",
+      "Сколько стоит индивидуальный трансфер Минск — Варшава: цены на такси по запросу, что влияет на расчёт, что входит в стоимость и как заказать.",
     intro:
-      "Индивидуальный трансфер Минск — Варшава — это поездка на отдельном автомобиле без попутчиков с подачей по адресу. Ниже приведены ориентировочные цены по классам автомобилей и условия расчёта.",
+      "Индивидуальный трансфер Минск — Варшава — это поездка на отдельном автомобиле без попутчиков с подачей по адресу. Цена на такси предоставляется по запросу после уточнения деталей поездки.",
     dateISO: "2026-04-10",
     dateModified: "2026-08-04",
     readingMin: 8,
@@ -238,25 +238,25 @@ export const ARTICLES: Article[] = [
       "трансфер Варшава Минск",
     ],
     body: [
-      { type: "h2", text: "Цены на такси Минск — Варшава" },
+      { type: "h2", text: "Цены на такси Минск — Варшава по запросу" },
       {
         type: "table",
-        headers: ["Класс", "Вместимость", "Багаж", "Ориентировочная цена"],
+        headers: ["Класс", "Вместимость", "Багаж", "Цена"],
         rows: [
-          ["Легковой Эконом", "до 3 пассажиров", "до 2 чемоданов", "от 400 €"],
-          ["Легковой Комфорт", "до 3 пассажиров", "до 2 чемоданов", "от 500 €"],
-          ["Легковой Бизнес", "до 3 пассажиров", "до 2 чемоданов", "от 650 €"],
-          ["Легковой VIP", "до 3 пассажиров", "до 2 чемоданов", "от 800 €"],
-          ["Минивэн Комфорт", "до 8 пассажиров", "до 4 чемоданов", "от 550 €"],
-          ["Минивэн Бизнес", "до 7 пассажиров", "до 4 чемоданов", "от 700 €"],
+          ["Легковой Эконом", "до 3 пассажиров", "до 2 чемоданов", "по запросу"],
+          ["Легковой Комфорт", "до 3 пассажиров", "до 2 чемоданов", "по запросу"],
+          ["Легковой Бизнес", "до 3 пассажиров", "до 2 чемоданов", "по запросу"],
+          ["Легковой VIP", "до 3 пассажиров", "до 2 чемоданов", "по запросу"],
+          ["Минивэн Комфорт", "до 8 пассажиров", "до 4 чемоданов", "по запросу"],
+          ["Минивэн Бизнес", "до 7 пассажиров", "до 4 чемоданов", "по запросу"],
         ],
       },
       {
         type: "info-notice",
         text:
-          "Цены в евро указаны исключительно для информационных целей и ориентировочного расчёта. Все расчёты и платежи производятся в белорусских рублях (BYN). Информация на странице не является публичной офертой. Окончательная стоимость, автомобиль и условия поездки должны быть подтверждены водителем ComfortLine до выезда.",
+          "Цена предоставляется по запросу после уточнения класса автомобиля, даты, адресов, пассажиров и багажа. Все расчёты и платежи производятся в белорусских рублях (BYN). Информация на странице не является публичной офертой. Окончательная стоимость, автомобиль и условия поездки должны быть подтверждены водителем ComfortLine до выезда.",
       },
-      { type: "h2", text: "Из чего состоит цена" },
+      { type: "h2", text: "Что влияет на цену по запросу" },
       {
         type: "ul",
         items: [
@@ -270,9 +270,9 @@ export const ARTICLES: Article[] = [
       {
         type: "p",
         text:
-          "После согласования даты, адресов, количества пассажиров и багажа водитель подтверждает окончательную стоимость в белорусских рублях. После подтверждения цена фиксируется для согласованных условий поездки.",
+          "После согласования даты, адресов, количества пассажиров и багажа водитель рассчитывает стоимость по запросу в белорусских рублях. После подтверждения цена фиксируется для согласованных условий поездки.",
       },
-      { type: "h2", text: "Когда стоимость может быть выше" },
+      { type: "h2", text: "Что может повлиять на стоимость" },
       {
         type: "ul",
         items: [
@@ -306,32 +306,32 @@ export const ARTICLES: Article[] = [
       {
         type: "callout",
         text:
-          "Для подтверждения окончательной стоимости укажите дату, адреса, количество пассажиров и багажа. Водитель ComfortLine согласует цену в BYN до выезда.",
+          "Для расчёта цены по запросу укажите дату, адреса, количество пассажиров и багажа. Водитель ComfortLine согласует окончательную стоимость в BYN до выезда.",
       },
     ],
     categoryEn: "Pricing",
     introEn:
-      "A private Minsk–Warsaw transfer provides a dedicated vehicle with no shared passengers and door-to-door pickup. Below are indicative prices by vehicle class and the applicable payment terms.",
+      "A private Minsk–Warsaw transfer provides a dedicated vehicle with no shared passengers and door-to-door pickup. The taxi price is provided on request after the journey details are confirmed.",
     bodyEn: [
-      { type: "h2", text: "Private taxi prices from Minsk to Warsaw" },
+      { type: "h2", text: "Private taxi prices from Minsk to Warsaw on request" },
       {
         type: "table",
-        headers: ["Class", "Capacity", "Luggage", "Indicative price"],
+        headers: ["Class", "Capacity", "Luggage", "Price"],
         rows: [
-          ["Economy Sedan", "up to 3 passengers", "up to 2 suitcases", "from €400"],
-          ["Comfort Sedan", "up to 3 passengers", "up to 2 suitcases", "from €500"],
-          ["Business Sedan", "up to 3 passengers", "up to 2 suitcases", "from €650"],
-          ["VIP Sedan", "up to 3 passengers", "up to 2 suitcases", "from €800"],
-          ["Comfort Minivan", "up to 8 passengers", "up to 4 suitcases", "from €550"],
-          ["Business Minivan", "up to 7 passengers", "up to 4 suitcases", "from €700"],
+          ["Economy Sedan", "up to 3 passengers", "up to 2 suitcases", "on request"],
+          ["Comfort Sedan", "up to 3 passengers", "up to 2 suitcases", "on request"],
+          ["Business Sedan", "up to 3 passengers", "up to 2 suitcases", "on request"],
+          ["VIP Sedan", "up to 3 passengers", "up to 2 suitcases", "on request"],
+          ["Comfort Minivan", "up to 8 passengers", "up to 4 suitcases", "on request"],
+          ["Business Minivan", "up to 7 passengers", "up to 4 suitcases", "on request"],
         ],
       },
       {
         type: "info-notice",
         text:
-          "Euro prices are shown solely for information and approximate comparison. All settlements and payments are made in Belarusian roubles (BYN). The information on this page does not constitute a public offer. The final price, vehicle and journey conditions must be approved by the ComfortLine driver before departure.",
+          "The price is provided on request after confirming the vehicle class, date, addresses, passenger count and luggage. All settlements and payments are made in Belarusian roubles (BYN). The information on this page does not constitute a public offer. The final price, vehicle and journey conditions must be approved by the ComfortLine driver before departure.",
       },
-      { type: "h2", text: "What makes up the price" },
+      { type: "h2", text: "What affects the requested price" },
       {
         type: "ul",
         items: [
@@ -345,9 +345,9 @@ export const ARTICLES: Article[] = [
       {
         type: "p",
         text:
-          "After the date, addresses, passenger count and luggage are agreed, the driver confirms the final price in Belarusian roubles. The confirmed amount is then fixed for the agreed journey conditions.",
+          "After the date, addresses, passenger count and luggage are agreed, the driver calculates the requested price in Belarusian roubles. The confirmed amount is then fixed for the agreed journey conditions.",
       },
-      { type: "h2", text: "When the price may be higher" },
+      { type: "h2", text: "What can affect the price" },
       {
         type: "ul",
         items: [
@@ -381,7 +381,7 @@ export const ARTICLES: Article[] = [
       {
         type: "callout",
         text:
-          "To confirm the final price, provide the date, addresses, passenger count and luggage details. The ComfortLine driver will approve the BYN price before departure.",
+          "To receive a price on request, provide the date, addresses, passenger count and luggage details. The ComfortLine driver will approve the final BYN price before departure.",
       },
     ],
     related: [
