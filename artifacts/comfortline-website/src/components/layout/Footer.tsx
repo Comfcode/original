@@ -69,7 +69,7 @@ export function Footer() {
               {f.tagline}
             </p>
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/transferWarsaw_taxi" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+              <a href="https://www.instagram.com/transfer_comfortline/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="https://www.threads.com/@transferwarsaw_taxi" target="_blank" rel="noopener noreferrer" aria-label="Threads" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
