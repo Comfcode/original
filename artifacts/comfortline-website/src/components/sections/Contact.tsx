@@ -5,10 +5,19 @@ import { SiWhatsapp, SiTelegram, SiViber, SiMessenger } from "react-icons/si";
 import { Instagram } from "lucide-react";
 import { ReviewLinks } from "@/components/layout/ReviewLinks";
 import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
+import { analyticsPage, trackEvent } from "@/lib/analytics";
 
 export function Contact() {
   const { t } = useLang();
   const lic = t.contact.licensing;
+
+  const trackContact = (channel: string) => {
+    trackEvent("contact_clicked", {
+      channel,
+      location: "contact_section",
+      page: analyticsPage(),
+    });
+  };
 
   return (
     <section id="contact" className="py-24 bg-muted/50 border-t border-border">
@@ -35,7 +44,7 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{t.contact.phone}</div>
-                <a href="tel:+375447620649" onClick={gtagPhoneConversion} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+                <a href="tel:+375447620649" onClick={() => { gtagPhoneConversion(); trackContact("phone"); }} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
                   +375 (44) 762-06-49
                 </a>
               </div>
@@ -47,7 +56,7 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{t.contact.email}</div>
-                <a href="mailto:info@comfortline.by" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
+                <a href="mailto:info@comfortline.by" onClick={() => trackContact("email")} className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
                   info@comfortline.by
                 </a>
               </div>
@@ -85,7 +94,12 @@ export function Contact() {
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    onClick={(label === "WhatsApp" || label === "Telegram") ? () => gtagEvent("contact", { event_category: "messenger", event_label: label }) : undefined}
+                    onClick={() => {
+                      if (label === "WhatsApp" || label === "Telegram") {
+                        gtagEvent("contact", { event_category: "messenger", event_label: label });
+                      }
+                      trackContact(label.toLowerCase());
+                    }}
                     aria-label={label}
                     className={`w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-foreground hover:text-white transition-colors ${cls}`}
                   >

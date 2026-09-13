@@ -6,6 +6,7 @@ import { useLang } from "@/context/language-context";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
 import { gtagEvent } from "@/lib/gtag";
+import { analyticsPage, trackEvent } from "@/lib/analytics";
 import { PhoneInput } from "@/components/ui/PhoneInput";
 
 type VehicleClass = "any" | "comfort" | "business" | "premium";
@@ -100,6 +101,11 @@ export function BookingModal({
 
   useEffect(() => {
     if (!open) return;
+    trackEvent("booking_form_opened", {
+      page: analyticsPage(),
+      language: t.lang,
+      context: routeName ? "route" : planName ? "plan" : "general",
+    });
     setDate(prefilledDate);
     setPax(prefilledPax ?? defaultPax);
     setPaxOpen(false);
@@ -146,6 +152,15 @@ export function BookingModal({
       });
       if (res.ok) {
         gtagEvent("generate_lead", { event_category: "booking" });
+        trackEvent("booking_submitted", {
+          page: analyticsPage(),
+          language: t.lang,
+          vehicle_class: pax.vehicleClass,
+          passenger_count: pax.adults + pax.children + pax.babies,
+          has_children: pax.children + pax.babies > 0,
+          has_pets: pax.pets > 0,
+          has_route_preset: Boolean(routeName || prefilledFrom || prefilledTo),
+        });
         onClose();
         navigate("/thank-you");
       } else {

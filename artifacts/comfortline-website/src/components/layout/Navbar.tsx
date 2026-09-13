@@ -8,6 +8,7 @@ import { useTheme } from "next-themes";
 import { Logo } from "@/components/brand/Logo";
 import { NavBorderQueueBadge } from "@/components/layout/NavBorderQueueBadge";
 import { gtagEvent, gtagPhoneConversion } from "@/lib/gtag";
+import { analyticsPage, trackEvent } from "@/lib/analytics";
 import { useLocation } from "wouter";
 import { getAlternateLangHref } from "@/lib/lang-urls";
 
@@ -125,7 +126,16 @@ export function Navbar() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={label}
-        onClick={isMessenger ? () => gtagEvent("contact", { event_category: "messenger", event_label: label }) : undefined}
+        onClick={() => {
+          if (isMessenger) {
+            gtagEvent("contact", { event_category: "messenger", event_label: label });
+          }
+          trackEvent("contact_clicked", {
+            channel: label.toLowerCase(),
+            location: "navbar",
+            page: analyticsPage(),
+          });
+        }}
         className="flex-shrink-0 rounded-full flex items-center justify-center text-white transition-all hover:scale-110 active:scale-95 opacity-80 hover:opacity-100"
         style={{ width: size, height: size, background: bg }}
       >
@@ -264,7 +274,14 @@ export function Navbar() {
             {/* Phone — only visible at 2xl (1536px+) to keep RU/EN always in view */}
             <a
               href="tel:+375447620649"
-              onClick={gtagPhoneConversion}
+              onClick={() => {
+                gtagPhoneConversion();
+                trackEvent("contact_clicked", {
+                  channel: "phone",
+                  location: "navbar",
+                  page: analyticsPage(),
+                });
+              }}
               className="hidden min-[1850px]:flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
             >
               <Phone className="h-3 w-3 text-primary" />
@@ -359,7 +376,14 @@ export function Navbar() {
             <NavBorderQueueBadge variant="mobile" />
             <a
               href="tel:+375447620649"
-              onClick={gtagPhoneConversion}
+              onClick={() => {
+                gtagPhoneConversion();
+                trackEvent("contact_clicked", {
+                  channel: "phone",
+                  location: "navbar_mobile",
+                  page: analyticsPage(),
+                });
+              }}
               className="flex items-center gap-2 text-[11px] tracking-[0.08em] uppercase font-medium text-foreground/70 shrink-0"
             >
               <Phone className="h-5 w-5 min-[400px]:h-6 min-[400px]:w-6 text-primary" />
