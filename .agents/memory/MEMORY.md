@@ -5,3 +5,4 @@
 - [GSC canonical/www duplicate warnings](gsc-canonical-www-duplicates.md) — correct rel=canonical tags aren't enough; www/non-www needs a real server 301, not just a meta tag.
 - [GSC "alternate page with canonical" reports](gsc-canonical-alternate-page-report.md) — often stale crawl data from before a prior fix; diff sitemap vs routes before touching canonical logic.
 - [Build-time TS/TSX source extraction](build-time-tsx-source-extraction.md) — regex+brace-balance parsing of .tsx source in prerender scripts; brace search must start after the full marker match, not at it.
+- [jsdom and undici security overrides](jsdom-undici-compatibility.md) — upgrading undici alone can break jsdom when jsdom imports removed undici internals; upgrade jsdom with it.
