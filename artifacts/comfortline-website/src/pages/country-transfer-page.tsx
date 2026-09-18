@@ -162,21 +162,26 @@ export function CountryTransferPage({ data }: Props) {
                     <span>{dest.distanceKm}</span>
                   </div>
 
-                  <a
-                    href={href}
-                    onClick={(e) => {
-                      if (!available) {
-                        e.preventDefault();
-                        window.dispatchEvent(new CustomEvent("open-booking-modal", {
+                  <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-3">
+                    <a
+                      href={href}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity group-hover:gap-3"
+                    >
+                      {c.detailsLabel}
+                      <ArrowRight className="h-4 w-4 transition-all" />
+                    </a>
+                    {!available && (
+                      <button
+                        type="button"
+                        onClick={() => window.dispatchEvent(new CustomEvent("open-booking-modal", {
                           detail: { prefilledFrom: isRu ? "Минск" : "Minsk", prefilledTo: dest.prefilledTo || city }
-                        }));
-                      }
-                    }}
-                    className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity group-hover:gap-3"
-                  >
-                    {available ? c.detailsLabel : c.bookLabel}
-                    <ArrowRight className="h-4 w-4 transition-all" />
-                  </a>
+                        }))}
+                        className="text-sm font-semibold text-foreground/80 underline underline-offset-4 decoration-border hover:text-primary transition-colors"
+                      >
+                        {c.bookLabel}
+                      </button>
+                    )}
+                  </div>
                 </motion.div>
               );
             })}

@@ -29,7 +29,6 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-берлин",
         isAvailable: false,
         prefilledTo: "Берлин BER",
-        slug: "berlin-ber",
       },
       {
         cityRu: "Гамбург",
@@ -98,7 +97,6 @@ const data: CountryPageData = {
         hrefRu: "/трансфер-берлин",
         isAvailable: false,
         prefilledTo: "Berlin BER",
-        slug: "berlin-ber",
       },
       {
         cityRu: "Гамбург",
