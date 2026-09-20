@@ -72,8 +72,8 @@ export default function EuropeTransferPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu="Трансферы по Европе из Минска | Литва, Латвия, Польша, Германия, Франция | ComfortLine"
-        titleEn="Transfers across Europe from Minsk | Lithuania, Latvia, Poland, Germany, France | ComfortLine"
+        titleRu="Трансферы по Европе из Минска | Литва, Латвия, Польша"
+        titleEn="Transfers across Europe from Minsk | Lithuania, Latvia"
         descRu="Прямые трансферы из Минска в Европу: Литва, Латвия, Польша, Германия, Франция. Фиксированная цена, опытные водители, без пересадок."
         descEn="Direct transfers from Minsk to Europe: Lithuania, Latvia, Poland, Germany, France. Fixed prices, professional drivers, door-to-door service."
         pathRu="/трансфер-в-европу"

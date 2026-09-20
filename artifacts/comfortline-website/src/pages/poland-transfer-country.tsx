@@ -264,8 +264,8 @@ const data: CountryPageData = {
     detailsLabel: "View details",
   },
   seo: {
-    titleRu: "Индивидуальный трансфер Минск — Польша | Варшава, WAW, Модлин | ComfortLine",
-    titleEn: "Minsk to Poland Private Transfer | Warsaw, WAW, Modlin | ComfortLine",
+    titleRu: "Индивидуальный трансфер Минск — Польша | Варшава, WAW",
+    titleEn: "Minsk to Poland Private Transfer | Warsaw, WAW, Modlin",
     descRu: "Индивидуальный трансфер-такси из Минска в Польшу: аэропорт Шопен (WAW), аэропорт Модлин, центр Варшавы. Фиксированная цена, прямой маршрут без пересадок.",
     descEn: "Private transfer from Minsk to Poland: Warsaw Chopin (WAW), Modlin Airport, Warsaw city centre. Fixed prices, direct door-to-door.",
     pathRu: "/трансфер-в-польшу",

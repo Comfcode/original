@@ -11,20 +11,20 @@ import { getHomeSectionHref } from "@/lib/lang-urls";
 
 const vehicleSeo: Record<string, { titleRu: string; titleEn: string; descRu: string; descEn: string; pathRu: string; pathEn: string; breadcrumbRu: string; breadcrumbEn: string }> = {
   "mercedes-e-class": {
-    titleRu: "Mercedes-Benz E-Class — бизнес-седан для трансфера | ComfortLine",
-    titleEn: "Mercedes-Benz E-Class — Business Sedan Transfer | ComfortLine",
-    descRu: "Mercedes-Benz E-Class 2021 — представительский бизнес-седан с кожаным салоном и климат-контролем. Идеален для деловых поездок, встреч партнёров и трансферов в аэропорт. До 3 пассажиров, до 3 чемоданов.",
-    descEn: "Mercedes-Benz E-Class 2021 — executive business sedan with leather interior and climate control. Ideal for business trips, partner meetings and airport transfers. Up to 3 passengers, up to 3 suitcases.",
+    titleRu: "Mercedes-Benz E-Class — бизнес-седан для трансфера",
+    titleEn: "Mercedes-Benz E-Class — Business Sedan Transfer",
+    descRu: "Mercedes-Benz E-Class 2021 — представительский бизнес-седан с кожаным салоном и климат-контролем.",
+    descEn: "Mercedes-Benz E-Class 2021 — executive business sedan with leather interior and climate control.",
     pathRu: "/трансфер-мерседес-е-класс",
     pathEn: "/mercedes-e-class-transfer",
     breadcrumbRu: "Mercedes-Benz E-Class",
     breadcrumbEn: "Mercedes-Benz E-Class",
   },
   "kia-carnival": {
-    titleRu: "Kia Carnival — минивэн для группового трансфера | ComfortLine",
+    titleRu: "Kia Carnival — минивэн для группового трансфера",
     titleEn: "Kia Carnival — Minivan for Group Transfer | ComfortLine",
     descRu: "Kia Carnival — комфортный минивэн до 5 пассажиров с багажом. Идеален для семей, групп и багажа. Просторный салон, климат-контроль, индивидуальные кресла.",
-    descEn: "Kia Carnival — comfortable minivan for up to 5 passengers with luggage. Ideal for families, groups and luggage. Spacious cabin, climate control, individual seats.",
+    descEn: "Kia Carnival — comfortable minivan for up to 5 passengers with luggage. Ideal for families, groups and luggage.",
     pathRu: "/трансфер-киа-карнавал",
     pathEn: "/kia-carnival-transfer",
     breadcrumbRu: "Kia Carnival",
@@ -33,8 +33,8 @@ const vehicleSeo: Record<string, { titleRu: string; titleEn: string; descRu: str
   "hyundai-palisade": {
     titleRu: "Hyundai Palisade — премиум-SUV для трансфера | ComfortLine",
     titleEn: "Hyundai Palisade — Premium SUV Transfer | ComfortLine",
-    descRu: "Hyundai Palisade — премиум-кроссовер до 4 пассажиров с большим багажом. Высокая посадка, кожаный салон, климат-контроль. Идеален для семейных поездок и трансферов с большим багажом.",
-    descEn: "Hyundai Palisade — premium SUV for up to 4 passengers with extensive luggage. Elevated seating, leather interior, climate control. Ideal for family trips and transfers with extensive luggage.",
+    descRu: "Hyundai Palisade — премиум-кроссовер до 4 пассажиров с большим багажом. Высокая посадка, кожаный салон, климат-контроль.",
+    descEn: "Hyundai Palisade — premium SUV for up to 4 passengers with extensive luggage. Elevated seating, leather interior, climate control.",
     pathRu: "/трансфер-хендай-палисад",
     pathEn: "/hyundai-palisade-transfer",
     breadcrumbRu: "Hyundai Palisade",
@@ -43,8 +43,8 @@ const vehicleSeo: Record<string, { titleRu: string; titleEn: string; descRu: str
   "audi-a6": {
     titleRu: "Audi A6 Avant — бизнес-универсал для трансфера | ComfortLine",
     titleEn: "Audi A6 Avant — Business Estate Transfer | ComfortLine",
-    descRu: "Audi A6 Avant — стильный бизнес-универсал с просторным багажником до 4 чемоданов. До 3 пассажиров, кожаный салон, климат-контроль. Идеален для трансферов в аэропорты Вильнюса, Варшавы, Риги.",
-    descEn: "Audi A6 Avant — elegant business estate with a large boot for up to 4 suitcases. Up to 3 passengers, leather interior, climate control. Ideal for transfers to Vilnius, Warsaw and Riga airports.",
+    descRu: "Audi A6 Avant — стильный бизнес-универсал с просторным багажником до 4 чемоданов. До 3 пассажиров, кожаный салон, климат-контроль.",
+    descEn: "Audi A6 Avant — elegant business estate with a large boot for up to 4 suitcases. Up to 3 passengers, leather interior, climate control.",
     pathRu: "/трансфер-ауди-а6",
     pathEn: "/audi-a6-transfer",
     breadcrumbRu: "Audi A6 Avant",

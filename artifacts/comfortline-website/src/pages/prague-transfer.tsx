@@ -114,10 +114,10 @@ const data: RoutePageData = {
     backBtn: "← All services",
   },
   seo: {
-    titleRu: "Трансфер Минск — Прага | Прямая поездка в Чехию | ComfortLine",
-    titleEn: "Minsk to Prague Transfer | Direct Ride to Czech Republic | ComfortLine",
+    titleRu: "Трансфер Минск — Прага | Прямая поездка в Чехию",
+    titleEn: "Minsk to Prague Transfer | Direct Ride to Czech Republic",
     descRu: "Трансфер из Минска в Прагу. ~1450 км, 16–18 ч через Польшу. Фиксированная цена, опытный водитель, комфортный автомобиль для длительной поездки в столицу Чехии.",
-    descEn: "Transfer from Minsk to Prague. ~1,450 km, 16–18 hrs via Poland. Fixed price, professional driver, comfortable vehicle for long-distance travel to the Czech capital.",
+    descEn: "Transfer from Minsk to Prague. ~1,450 km, 16–18 hrs via Poland. Fixed price, professional driver.",
     pathRu: "/трансфер-прага",
     pathEn: "/prague-transfer",
     breadcrumbRu: "Трансфер в Прагу",

@@ -593,8 +593,8 @@ export default function FaqPage() {
       <Seo
         titleRu="FAQ — Частые вопросы о трансфере | ComfortLine"
         titleEn="FAQ — Transfer Questions Answered | ComfortLine"
-        descRu="Ответы на частые вопросы о трансфере ComfortLine: бронирование, цены, оплата, граница, документы, детские кресла, багаж и встречи в аэропортах Вильнюса и Варшавы."
-        descEn="Answers to frequently asked questions about ComfortLine transfers: booking, pricing, payment, borders, documents, child seats, luggage, and airport meet-and-greet at Vilnius and Warsaw."
+        descRu="Ответы на частые вопросы о трансфере ComfortLine: бронирование, цены, оплата, граница, документы, детские кресла."
+        descEn="Answers to frequently asked questions about ComfortLine transfers: booking, pricing, payment, borders, documents, child seats, luggage."
         pathRu="/faq"
         pathEn="/en/faq"
         breadcrumbsRu={[

@@ -130,7 +130,7 @@ const data: RoutePageData = {
   },
   seo: {
     titleRu: "Трансфер Минск — Лиепая | Город ветров Латвии | ComfortLine",
-    titleEn: "Minsk to Liepāja Transfer | Latvia's City of Wind | ComfortLine",
+    titleEn: "Minsk to Liepāja Transfer | Latvia's City of Wind",
     descRu: "Прямой трансфер из Минска в Лиепаю. ~650 км, 7–9 ч. Пляж, Кароста, орган Святой Троицы. Граница Урбаны–Патарниеки, фиксированная цена.",
     descEn: "Direct transfer from Minsk to Liepāja. ~650 km, 7–9 hrs. Baltic beach, Karosta, St Trinity organ. Urbany–Pāternieki border, fixed price.",
     pathRu: "/трансфер-минск-лиепая",

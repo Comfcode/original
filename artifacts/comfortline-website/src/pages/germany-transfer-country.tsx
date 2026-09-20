@@ -139,7 +139,7 @@ const data: CountryPageData = {
   },
   seo: {
     titleRu: "Трансфер Минск — Германия | Берлин, BER | ComfortLine",
-    titleEn: "Minsk to Germany Transfer | Berlin, BER Airport | ComfortLine",
+    titleEn: "Minsk to Germany Transfer | Berlin, BER Airport",
     descRu: "Прямые трансферы из Минска в Германию: Берлин (центр, аэропорт BER), Гамбург. Фиксированная цена, без пересадок.",
     descEn: "Direct transfers from Minsk to Germany: Berlin (city centre, BER airport), Hamburg. Fixed prices, door-to-door.",
     pathRu: "/трансфер-в-германию",

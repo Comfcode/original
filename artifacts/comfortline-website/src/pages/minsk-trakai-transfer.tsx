@@ -130,7 +130,7 @@ const data: RoutePageData = {
   },
   seo: {
     titleRu: "Трансфер Минск — Тракай | Замок на острове | ComfortLine",
-    titleEn: "Minsk to Trakai Transfer | Island Castle Day Trip | ComfortLine",
+    titleEn: "Minsk to Trakai Transfer | Island Castle Day Trip",
     descRu: "Прямой трансфер из Минска в Тракай. ~170 км, 2–4 ч. Средневековый замок на острове, озеро Гальве, культура Kaраимов. Фиксированная цена, граница Беларусь–Литва.",
     descEn: "Direct transfer from Minsk to Trakai. ~170 km, 2–4 hrs. Medieval island castle, Lake Galvė, Karaim culture. Fixed price, Belarus–Lithuania border crossing.",
     pathRu: "/трансфер-минск-тракай",

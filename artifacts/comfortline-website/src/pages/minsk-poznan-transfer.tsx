@@ -129,10 +129,10 @@ const data: RoutePageData = {
     backBtn: "← Poland transfers",
   },
   seo: {
-    titleRu: "Трансфер Минск — Познань | Старейший город Польши | ComfortLine",
-    titleEn: "Minsk to Poznań Transfer | Poland's Ancient Capital | ComfortLine",
+    titleRu: "Трансфер Минск — Познань | Старейший город Польши",
+    titleEn: "Minsk to Poznań Transfer | Poland's Ancient Capital",
     descRu: "Прямой трансфер из Минска в Познань. ~700 км, 7–10 ч. Старый рынок, Ратуша с козлами, Тумский собор. Граница Беларусь–Польша, фиксированная цена.",
-    descEn: "Direct transfer from Minsk to Poznań. ~700 km, 7–10 hrs. Old Market Square, Town Hall billy goats, Cathedral Island. Belarus–Poland border crossing, fixed price.",
+    descEn: "Direct transfer from Minsk to Poznań. ~700 km, 7–10 hrs. Old Market Square, Town Hall billy goats, Cathedral Island. Belarus–Poland border crossing, fixed.",
     pathRu: "/трансфер-минск-познань",
     pathEn: "/minsk-poznan-transfer",
     breadcrumbRu: "Трансфер Минск–Познань",

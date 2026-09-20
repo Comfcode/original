@@ -242,8 +242,8 @@ const data: CountryPageData = {
     detailsLabel: "View details",
   },
   seo: {
-    titleRu: "Трансфер Минск — Литва | Вильнюс, Каунас, аэропорты | ComfortLine",
-    titleEn: "Minsk to Lithuania Transfer | Vilnius, Kaunas, Airports | ComfortLine",
+    titleRu: "Трансфер Минск — Литва | Вильнюс, Каунас, аэропорты",
+    titleEn: "Minsk to Lithuania Transfer | Vilnius, Kaunas, Airports",
     descRu: "Прямые трансферы из Минска в Литву: Вильнюс (VNO), Каунас, аэропорт Каунаса (KUN), Клайпеда. Фиксированная цена, без пересадок.",
     descEn: "Direct transfers from Minsk to Lithuania: Vilnius (VNO), Kaunas, Kaunas Airport (KUN), Klaipėda. Fixed prices, no transfers.",
     pathRu: "/трансфер-в-литву",

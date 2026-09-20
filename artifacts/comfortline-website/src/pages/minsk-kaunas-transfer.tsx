@@ -129,10 +129,10 @@ const data: RoutePageData = {
     backBtn: "← Lithuania transfers",
   },
   seo: {
-    titleRu: "Трансфер Минск — Каунас | Прямая поездка в Литву | ComfortLine",
-    titleEn: "Minsk to Kaunas Transfer | Direct Ride to Lithuania | ComfortLine",
+    titleRu: "Трансфер Минск — Каунас | Прямая поездка в Литву",
+    titleEn: "Minsk to Kaunas Transfer | Direct Ride to Lithuania",
     descRu: "Прямой трансфер из Минска в Каунас. ~220 км, 3–4.5 ч. Старый город, аллея Свободы, аэропорт KUN. Фиксированная цена, опытный водитель, граница Беларусь–Литва.",
-    descEn: "Direct transfer from Minsk to Kaunas. ~220 km, 3–4.5 hrs. Old Town, Laisvės alėja, KUN airport. Fixed price, professional driver, Belarus–Lithuania border crossing.",
+    descEn: "Direct Minsk–Kaunas transfer: ~220 km, 3–4.5 hrs. Old Town, Laisvės alėja or KUN airport. Fixed price and professional driver.",
     pathRu: "/трансфер-минск-каунас",
     pathEn: "/minsk-kaunas-transfer",
     breadcrumbRu: "Трансфер Минск–Каунас",

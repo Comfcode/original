@@ -210,10 +210,10 @@ export default function MercedesVClassPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Seo
-        titleRu="Трансфер Mercedes-Benz V-Class из Минска | до 7 мест | ComfortLine"
-        titleEn="Mercedes-Benz V-Class Transfer from Minsk | Up to 7 Seats | ComfortLine"
-        descRu="Mercedes-Benz V-Class с водителем из Минска — до 7 пассажиров, 7 чемоданов, кресла бизнес-класса, 3 климат-зоны, Wi-Fi. Трансфер в аэропорты Вильнюса, Варшавы, Риги и по всей Европе. Детские кресла бесплатно."
-        descEn="Mercedes-Benz V-Class with driver from Minsk — up to 7 passengers, 7 suitcases, business-class seats, 3 climate zones, Wi-Fi. Transfers to Vilnius, Warsaw, Riga airports and across Europe. Child seats free of charge."
+        titleRu="Трансфер Mercedes-Benz V-Class из Минска | до 7 мест"
+        titleEn="Mercedes-Benz V-Class Transfer from Minsk | Up to 7 Seats"
+        descRu="Mercedes-Benz V-Class с водителем из Минска — до 7 пассажиров, 7 чемоданов, кресла бизнес-класса, 3 климат-зоны, Wi-Fi."
+        descEn="Mercedes-Benz V-Class with driver from Minsk — up to 7 passengers, 7 suitcases, business-class seats, 3 climate zones, Wi-Fi."
         pathRu="/трансфер-мерседес-в-класс"
         pathEn="/mercedes-v-class-transfer"
         breadcrumbsRu={[{ name: "Главная", path: "/" }, { name: "Автопарк", path: getHomeSectionHref("ru", "fleet") }, { name: "Mercedes V-Class", path: "/трансфер-мерседес-в-класс" }]}

@@ -129,8 +129,8 @@ const data: RoutePageData = {
     backBtn: "← Poland transfers",
   },
   seo: {
-    titleRu: "Трансфер Минск — Лодзь | Польский город кино и моды | ComfortLine",
-    titleEn: "Minsk to Łódź Transfer | Poland's Creative Capital | ComfortLine",
+    titleRu: "Трансфер Минск — Лодзь | Польский город кино и моды",
+    titleEn: "Minsk to Łódź Transfer | Poland's Creative Capital",
     descRu: "Прямой трансфер из Минска в Лодзь. ~650 км, 7–9 ч. Пётрковска, Мануфактура, киношкола. Граница Беларусь–Польша, фиксированная цена.",
     descEn: "Direct transfer from Minsk to Łódź. ~650 km, 7–9 hrs. Piotrkowska Street, Manufaktura, Film School. Belarus–Poland border crossing, fixed price.",
     pathRu: "/трансфер-минск-лодзь",

@@ -129,8 +129,8 @@ const data: RoutePageData = {
     backBtn: "← Lithuania transfers",
   },
   seo: {
-    titleRu: "Трансфер Минск — Друскининкай | СПА-курорт Литвы | ComfortLine",
-    titleEn: "Minsk to Druskininkai Transfer | Lithuania Spa Resort | ComfortLine",
+    titleRu: "Трансфер Минск — Друскининкай | СПА-курорт Литвы",
+    titleEn: "Minsk to Druskininkai Transfer | Lithuania Spa Resort",
     descRu: "Прямой трансфер из Минска в Друскининкай. ~220 км, 3–5 ч. Минеральные воды, аквапарк, Snow Arena. Фиксированная цена, граница Беларусь–Литва.",
     descEn: "Direct transfer from Minsk to Druskininkai. ~220 km, 3–5 hrs. Mineral springs, aqua park, Snow Arena ski slope. Fixed price, Belarus–Lithuania border crossing.",
     pathRu: "/трансфер-минск-друскининкай",

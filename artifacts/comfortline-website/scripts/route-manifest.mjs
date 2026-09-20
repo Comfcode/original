@@ -469,12 +469,12 @@ const manualRoutes = [
     pageType: "home",
     pathRu: "/",
     pathEn: "/en",
-    titleRu: "ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт, Минск–Варшава аэропорт",
-    titleEn: "ComfortLine — Comfortable Transfers Minsk–Vilnius Airport, Minsk–Warsaw Airport",
+    titleRu: "ComfortLine — комфортный трансфер Минск–Вильнюс аэропорт",
+    titleEn: "ComfortLine — Comfortable Transfers Minsk–Vilnius Airport",
     descRu:
-      "Комфортный трансфер из Минска в аэропорт Вильнюса (VNO) и аэропорт Варшавы (WAW, Модлин), Берлин и города Европы. Фиксированная цена, опытный водитель, комфортные авто. Заказ онлайн или +375 (44) 762-06-49.",
+      "Комфортный трансфер из Минска в аэропорт Вильнюса (VNO) и аэропорт Варшавы (WAW, Модлин), Берлин и города Европы.",
     descEn:
-      "Comfortable transfers from Minsk to Vilnius Airport (VNO) and Warsaw Airport (WAW, Modlin), Berlin and major European cities. Fixed prices, English-speaking drivers, comfortable vehicles. Book online or call +375 (44) 762-06-49.",
+      "Comfortable transfers from Minsk to Vilnius Airport (VNO) and Warsaw Airport (WAW, Modlin), Berlin and major European cities.",
     h1Ru: "ComfortLine — комфортный трансфер из Минска",
     h1En: "ComfortLine — Comfortable Transfers from Minsk",
     introRu:
@@ -490,9 +490,9 @@ const manualRoutes = [
     titleRu: "FAQ — Частые вопросы о трансфере | ComfortLine",
     titleEn: "FAQ — Transfer Questions Answered | ComfortLine",
     descRu:
-      "Ответы на частые вопросы о трансфере ComfortLine: бронирование, цены, оплата, граница, документы, детские кресла, багаж и встречи в аэропортах Вильнюса и Варшавы.",
+      "Ответы на частые вопросы о трансфере ComfortLine: бронирование, цены, оплата, граница, документы, детские кресла.",
     descEn:
-      "Answers to frequently asked questions about ComfortLine transfers: booking, pricing, payment, borders, documents, child seats, luggage, and airport meet-and-greet at Vilnius and Warsaw.",
+      "Answers to frequently asked questions about ComfortLine transfers: booking, pricing, payment, borders, documents, child seats, luggage.",
     h1Ru: "FAQ — Частые вопросы о трансфере",
     h1En: "FAQ — Transfer Questions Answered",
     introRu:
@@ -534,6 +534,38 @@ const manualRoutes = [
 ];
 
 /**
+ * Keep crawler-visible metadata within practical SERP limits. This runs after
+ * all localized route variants have been assembled, so blog suffixes and
+ * fallback values are measured exactly as prerender will emit them.
+ */
+export function validateRouteMetadata(routes) {
+  const errors = [];
+  for (const route of routes) {
+    for (const [language, pathKey] of [
+      ["ru", "pathRu"],
+      ["en", "pathEn"],
+    ]) {
+      const path = route[pathKey] || "(missing path)";
+      const title = route[`title${language === "ru" ? "Ru" : "En"}`];
+      const description = route[`desc${language === "ru" ? "Ru" : "En"}`];
+      if (!title) {
+        errors.push(`${path} [${language}] is missing title`);
+      } else if (title.length > 60) {
+        errors.push(`${path} [${language}] title is ${title.length} characters (max 60)`);
+      }
+      if (!description) {
+        errors.push(`${path} [${language}] is missing description`);
+      } else if (description.length > 160) {
+        errors.push(`${path} [${language}] description is ${description.length} characters (max 160)`);
+      }
+    }
+  }
+  if (errors.length > 0) {
+    throw new Error(`[route-manifest] Metadata validation failed:\n${errors.map((error) => `  - ${error}`).join("\n")}`);
+  }
+}
+
+/**
  * Build the full, de-duplicated route manifest (manual + auto + vehicle +
  * blog) that both prerender.mjs (HTML/meta) and og-images.mjs (social
  * preview images) consume. Every route in this list carries an `ogSlug`,
@@ -559,5 +591,6 @@ export function collectAllRoutes() {
     ...blogArticleRoutes,
   ];
 
+  validateRouteMetadata(allRoutes);
   return { allRoutes, manualRoutes, autoRoutes, vehicleRoutes, blogIndexRoute, blogArticleRoutes };
 }

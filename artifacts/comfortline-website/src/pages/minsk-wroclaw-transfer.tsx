@@ -130,7 +130,7 @@ const data: RoutePageData = {
   },
   seo: {
     titleRu: "Трансфер Минск — Вроцлав | Город мостов Польши | ComfortLine",
-    titleEn: "Minsk to Wrocław Transfer | City of Bridges, Poland | ComfortLine",
+    titleEn: "Minsk to Wrocław Transfer | City of Bridges, Poland",
     descRu: "Прямой трансфер из Минска во Вроцлав. ~850 км, 9–12 ч. Рыночная площадь, остров Тумский, 100+ мостов. Граница Беларусь–Польша, фиксированная цена.",
     descEn: "Direct transfer from Minsk to Wrocław. ~850 km, 9–12 hrs. Market Square, Cathedral Island, 100+ bridges. Belarus–Poland border crossing, fixed price.",
     pathRu: "/трансфер-минск-вроцлав",

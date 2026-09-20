@@ -198,8 +198,8 @@ const data: CountryPageData = {
     detailsLabel: "View details",
   },
   seo: {
-    titleRu: "Трансфер Минск — Латвия | Рига, аэропорт RIX, Юрмала | ComfortLine",
-    titleEn: "Minsk to Latvia Transfer | Riga, RIX Airport, Jūrmala | ComfortLine",
+    titleRu: "Трансфер Минск — Латвия | Рига, аэропорт RIX, Юрмала",
+    titleEn: "Minsk to Latvia Transfer | Riga, RIX Airport, Jūrmala",
     descRu: "Прямые трансферы из Минска в Латвию: Рига (RIX), центр Риги, Юрмала. Фиксированная цена, граница Урбаны–Патарниеки.",
     descEn: "Direct transfers from Minsk to Latvia: Riga (RIX), Riga city centre, Jūrmala. Fixed prices, Urbany–Pāternieki border.",
     pathRu: "/трансфер-в-латвию",

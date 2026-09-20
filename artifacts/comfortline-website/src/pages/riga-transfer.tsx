@@ -113,7 +113,7 @@ const data: RoutePageData = {
     backBtn: "← All services",
   },
   seo: {
-    titleRu: "Трансфер Минск — Рига | Прямая поездка в Латвию | ComfortLine",
+    titleRu: "Трансфер Минск — Рига | Прямая поездка в Латвию",
     titleEn: "Minsk to Riga Transfer | Direct Ride to Latvia | ComfortLine",
     descRu: "Прямой трансфер из Минска в центр Риги. ~470 км, 5–7 ч. Старый город, аэропорт RIX, Юрмала. Фиксированная цена, опытный водитель, граница Беларусь–Латвия.",
     descEn: "Direct transfer from Minsk to central Riga. ~470 km, 5–7 hrs. Old Town, RIX airport, Jurmala. Fixed price, professional driver, Belarus–Latvia border crossing.",

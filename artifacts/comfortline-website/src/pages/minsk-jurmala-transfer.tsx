@@ -129,8 +129,8 @@ const data: RoutePageData = {
     backBtn: "← Latvia transfers",
   },
   seo: {
-    titleRu: "Трансфер Минск — Юрмала | Балтийский курорт Латвии | ComfortLine",
-    titleEn: "Minsk to Jūrmala Transfer | Latvia's Baltic Resort | ComfortLine",
+    titleRu: "Трансфер Минск — Юрмала | Балтийский курорт Латвии",
+    titleEn: "Minsk to Jūrmala Transfer | Latvia's Baltic Resort",
     descRu: "Прямой трансфер из Минска в Юрмалу. ~490 км, 5,5–7 ч. Пляж, сосновый лес, санатории, деревянные дачи. Граница Урбаны–Патарниеки, фиксированная цена.",
     descEn: "Direct transfer from Minsk to Jūrmala. ~490 km, 5.5–7 hrs. Baltic beach, pine forest, spas, Art Nouveau dachas. Urbany–Pāternieki border, fixed price.",
     pathRu: "/трансфер-минск-юрмала",

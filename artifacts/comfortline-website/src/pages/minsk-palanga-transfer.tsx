@@ -129,8 +129,8 @@ const data: RoutePageData = {
     backBtn: "← Lithuania transfers",
   },
   seo: {
-    titleRu: "Трансфер Минск — Паланга | Прямая поездка на Балтику | ComfortLine",
-    titleEn: "Minsk to Palanga Transfer | Direct Ride to the Baltic | ComfortLine",
+    titleRu: "Трансфер Минск — Паланга | Прямая поездка на Балтику",
+    titleEn: "Minsk to Palanga Transfer | Direct Ride to the Baltic",
     descRu: "Прямой трансфер из Минска в Палангу. ~390 км, 5–7 ч. Балтийское море, янтарный музей, пирс. Фиксированная цена, опытный водитель, граница Беларусь–Литва.",
     descEn: "Direct transfer from Minsk to Palanga. ~390 km, 5–7 hrs. Baltic Sea, Amber Museum, pier. Fixed price, professional driver, Belarus–Lithuania border crossing.",
     pathRu: "/трансфер-минск-паланга",
