@@ -198,6 +198,14 @@ export interface VehicleJsonLdInput {
 }
 
 export function vehicleJsonLd(v: VehicleJsonLdInput) {
+  const offer = {
+    "@type": "Offer",
+    url: v.url,
+    availability: "https://schema.org/InStock",
+    priceCurrency: "BYN",
+    seller: { "@id": `${SITE_URL}#business` },
+  };
+
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -207,21 +215,27 @@ export function vehicleJsonLd(v: VehicleJsonLdInput) {
     image: v.image,
     url: v.url,
     provider: { "@id": `${SITE_URL}#business` },
-    offers: {
-      "@type": "Offer",
-      url: v.url,
-      availability: "https://schema.org/InStock",
-      priceCurrency: "BYN",
-      seller: { "@id": `${SITE_URL}#business` },
-    },
-    vehicle: {
-      "@type": "Vehicle",
-      name: v.name,
-      image: v.image,
-      seatingCapacity: v.seatingCapacity,
-      modelDate: v.modelDate,
-      vehicleConfiguration: v.vehicleClass,
-      brand: { "@type": "Brand", name: v.name.split(" ")[0] },
-    },
+    offers: offer,
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: v.lang === "ru" ? "Количество мест" : "Seating capacity",
+        value: v.seatingCapacity,
+      },
+      ...(v.modelDate
+        ? [{
+            "@type": "PropertyValue",
+            name: v.lang === "ru" ? "Год выпуска" : "Model year",
+            value: v.modelDate,
+          }]
+        : []),
+      ...(v.vehicleClass
+        ? [{
+            "@type": "PropertyValue",
+            name: v.lang === "ru" ? "Класс автомобиля" : "Vehicle class",
+            value: v.vehicleClass,
+          }]
+        : []),
+    ],
   };
 }

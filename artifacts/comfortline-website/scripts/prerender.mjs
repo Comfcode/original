@@ -300,6 +300,13 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
     let mainJsonLd = null;
     if (route.isVehicle) {
       const vehicleClass = isRu ? route.vehicleClassRu : route.vehicleClassEn || route.vehicleClassRu;
+      const vehicleOffer = {
+        "@type": "Offer",
+        url: canonicalUrl,
+        availability: "https://schema.org/InStock",
+        priceCurrency: "BYN",
+        seller: { "@id": `${SITE_URL}#business` },
+      };
       mainJsonLd = {
         "@context": "https://schema.org",
         "@type": "Service",
@@ -309,22 +316,30 @@ function buildHtml(template, route, lang, blogIndexRoute, ssrMarkup) {
         image: route.vehicleImage ? SITE_URL + route.vehicleImage : undefined,
         url: canonicalUrl,
         provider: { "@id": `${SITE_URL}#business` },
-        offers: {
-          "@type": "Offer",
-          url: canonicalUrl,
-          availability: "https://schema.org/InStock",
-          priceCurrency: "BYN",
-          seller: { "@id": `${SITE_URL}#business` },
-        },
-        vehicle: {
-          "@type": "Vehicle",
-          name: h1,
-          image: route.vehicleImage ? SITE_URL + route.vehicleImage : undefined,
-          seatingCapacity: route.vehicleSeats || undefined,
-          modelDate: route.vehicleYear || undefined,
-          vehicleConfiguration: vehicleClass || undefined,
-          brand: { "@type": "Brand", name: h1.split(" ")[0] },
-        },
+        offers: vehicleOffer,
+        additionalProperty: [
+          route.vehicleSeats
+            ? {
+                "@type": "PropertyValue",
+                name: isRu ? "Количество мест" : "Seating capacity",
+                value: route.vehicleSeats,
+              }
+            : null,
+          route.vehicleYear
+            ? {
+                "@type": "PropertyValue",
+                name: isRu ? "Год выпуска" : "Model year",
+                value: route.vehicleYear,
+              }
+            : null,
+          vehicleClass
+            ? {
+                "@type": "PropertyValue",
+                name: isRu ? "Класс автомобиля" : "Vehicle class",
+                value: vehicleClass,
+              }
+            : null,
+        ].filter(Boolean),
       };
     } else if (route.pageType === "service") {
       // Real route/airport/themed transfer pages: use the exact fromName/
