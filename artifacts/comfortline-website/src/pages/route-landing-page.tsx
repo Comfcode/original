@@ -56,6 +56,8 @@ export interface RouteSeo {
   pathEn: string;
   fromName?: string;
   toName?: string;
+  reverseFromName?: string;
+  reverseToName?: string;
   breadcrumbRu?: string;
   breadcrumbEn?: string;
   priceFrom?: number;
@@ -106,6 +108,20 @@ export function RouteLandingPage({ data }: Props) {
     priceCurrency: data.seo.priceCurrency,
   });
   const allJsonLd: object[] = [serviceJsonLd];
+  if (data.seo.reverseFromName && data.seo.reverseToName) {
+    allJsonLd.push(taxiServiceJsonLd({
+      lang,
+      name: isRu
+        ? `Трансфер ${data.seo.reverseFromName} — ${data.seo.reverseToName}`
+        : `${data.seo.reverseFromName} to ${data.seo.reverseToName} transfer`,
+      description: seoDesc,
+      url: SITE_URL + seoPath,
+      fromName: data.seo.reverseFromName,
+      toName: data.seo.reverseToName,
+      priceFrom: data.seo.priceFrom,
+      priceCurrency: data.seo.priceCurrency,
+    }));
+  }
   if (c.faq && c.faq.length > 0) {
     allJsonLd.push(faqJsonLd(c.faq.map((f) => ({ question: f.q, answer: f.a }))));
   }

@@ -3,12 +3,12 @@ import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 const data: RoutePageData = {
   ru: {
-    badge: "Индивидуальный трансфер в Вильнюс",
+    badge: "Трансфер Минск — Вильнюс — Минск",
 
-    title: "Индивидуальный трансфер Минск — Вильнюс",
+    title: "Трансфер Минск — Вильнюс и Вильнюс — Минск",
 
     subtitle:
-      "Прямой трансфер-такси из Минска в Вильнюс от двери до двери. Машина только для вас, удобное время выезда, фиксированная стоимость после подтверждения и доставка к отелю, дому, офису или другому адресу в городе.",
+      "Индивидуальный трансфер Минск — Вильнюс и Вильнюс — Минск от двери до двери. Заберём из центра, Старого города, у вокзала, аэропорта VNO или по другому адресу в Вильнюсе.",
 
     stats: [
       { label: "Расстояние", value: "Около 180 км" },
@@ -34,14 +34,14 @@ const data: RoutePageData = {
       },
     ],
 
-    howTitle: "Как проходит трансфер Минск — Вильнюс",
+    howTitle: "Как проходит трансфер Минск — Вильнюс в обе стороны",
 
     steps: [
       {
         icon: MapPin,
-        title: "Подача машины в Минске",
+        title: "Подача в Минске или Вильнюсе",
         desc:
-          "Водитель заберёт вас по указанному адресу в Минске в согласованное время. Не нужно самостоятельно добираться до вокзала или места сбора.",
+          "Водитель заберёт вас по согласованному адресу в Минске либо в центре Вильнюса, Старом городе, у вокзала, VNO или отеля.",
       },
       {
         icon: ShieldCheck,
@@ -51,9 +51,9 @@ const data: RoutePageData = {
       },
       {
         icon: Landmark,
-        title: "Доставка по адресу в Вильнюсе",
+        title: "Доставка от двери до двери",
         desc:
-          "Довезём до отеля, квартиры, офиса, клиники, вокзала или другого адреса в Вильнюсе. Дополнительные остановки согласуются заранее.",
+          "Довезём до отеля, квартиры, офиса, клиники, вокзала или другого согласованного адреса в Вильнюсе либо Минске.",
       },
     ],
 
@@ -84,7 +84,7 @@ const data: RoutePageData = {
       },
       {
         label: "Обратный маршрут",
-        value: "Вильнюс → Минск также доступен по предварительному заказу",
+        value: "Вильнюс → граница Литва–Беларусь → Минск; подача из центра, Старого города, у вокзала, автовокзала, VNO или по адресу",
       },
     ],
 
@@ -114,7 +114,7 @@ const data: RoutePageData = {
       "Поддержка менеджера до начала поездки",
     ],
 
-    faqTitle: "Частые вопросы о трансфере Минск — Вильнюс",
+    faqTitle: "Частые вопросы о трансферах Минск — Вильнюс — Минск",
 
     faq: [
       {
@@ -140,7 +140,7 @@ const data: RoutePageData = {
       {
         q: "Можно ли заказать обратный трансфер Вильнюс — Минск?",
         a:
-          "Да. Обратную поездку из Вильнюса в Минск можно оформить одновременно с основным трансфером или отдельным заказом. Водитель заберёт вас по указанному адресу в Вильнюсе.",
+          "Да. Трансфер Вильнюс — Минск можно оформить вместе с поездкой туда или отдельно. Водитель заберёт вас в Старом городе, центре Вильнюса, у железнодорожного или автобусного вокзала, аэропорта VNO, отеля либо другого согласованного адреса.",
       },
       {
         q: "Можно ли ехать с ребёнком или большим багажом?",
@@ -168,12 +168,12 @@ const data: RoutePageData = {
   },
 
   en: {
-    badge: "Private Transfer to Vilnius",
+    badge: "Minsk — Vilnius — Minsk Transfer",
 
-    title: "Private Transfer from Minsk to Vilnius",
+    title: "Minsk to Vilnius and Vilnius to Minsk Transfer",
 
     subtitle:
-      "Private door-to-door taxi transfer from Minsk to Vilnius. Travel in a dedicated vehicle at your preferred departure time, with a price confirmed before the journey and drop-off at your hotel, home, office or another city address.",
+      "Private Minsk to Vilnius and Vilnius to Minsk transfer. Door-to-door pickup in Vilnius Old Town, the city centre, at the railway or bus station, VNO Airport or another address.",
 
     stats: [
       { label: "Distance", value: "About 180 km" },
@@ -199,14 +199,14 @@ const data: RoutePageData = {
       },
     ],
 
-    howTitle: "How the Minsk to Vilnius transfer works",
+    howTitle: "How the transfer works in both directions",
 
     steps: [
       {
         icon: MapPin,
-        title: "Pickup in Minsk",
+        title: "Pickup in Minsk or Vilnius",
         desc:
-          "Your driver collects you from your home, hotel, office or another agreed address in Minsk at the confirmed time.",
+          "Your driver collects you from an agreed Minsk address or in central Vilnius, Old Town, at the stations, VNO Airport or your hotel.",
       },
       {
         icon: ShieldCheck,
@@ -216,9 +216,9 @@ const data: RoutePageData = {
       },
       {
         icon: Landmark,
-        title: "Drop-off in Vilnius",
+        title: "Door-to-door drop-off",
         desc:
-          "We take you directly to your hotel, apartment, office, clinic, railway station or another agreed address in Vilnius.",
+          "We take you directly to a hotel, apartment, office, clinic, station or another agreed address in Vilnius or Minsk.",
       },
     ],
 
@@ -249,7 +249,7 @@ const data: RoutePageData = {
       },
       {
         label: "Return journey",
-        value: "Vilnius to Minsk transfers are also available",
+        value: "Vilnius → Lithuania–Belarus border → Minsk, with pickup in Old Town, central Vilnius, at the stations, VNO or another address",
       },
     ],
 
@@ -279,7 +279,7 @@ const data: RoutePageData = {
       "Manager support before departure",
     ],
 
-    faqTitle: "Minsk to Vilnius transfer FAQ",
+    faqTitle: "Minsk to Vilnius and Vilnius to Minsk transfer FAQ",
 
     faq: [
       {
@@ -305,7 +305,7 @@ const data: RoutePageData = {
       {
         q: "Can I book a return transfer from Vilnius to Minsk?",
         a:
-          "Yes. The Vilnius to Minsk journey can be booked together with the outbound transfer or as a separate reservation. Pickup is available from any agreed address in Vilnius.",
+          "Yes. A Vilnius to Minsk transfer can be booked with the outbound journey or separately. Pickup is available in Vilnius Old Town, the city centre, at the railway or bus station, VNO Airport, your hotel or another agreed address.",
       },
       {
         q: "Can I travel with children or large luggage?",
@@ -334,16 +334,16 @@ const data: RoutePageData = {
 
   seo: {
     titleRu:
-      "Трансфер Минск — Вильнюс: цена, такси 24/7 | ComfortLine",
+      "Трансфер Вильнюс — Минск и обратно 24/7 | ComfortLine",
 
     titleEn:
-      "Minsk to Vilnius Private Transfer | ComfortLine",
+      "Private Vilnius to Minsk & Return Transfer | ComfortLine",
 
     descRu:
-      "Индивидуальный трансфер Минск — Вильнюс от двери до двери. Фиксированная стоимость после подтверждения, комфортные авто, детские кресла и обратный маршрут.",
+      "Трансфер Вильнюс — Минск и Минск — Вильнюс от двери до двери. Подача в центре, Старом городе, у вокзала или VNO. Цена фиксируется заранее. Комфортные авто.",
 
     descEn:
-      "Private door-to-door transfer from Minsk to Vilnius. Price confirmed before departure, comfortable vehicles, child seats and return journeys available.",
+      "Private Vilnius to Minsk and Minsk to Vilnius transfer. Pickup in central Vilnius, Old Town, at the stations or VNO Airport. Door-to-door, fixed quote.",
 
     pathRu: "/трансфер-минск-вильнюс",
     pathEn: "/minsk-vilnius-transfer",
@@ -353,14 +353,16 @@ const data: RoutePageData = {
 
     fromName: "Минск",
     toName: "Вильнюс",
+    reverseFromName: "Вильнюс",
+    reverseToName: "Минск",
 
     priceCurrency: "EUR",
 
     keywordsRu:
-      "трансфер минск вильнюс, такси минск вильнюс, индивидуальный трансфер минск вильнюс, трансфер из минска в вильнюс, заказать такси минск вильнюс, минск вильнюс трансфер цена, трансфер вильнюс минск",
+      "трансфер минск вильнюс, такси минск вильнюс, трансфер вильнюс минск, такси вильнюс минск, индивидуальный трансфер вильнюс минск, заказать трансфер из вильнюса в минск, минск вильнюс трансфер цена",
 
     keywordsEn:
-      "minsk vilnius transfer, minsk to vilnius taxi, private transfer minsk vilnius, door to door minsk vilnius, vilnius to minsk transfer",
+      "minsk vilnius transfer, minsk to vilnius taxi, vilnius minsk transfer, vilnius to minsk transfer, vilnius to minsk taxi, private transfer vilnius minsk, door to door minsk vilnius",
   },
 };
 

@@ -3,9 +3,9 @@ import { RouteLandingPage, RoutePageData } from "./route-landing-page";
 
 const data: RoutePageData = {
   ru: {
-    badge: "Трансфер в Ригу",
-    title: "Минск — Рига",
-    subtitle: "Прямой трансфер из Минска в центр Риги. Деловые поездки, отдых на Балтийском побережье или транзит через Латвию — без пересадок и автобусов.",
+    badge: "Трансфер Минск — Рига — Минск",
+    title: "Трансфер Минск — Рига и Рига — Минск",
+    subtitle: "Индивидуальный трансфер в обе стороны от двери до двери. Подача в центре Риги, Старом городе, у вокзала, аэропорта RIX, отеля или по адресу, включая Юрмалу.",
     stats: [
       { label: "Расстояние", value: "~470 км" },
       { label: "Время в пути", value: "5–7 ч" },
@@ -18,15 +18,16 @@ const data: RoutePageData = {
       { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/House_of_Blackheads_at_Dusk_3%2C_Riga%2C_Latvia_-_Diliff.jpg/1280px-House_of_Blackheads_at_Dusk_3%2C_Riga%2C_Latvia_-_Diliff.jpg", caption: "Дом Черноголовых" },
       { src: "https://images.pexels.com/photos/7245326/pexels-photo-7245326.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Балтийское побережье" },
     ],
-    howTitle: "Как проходит поездка",
+    howTitle: "Как проходит трансфер Минск — Рига в обе стороны",
     steps: [
-      { icon: MapPin, title: "Выезд из Минска", desc: "Водитель заберёт вас по указанному адресу в Минске и направится к латвийской границе." },
+      { icon: MapPin, title: "Подача по адресу", desc: "Для поездки из Минска или Риги водитель заберёт вас от дома, отеля, офиса, вокзала, аэропорта или другого согласованного места." },
       { icon: ShieldCheck, title: "Граница Беларусь–Латвия", desc: "Переход Урбаны / Патарниеки. Водитель знает актуальные очереди и помогает на КПП." },
-      { icon: Building2, title: "Рига: любой адрес", desc: "Старый город, аэропорт RIX, отель или Юрмала — доставим точно по назначению." },
+      { icon: Building2, title: "Доставка от двери до двери", desc: "В Риге доступны центр, Старый город, RIX, вокзал, отели и Юрмала; в Минске — любой согласованный городской адрес." },
     ],
     infoTitle: "Детали маршрута",
     infoRows: [
       { label: "Маршрут", value: "Минск → Полоцк → Урбаны → Даугавпилс → Рига" },
+      { label: "Обратный маршрут", value: "Рига → Даугавпилс → граница Латвия–Беларусь → Минск" },
       { label: "Расстояние", value: "~470 км" },
       { label: "Пограничный переход", value: "Урбаны / Патарниеки (Беларусь–Латвия)" },
       { label: "Время пересечения границы", value: "1–6 ч в зависимости от очереди" },
@@ -34,7 +35,7 @@ const data: RoutePageData = {
     ],
     includedTitle: "Что включено",
     included: [
-      "Подача от адреса в Минске",
+      "Подача по адресу в Минске или Риге",
       "Прямой маршрут без пересадок",
       "Помощь водителя на границе",
       "Питьевая вода и комфортный салон",
@@ -50,7 +51,26 @@ const data: RoutePageData = {
       "Работаем 24/7, включая праздники",
       "Перевозим с детьми и питомцами",
     ],
-    ctaTitle: "Заказать трансфер Минск–Рига",
+    faqTitle: "Частые вопросы о трансферах Минск — Рига — Минск",
+    faq: [
+      {
+        q: "Можно ли заказать трансфер Рига — Минск?",
+        a: "Да. Поездку из Риги в Минск можно заказать отдельно или вместе с трансфером туда. Водитель заберёт вас в центре, Старом городе, у железнодорожного или автобусного вокзала, аэропорта RIX, отеля либо другого согласованного адреса.",
+      },
+      {
+        q: "Доступна ли подача из аэропорта Риги RIX или Юрмалы?",
+        a: "Да. При бронировании укажите номер рейса и терминал для встречи в RIX либо точный адрес в Юрмале. Время и возможная доплата за удалённую подачу подтверждаются заранее.",
+      },
+      {
+        q: "Сколько занимает поездка между Ригой и Минском?",
+        a: "Расстояние составляет около 470 км, а дорога без учёта границы обычно занимает 5–7 часов. Итоговое время зависит от маршрута, дорожной обстановки и продолжительности пограничного контроля.",
+      },
+      {
+        q: "Можно ли заказать автомобиль для семьи или группы?",
+        a: "Да. Доступны легковые автомобили и минивэны. Сообщите количество пассажиров, багажа и возраст детей, чтобы менеджер подобрал машину и детские кресла.",
+      },
+    ],
+    ctaTitle: "Заказать трансфер Минск — Рига — Минск",
     ctaDesc: "Оставьте заявку — менеджер свяжется с вами в ближайшее время и назовёт точную стоимость.",
     ctaBtn: "Оставить заявку",
     prefilledFrom: "Минск",
@@ -58,9 +78,9 @@ const data: RoutePageData = {
     backBtn: "← Все услуги",
   },
   en: {
-    badge: "Riga Transfer",
-    title: "Minsk — Riga",
-    subtitle: "Direct private transfer from Minsk to Riga city centre. Business meetings, Baltic seaside breaks or onward travel through Latvia — no changes, no buses.",
+    badge: "Minsk — Riga — Minsk Transfer",
+    title: "Minsk to Riga and Riga to Minsk Transfer",
+    subtitle: "Private door-to-door transfer in both directions. Pickup in central Riga, Old Town, at the stations, RIX Airport, your hotel or another address, including Jūrmala.",
     stats: [
       { label: "Distance", value: "~470 km" },
       { label: "Travel time", value: "5–7 hrs" },
@@ -73,15 +93,16 @@ const data: RoutePageData = {
       { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/House_of_Blackheads_at_Dusk_3%2C_Riga%2C_Latvia_-_Diliff.jpg/1280px-House_of_Blackheads_at_Dusk_3%2C_Riga%2C_Latvia_-_Diliff.jpg", caption: "House of the Blackheads" },
       { src: "https://images.pexels.com/photos/7245326/pexels-photo-7245326.jpeg?auto=compress&cs=tinysrgb&w=800", caption: "Baltic seaside" },
     ],
-    howTitle: "How the transfer works",
+    howTitle: "How the transfer works in both directions",
     steps: [
-      { icon: MapPin, title: "Departure from Minsk", desc: "Your driver picks you up at your Minsk address and heads for the Latvian border." },
+      { icon: MapPin, title: "Pickup at your address", desc: "For departures from Minsk or Riga, your driver collects you from a home, hotel, office, station, airport or another agreed location." },
       { icon: ShieldCheck, title: "Belarus–Latvia border", desc: "Urbany / Pāternieki crossing. Your driver knows current queue conditions and assists at the checkpoint." },
-      { icon: Building2, title: "Riga — any address", desc: "Old Town, RIX Airport, your hotel or Jūrmala beach — wherever you need to go." },
+      { icon: Building2, title: "Door-to-door drop-off", desc: "Riga city centre, Old Town, RIX, the stations, hotels and Jūrmala are covered, as well as agreed addresses across Minsk." },
     ],
     infoTitle: "Route Details",
     infoRows: [
       { label: "Route", value: "Minsk → Polotsk → Urbany → Daugavpils → Riga" },
+      { label: "Return route", value: "Riga → Daugavpils → Latvia–Belarus border → Minsk" },
       { label: "Distance", value: "~470 km" },
       { label: "Border crossing", value: "Urbany / Pāternieki (Belarus–Latvia)" },
       { label: "Border crossing time", value: "1–6 hrs depending on queues" },
@@ -89,7 +110,7 @@ const data: RoutePageData = {
     ],
     includedTitle: "What's included",
     included: [
-      "Pickup from your Minsk address",
+      "Pickup from your address in Minsk or Riga",
       "Direct route — no transfers",
       "Driver assistance at the border",
       "Bottled water and comfortable cabin",
@@ -105,7 +126,26 @@ const data: RoutePageData = {
       "Available 24/7 including public holidays",
       "Kids and pets welcome",
     ],
-    ctaTitle: "Book Minsk–Riga Transfer",
+    faqTitle: "Minsk to Riga and Riga to Minsk transfer FAQ",
+    faq: [
+      {
+        q: "Can I book a Riga to Minsk transfer?",
+        a: "Yes. A Riga to Minsk transfer can be booked separately or together with the outbound journey. Pickup is available in central Riga, Old Town, at the railway or bus station, RIX Airport, your hotel or another agreed address.",
+      },
+      {
+        q: "Can you pick me up at Riga Airport RIX or in Jūrmala?",
+        a: "Yes. For RIX pickup, provide your flight number and terminal. For Jūrmala, provide the exact address. The pickup time and any charge for the additional distance are confirmed in advance.",
+      },
+      {
+        q: "How long is the journey between Riga and Minsk?",
+        a: "The distance is approximately 470 km, and driving normally takes 5–7 hours excluding border formalities. Total journey time depends on the route, traffic, queues and passport or customs controls.",
+      },
+      {
+        q: "Can I book a vehicle for a family or group?",
+        a: "Yes. Sedans and minivans are available. Share the number of passengers, luggage and children's ages so that a suitable vehicle and child seats can be arranged.",
+      },
+    ],
+    ctaTitle: "Book Minsk — Riga — Minsk Transfer",
     ctaDesc: "Submit a request and our manager will contact you shortly with an exact price.",
     ctaBtn: "Request a booking",
     prefilledFrom: "Minsk",
@@ -113,16 +153,21 @@ const data: RoutePageData = {
     backBtn: "← All services",
   },
   seo: {
-    titleRu: "Трансфер Минск — Рига | Прямая поездка в Латвию",
-    titleEn: "Minsk to Riga Transfer | Direct Ride to Latvia | ComfortLine",
-    descRu: "Прямой трансфер из Минска в центр Риги. ~470 км, 5–7 ч. Старый город, аэропорт RIX, Юрмала. Фиксированная цена, опытный водитель, граница Беларусь–Латвия.",
-    descEn: "Direct transfer from Minsk to central Riga. ~470 km, 5–7 hrs. Old Town, RIX airport, Jurmala. Fixed price, professional driver, Belarus–Latvia border crossing.",
+    titleRu: "Трансфер Рига — Минск и обратно 24/7 | ComfortLine",
+    titleEn: "Private Riga to Minsk & Return Transfer | ComfortLine",
+    descRu: "Трансфер Рига — Минск и Минск — Рига от двери до двери. Подача в центре, Старом городе, у вокзала, RIX или в Юрмале. Цена фиксируется заранее. Доступно 24/7.",
+    descEn: "Private Riga to Minsk and Minsk to Riga transfer. Pickup in central Riga, Old Town, at the stations, RIX Airport or Jūrmala. Door-to-door service. Book 24/7.",
     pathRu: "/трансфер-рига",
     pathEn: "/riga-transfer",
     breadcrumbRu: "Трансфер в Ригу",
     breadcrumbEn: "Minsk — Riga",
     fromName: "Минск",
     toName: "Рига",
+    reverseFromName: "Рига",
+    reverseToName: "Минск",
+    priceCurrency: "EUR",
+    keywordsRu: "трансфер минск рига, такси минск рига, трансфер рига минск, такси рига минск, индивидуальный трансфер рига минск, заказать трансфер из риги в минск, трансфер рига минск аэропорт RIX",
+    keywordsEn: "minsk riga transfer, minsk to riga taxi, riga minsk transfer, riga to minsk transfer, riga to minsk taxi, private transfer riga minsk, rix airport to minsk transfer",
   },
 };
 

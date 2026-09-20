@@ -6,9 +6,9 @@ import {
 
 const data: RoutePageData = {
   ru: {
-    badge: "Такси и индивидуальный трансфер в Варшаву",
+    badge: "Трансфер Минск — Варшава — Минск",
 
-    title: "Индивидуальное такси Минск — Варшава",
+    title: "Трансфер Минск — Варшава и Варшава — Минск",
 
     subtitle:
        "Индивидуальное такси Минск — Варшава и обратно от двери до двери. Отдельный автомобиль без попутчиков, подача по адресу и стоимость поездки по запросу.",
@@ -51,14 +51,14 @@ const data: RoutePageData = {
       },
     ],
 
-    howTitle: "Как проходит индивидуальное такси Минск — Варшава",
+    howTitle: "Как проходит трансфер Минск — Варшава в обе стороны",
 
     steps: [
       {
         icon: MapPin,
-        title: "Подача автомобиля в Минске",
+        title: "Подача в Минске или Варшаве",
         desc:
-          "Водитель заберёт вас от дома, гостиницы, офиса, вокзала или другого согласованного адреса в Минске. Не требуется добираться до общего места отправления.",
+          "Водитель заберёт вас по адресу в Минске либо в центре Варшавы, районах Śródmieście, Mokotów, Wola, у вокзала или отеля.",
       },
       {
         icon: ShieldCheck,
@@ -68,9 +68,9 @@ const data: RoutePageData = {
       },
       {
         icon: Building2,
-        title: "Доставка по адресу в Варшаве",
+        title: "Доставка от двери до двери",
         desc:
-          "Довезём в центр Варшавы, Śródmieście, Mokotów, Wola, к Warszawa Centralna, Warszawa Zachodnia, гостинице, квартире, офису или другому согласованному адресу.",
+          "Довезём до согласованного адреса в Варшаве либо Минске. Дополнительные остановки можно согласовать до поездки.",
       },
     ],
 
@@ -154,7 +154,7 @@ const data: RoutePageData = {
     ],
 
     faqTitle:
-      "Частые вопросы об индивидуальном трансфере Минск — Варшава",
+      "Частые вопросы о трансферах Минск — Варшава — Минск",
 
     faq: [
       {
@@ -234,9 +234,9 @@ const data: RoutePageData = {
   },
 
   en: {
-    badge: "Private Taxi and Transfer to Warsaw",
+    badge: "Minsk — Warsaw — Minsk Transfer",
 
-    title: "Private Taxi from Minsk to Warsaw",
+    title: "Minsk to Warsaw and Warsaw to Minsk Transfer",
 
     subtitle:
        "Private door-to-door taxi from Minsk to Warsaw and back. Travel in a dedicated vehicle with no shared passengers, pickup at your address and a price provided on request.",
@@ -277,14 +277,14 @@ const data: RoutePageData = {
       },
     ],
 
-    howTitle: "How the private Minsk to Warsaw taxi works",
+    howTitle: "How the transfer works in both directions",
 
     steps: [
       {
         icon: MapPin,
-        title: "Pickup in Minsk",
+        title: "Pickup in Minsk or Warsaw",
         desc:
-          "Your driver collects you from your home, hotel, office, railway station or another agreed address in Minsk.",
+          "Your driver collects you from a Minsk address or in central Warsaw, Śródmieście, Mokotów, Wola, at a station or your hotel.",
       },
       {
         icon: ShieldCheck,
@@ -294,9 +294,9 @@ const data: RoutePageData = {
       },
       {
         icon: Building2,
-        title: "Drop-off in Warsaw",
+        title: "Door-to-door drop-off",
         desc:
-          "We take you directly to central Warsaw, Śródmieście, Mokotów, Wola, Warszawa Centralna, Warszawa Zachodnia, a hotel, apartment, office or another agreed address.",
+          "We take you directly to the agreed address in Warsaw or Minsk. Additional stops can be arranged before the journey.",
       },
     ],
 
@@ -378,7 +378,7 @@ const data: RoutePageData = {
       "Additional stops can be arranged in advance",
     ],
 
-    faqTitle: "Minsk to Warsaw private transfer FAQ",
+    faqTitle: "Minsk to Warsaw and Warsaw to Minsk transfer FAQ",
 
     faq: [
       {
@@ -453,16 +453,16 @@ const data: RoutePageData = {
 
   seo: {
     titleRu:
-       "Цены на такси Минск — Варшава по запросу | ComfortLine",
+       "Трансфер Варшава — Минск и обратно 24/7 | ComfortLine",
 
     titleEn:
-       "Minsk to Warsaw Taxi: Price on Request | ComfortLine",
+       "Private Warsaw to Minsk & Return Transfer | ComfortLine",
 
     descRu:
-       "Индивидуальное такси Минск — Варшава и обратно. Цены на такси по запросу: без попутчиков, подача по адресу, фиксированная стоимость после подтверждения.",
+       "Трансфер Варшава — Минск и Минск — Варшава. Подача в центре, районах Śródmieście, Mokotów, Wola или у вокзалов. Цена по запросу. Без попутчиков, 24/7.",
 
     descEn:
-       "Private Minsk to Warsaw taxi and return journeys. Price on request, door-to-door service with no shared passengers and a fixed price after confirmation.",
+       "Private Warsaw to Minsk and Minsk to Warsaw transfer. Pickup in central Warsaw, Śródmieście, Mokotów, Wola or at main stations. Door-to-door service, 24/7.",
 
     pathRu: "/трансфер-варшава",
     pathEn: "/warsaw-transfer",
@@ -472,13 +472,15 @@ const data: RoutePageData = {
 
     fromName: "Минск",
     toName: "Варшава",
+    reverseFromName: "Варшава",
+    reverseToName: "Минск",
 
 
     keywordsRu:
-      "такси минск варшава, индивидуальное такси минск варшава, индивидуальный трансфер минск варшава, трансфер минск варшава цена, такси варшава минск, частный трансфер варшава минск, минск варшава без попутчиков, заказать такси минск варшава",
+      "такси минск варшава, индивидуальный трансфер минск варшава, трансфер варшава минск, такси варшава минск, частный трансфер варшава минск, заказать трансфер из варшавы в минск, минск варшава без попутчиков",
 
     keywordsEn:
-      "minsk to warsaw taxi, minsk warsaw taxi price, private transfer minsk warsaw, warsaw to minsk taxi, door to door minsk warsaw, minsk warsaw transfer",
+      "minsk to warsaw taxi, private transfer minsk warsaw, warsaw minsk transfer, warsaw to minsk transfer, warsaw to minsk taxi, private transfer warsaw minsk, door to door minsk warsaw",
   },
 };
 
