@@ -21,8 +21,8 @@ const data: CountryPageData = {
       {
         cityRu: "Берлин — аэропорт BER",
         cityEn: "Berlin BER Airport",
-        descRu: "Единственный аэропорт Берлина. Рейсы Lufthansa, Ryanair, easyJet и других авиакомпаний.",
-        descEn: "Berlin's only airport. Lufthansa, Ryanair, easyJet and more.",
+        descRu: "Трансфер Минск — аэропорт Берлин-Бранденбург (BER) до нужного терминала. На странице маршрута в Берлин описаны дорога через Польшу и условия поездки.",
+        descEn: "Minsk to Berlin Brandenburg Airport (BER) transfer with terminal drop-off. The Berlin route page covers the journey via Poland and travel details.",
         distanceKm: "~1170 км",
         travelTime: "11–14 ч",
         href: "/berlin-transfer",
@@ -33,8 +33,8 @@ const data: CountryPageData = {
       {
         cityRu: "Гамбург",
         cityEn: "Hamburg",
-        descRu: "Второй по величине город Германии, крупный портовый и деловой центр.",
-        descEn: "Germany's second largest city, a major port and business hub.",
+        descRu: "Дальний трансфер Минск — Гамбург через Польшу и Берлин до отеля, порта, вокзала или частного адреса. Стоимость и время выезда рассчитываются по запросу.",
+        descEn: "Long-distance Minsk to Hamburg transfer via Poland and Berlin, with drop-off at a hotel, port, station or private address. Timing and price are quoted on request.",
         distanceKm: "~1400 км",
         travelTime: "по запросу",
         href: "/germany-transfer",
@@ -89,8 +89,8 @@ const data: CountryPageData = {
       {
         cityRu: "Берлин — аэропорт BER",
         cityEn: "Berlin BER Airport",
-        descRu: "Единственный аэропорт Берлина. Рейсы Lufthansa, Ryanair, easyJet и других авиакомпаний.",
-        descEn: "Berlin's only airport. Lufthansa, Ryanair, easyJet and more.",
+        descRu: "Трансфер Минск — аэропорт Берлин-Бранденбург (BER) до нужного терминала. На странице маршрута в Берлин описаны дорога через Польшу и условия поездки.",
+        descEn: "Minsk to Berlin Brandenburg Airport (BER) transfer with terminal drop-off. The Berlin route page covers the journey via Poland and travel details.",
         distanceKm: "~1170 km",
         travelTime: "11–14 hrs",
         href: "/berlin-transfer",
@@ -101,8 +101,8 @@ const data: CountryPageData = {
       {
         cityRu: "Гамбург",
         cityEn: "Hamburg",
-        descRu: "Второй по величине город Германии, крупный портовый и деловой центр.",
-        descEn: "Germany's second largest city, a major port and business hub.",
+        descRu: "Дальний трансфер Минск — Гамбург через Польшу и Берлин до отеля, порта, вокзала или частного адреса. Стоимость и время выезда рассчитываются по запросу.",
+        descEn: "Long-distance Minsk to Hamburg transfer via Poland and Berlin, with drop-off at a hotel, port, station or private address. Timing and price are quoted on request.",
         distanceKm: "~1400 km",
         travelTime: "on request",
         href: "/germany-transfer",

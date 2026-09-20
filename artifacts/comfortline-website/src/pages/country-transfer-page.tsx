@@ -148,7 +148,14 @@ export function CountryTransferPage({ data }: Props) {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />
-                        <h3 className="font-bold text-foreground text-base">{city}</h3>
+                        <h3 className="font-bold text-foreground text-base">
+                          <a
+                            href={href}
+                            className="hover:text-primary transition-colors"
+                          >
+                            {city}
+                          </a>
+                        </h3>
                       </div>
                       <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
                     </div>
