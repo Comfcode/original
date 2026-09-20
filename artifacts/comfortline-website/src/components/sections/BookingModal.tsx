@@ -246,10 +246,10 @@ export function BookingModal({
 
                 {/* Date */}
                 <div>
-                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="booking-modal-date" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
                     {b.date}
                   </label>
-                  <input type="date" value={date} onChange={e => setDate(e.target.value)}
+                  <input id="booking-modal-date" type="date" value={date} onChange={e => setDate(e.target.value)}
                     min={new Date().toISOString().split("T")[0]}
                     className={`${inputCls} [color-scheme:light]`}
                   />

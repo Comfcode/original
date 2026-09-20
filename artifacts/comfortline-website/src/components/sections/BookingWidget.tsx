@@ -288,10 +288,10 @@ export function BookingWidget() {
         {/* DATE */}
         <div className="flex items-center px-4 py-2 bg-white border border-gray-200 rounded-xl">
           <FieldShell className="flex-1">
-            <input type="date" value={date} aria-label={b.date} onChange={e => setDate(e.target.value)}
+            <input id="booking-widget-date-mobile" type="date" value={date} onChange={e => setDate(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
               className={`${inputBase} [color-scheme:light] peer`} />
-            <label className={floatingLabel}>{b.date}</label>
+            <label htmlFor="booking-widget-date-mobile" className={floatingLabel}>{b.date}</label>
           </FieldShell>
         </div>
 
@@ -375,10 +375,10 @@ export function BookingWidget() {
         {/* DATE */}
         <div className="flex-1 flex items-center gap-2 px-5 py-4 min-w-0">
           <FieldShell className="flex-1">
-            <input type="date" value={date} onChange={e => setDate(e.target.value)}
+            <input id="booking-widget-date-desktop" type="date" value={date} onChange={e => setDate(e.target.value)}
               min={new Date().toISOString().split("T")[0]}
               className={`${inputBase} [color-scheme:light] peer`} />
-            <label className={floatingLabel}>{b.date}</label>
+            <label htmlFor="booking-widget-date-desktop" className={floatingLabel}>{b.date}</label>
           </FieldShell>
         </div>
 
