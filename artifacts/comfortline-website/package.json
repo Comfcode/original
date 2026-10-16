@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "node scripts/convert-images.mjs && node scripts/generate-blog-sitemap.mjs && vite build --config vite.config.ts && node scripts/og-images.mjs && node scripts/prerender.mjs && node scripts/indexnow.mjs",
+    "build": "pnpm run check:blog:source && node scripts/convert-images.mjs && node scripts/generate-blog-sitemap.mjs && vite build --config vite.config.ts && node scripts/og-images.mjs && node scripts/prerender.mjs && node scripts/indexnow.mjs",
+    "check:blog:source": "node scripts/check-border-guide.mjs && node --test scripts/tests/blog-content-validation.test.mjs && node scripts/check-blog-content.mjs --source",
+    "check:blog": "pnpm run check:blog:source && node scripts/check-blog-content.mjs --rendered",
     "sitemap:blog": "node scripts/generate-blog-sitemap.mjs",
     "webp": "node scripts/convert-images.mjs",
     "og": "node scripts/og-images.mjs",

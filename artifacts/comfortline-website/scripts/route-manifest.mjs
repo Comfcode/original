@@ -390,6 +390,7 @@ function collectBlogRoutes() {
     const intro = field(objStr, "intro");
     const introEn = field(objStr, "introEn");
     const dateISO = field(objStr, "dateISO");
+    const dateModified = field(objStr, "dateModified");
     const category = field(objStr, "category");
     const categoryEn = field(objStr, "categoryEn");
     const tagsMatch = /\btags:\s*\[([^\]]*)\]/.exec(objStr);
@@ -424,7 +425,7 @@ function collectBlogRoutes() {
       introEn: introEn || intro,
       isArticle: true,
       datePublished: dateISO,
-      dateModified: dateISO,
+      dateModified: dateModified || dateISO,
       section: category,
       sectionEn: categoryEn || category,
       keywords: tags.join(", "),

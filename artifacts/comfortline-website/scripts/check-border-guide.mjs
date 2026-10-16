@@ -1,25 +1,8 @@
 // Focused offline checks for the source inspection and safety decisions.
 // Run: node artifacts/comfortline-website/scripts/check-border-guide.mjs
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import { resolve, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import ts from "typescript";
-
-const root = resolve(dirname(fileURLToPath(import.meta.url)), "../src/data");
-const cache = new Map();
-function load(name) {
-  const path = resolve(root, `${name}.ts`);
-  if (cache.has(path)) return cache.get(path).exports;
-  const module = { exports: {} };
-  cache.set(path, module);
-  const code = ts.transpileModule(readFileSync(path, "utf8"), {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
-    fileName: path,
-  }).outputText;
-  new Function("require", "module", "exports", code)((p) => load(p), module, module.exports);
-  return module.exports;
-}
+import { createDataLoader } from "./lib/load-blog-data.mjs";
+const load = createDataLoader();
 
 const { evaluate, DEFAULT_INPUT, SOURCES } = load("border-checker-logic");
 const { SOURCE_REVIEW, SOURCE_REVIEW_DATE } = load("border-source-review");

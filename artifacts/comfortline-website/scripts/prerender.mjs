@@ -6,6 +6,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { createServer as createViteServer } from "vite";
 import { JSDOM } from "jsdom";
 import { collectAllRoutes, SITE_URL, DEFAULT_OG_IMAGE } from "./route-manifest.mjs";
+import { createDataLoader } from "./lib/load-blog-data.mjs";
+import { validateRenderedBlogPages } from "./lib/blog-content-validation.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -438,6 +440,9 @@ async function main() {
     process.exit(1);
   }
   const template = fs.readFileSync(templatePath, "utf8");
+  if (!template.includes('<div id="root"></div>')) {
+    throw new Error("The HTML template is already prerendered or has no empty #root. Run a fresh Vite build before prerendering; reusing homepage output would copy its metadata/content into other routes.");
+  }
 
   const { allRoutes, manualRoutes, autoRoutes, vehicleRoutes, blogIndexRoute, blogArticleRoutes } = collectAllRoutes();
 
@@ -456,6 +461,12 @@ async function main() {
   }
 
   await vite.close();
+
+  // Never send a blog summary fallback, stale metadata, or lost translated
+  // content on to IndexNow/publishing as though prerendering had succeeded.
+  const { ARTICLES } = createDataLoader()("blog-articles");
+  const validatedBlogPages = validateRenderedBlogPages(ARTICLES, DIST);
+  console.log(`[prerender] offline blog regression checks passed for ${validatedBlogPages} localized pages.`);
 
   console.log(
     `[prerender] wrote ${written.length} files for ${allRoutes.length} routes (${manualRoutes.length} manual, ${autoRoutes.length} auto, ${vehicleRoutes.length} vehicle, ${1 + blogArticleRoutes.length} blog):`,
