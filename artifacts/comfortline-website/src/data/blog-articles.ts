@@ -51,17 +51,18 @@ export const ARTICLES: Article[] = [
     slug: "как-въехать-в-беларусь-на-автомобиле-2026",
     slugEn: "driving-to-belarus-by-car-2026-rules-checker",
     titleEn: "Belarus by Car: Rules & Checker 2026",
-    descriptionEn: "Driving to Belarus from Poland, Lithuania or Latvia in 2026: passports, vehicle sanctions, BY plates and customs, with a private preliminary trip checker.",
+    descriptionEn: "Belarus by car: dated source checks, vehicle sanctions, visas and BY-plate return risks. Preliminary checker, with verification gaps clearly marked.",
     ogSlug: "blog-v-belarus-na-avtomobile-2026",
     title: "Въезд в Беларусь на авто: правила 2026",
     description:
-      "Въезд в Беларусь из Польши, Литвы и Латвии на авто в 2026 году: документы, санкции ЕС, номера BY и таможня. Интерактивная анкета для предварительной проверки.",
+      "В Беларусь на авто: датированная сверка источников, санкции, безвиз и риски возврата на BY-номерах. Предварительная анкета с явно указанными пробелами проверки.",
     intro:
-      "Законность поездки на автомобиле в Беларусь не сводится к одному паспорту или номерному знаку: отдельно проверяются человек, переход, санкции на вывоз машины, возврат в ЕС и таможня ЕАЭС. Ниже — разбор по исследованию от 16 октября 2026 года и анкета предварительной проверки, которая работает только в вашем браузере.",
+      "Законность поездки на автомобиле в Беларусь не сводится к одному паспорту или номерному знаку: отдельно проверяются человек, переход, санкции, возврат в ЕС и таможня ЕАЭС. Исследование и редакционная сверка доступных источников датированы 16 октября 2026 года; ниже явно отмечены неподтверждённые положения. Анкета работает только в вашем браузере и не выдаёт разрешений.",
     introEn:
-      "Driving to Belarus is not decided by one passport or one number plate: the traveller, the crossing, EU export sanctions, the return to the EU and EAEU customs are separate checks. Below: a guide based on research dated 16 October 2026, plus a preliminary screening form that runs only in your browser.",
+      "Driving to Belarus is not decided by one passport or one number plate: traveller, crossing, sanctions, EU return and EAEU customs are separate checks. Research and editorial inspection of accessible sources are dated 16 October 2026; unconfirmed points are explicitly marked below. The browser-only checker does not issue permission.",
     dateISO: "2026-10-16",
-    readingMin: 16,
+    dateModified: "2026-10-16",
+    readingMin: 20,
     category: "Граница",
     categoryEn: "Border",
     tags: ["граница", "Беларусь", "автомобиль", "санкции", "таможня", "безвиз", "номера BY", "Польша", "Литва", "Латвия"],

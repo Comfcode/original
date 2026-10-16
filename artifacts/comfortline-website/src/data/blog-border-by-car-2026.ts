@@ -2,9 +2,19 @@
 // (metadata stays inline there for the build-time parsers). Research dated 2026-10-16.
 import type { Block } from "./blog-articles";
 import { SOURCES } from "./border-checker-logic";
+import { SOURCE_REVIEW, SOURCE_REVIEW_DATE, VISA_DETAIL_URL, POLISH_STATUS_URL } from "./border-source-review";
 
 const sourceLinks = (lang: "ru" | "en"): Block[] =>
-  SOURCES.map((s) => ({ type: "link", href: s.url, label: `[${s.id}] ${lang === "ru" ? s.ru : s.en}` }));
+  [
+    ...SOURCES.map((s): Block => ({
+      type: "link",
+      href: s.url,
+      label: `[${s.id}] ${s[lang]}`,
+      description: `${lang === "ru" ? "Редакционная сверка" : "Editorial source inspection"} ${SOURCE_REVIEW_DATE}. ${SOURCE_REVIEW[s.id][lang]}`,
+    })),
+    { type: "link", href: VISA_DETAIL_URL, label: lang === "ru" ? "Дополнение к S11/S21: ГПК — полный список, документы и условия безвиза" : "Supplement to S11/S21: Border Committee — full visa-waiver list, documents and conditions" },
+    { type: "link", href: POLISH_STATUS_URL, label: lang === "ru" ? "Дополнение к S15: таблица выезда из Польши в Беларусь" : "Supplement to S15: Poland-to-Belarus departure table" },
+  ];
 
 export const BORDER_BY_CAR_BODY_RU: Block[] = [
   {
@@ -16,21 +26,22 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
     type: "editorial-correction",
     heading: "Важно о безопасности и праве",
     text:
-      "Это исследовательский информационный материал, а не заключение юриста или разрешение таможни. Проверка по анкете — предварительный скрининг, а не официальный правовой статус. Правила в статье актуальны на 16 октября 2026 года по данным исследования и не проверялись нами в реальном времени. Пункты пропуска могут закрыться без предупреждения. Некоторые государственные ведомства рекомендуют не совершать поездки в Беларусь; отдельно проверьте рекомендации МИД своей страны.\n\nНе передавайте паспортные данные и VIN в публичные формы без необходимости. Перед поездкой сверьтесь с официальными ведомствами.",
+      "Это исследовательский информационный материал, а не заключение юриста или разрешение таможни. Проверка по анкете — предварительный скрининг, а не официальный правовой статус. Исследование от 16 октября 2026 года отдельно сверено редакцией с доступными текстами всех 26 ссылок в тот же день. Объём подтверждения и пробелы указаны у каждого источника ниже: это не официальное одобрение и не мониторинг в реальном времени. В частности, применение литовских исключений для BY-номеров после 18.01.2025 и полная актуальная тарифная таблица ЕАЭС не подтверждены. Пункты пропуска могут закрыться без предупреждения. FCDO рекомендует отказаться от любых поездок в Беларусь; проверьте также рекомендации МИД своей страны. [S6][S22][S23]\n\nНе передавайте паспортные данные и VIN в публичные формы без необходимости. Перед поездкой сверьтесь с официальными ведомствами.",
   },
   { type: "h2", id: "checker", text: "Интерактивная проверка: 15 вопросов об авто и маршруте" },
   { type: "p", text: "Заполните анкету ниже. Ответы обрабатываются только в вашем браузере и никуда не передаются. Результат — перечень рисков и вопросов к официальным источникам, а не «зелёный свет»." },
   { type: "borderChecker" },
-  { type: "h2", id: "crossings", text: "1. Где можно пересечь границу на легковом автомобиле" },
+  { type: "h2", id: "crossings", text: "1. Маршруты легковых авто в датированных пограничных сообщениях" },
   {
     type: "table",
-    headers: ["Направление", "Переходы для легковых авто (по последним подтверждениям)", "Особенности"],
+    headers: ["Направление", "Переходы, указанные в датированных источниках", "Особенности"],
     rows: [
       ["Польша → Беларусь", "Terespol — Brest; Bobrowniki — Berestovitsa; Kuźnica — Bruzgi", "Bobrowniki: легковые и автобусы; Kuźnica: легковые, без автобусов. Połowce и Sławatycze закрыты; Koroszczyn/Kukuryki — грузовое направление. [S8][S15]"],
-      ["Литва → Беларусь", "Medininkai — Kamenny Log; Šalčininkai — Benyakoni", "Оба перехода восстановили работу в ноябре 2025 г. Kotlovka/Lavoriškės и Privalka/Raigardas не считайте доступной альтернативой без нового официального подтверждения. [S9][S21]"],
-      ["Латвия → Беларусь", "Pāternieki — Grigorovshchina", "Регистрация ТС в электронной очереди обязательна, в том числе для легковых; летом 2026 г. были технические перерывы. Silene — не обычная альтернатива. [S10][S25]"],
+      ["Литва → Беларусь", "Medininkai — Kamenny Log; Šalčininkai — Benyakoni", "Открытие с 00:00 20.11.2025 по объявлению VSAT от 19.11.2025 (обновлено 21.11): автотранспорт, без пешеходов и велосипедов. Работа в день поездки не подтверждается этим объявлением. Kotlovka/Lavoriškės и Privalka/Raigardas — не запасные варианты без нового подтверждения. [S9][S21]"],
+      ["Латвия → Беларусь", "Pāternieki — Grigorovshchina", "Запись в ERRS обязательна для выезда из Латвии, включая легковые, кроме законных исключений. Перерыв 31.07.2026, возобновление очереди 04.08.2026. Это не оперативное подтверждение работы; Silene не считайте альтернативой. [S10][S12][S25]"],
     ],
   },
+  { type: "p", text: "Редакционная сверка 16.10.2026: польская таблица S15 показывает легковой поток в Terespol, Bobrowniki и Kuźnica и приостановку движения в Połowce/Sławatycze. Для Литвы проверено историческое объявление, для Латвии — правила записи и сообщения оператора; непрерывная работа этих переходов в день вашей поездки не подтверждена. Проверяйте обе стороны границы перед выездом." },
   { type: "p", text: "Правила одного государства нельзя переносить на другое: например, допуск машин с белорусскими номерами в Польше отличается от литовского и латвийского. Прохождение очереди не заменяет ни визы, ни таможенную проверку." },
   { type: "h2", id: "sanctions", text: "2. Санкции ЕС: объём двигателя, клиренс, цена и год выпуска" },
   { type: "p", text: "Базовый акт — Регламент Совета (ЕС) № 765/2006 в консолидированной редакции с изменениями 2024–2026 гг. Для автомобилей важны статья 1bb и Приложение XVIII (запрещённые к вывозу/передаче в Беларусь категории товаров) и статья 1ga и Приложение XXV (предметы роскоши). Статья 1ra относится к ввозу некоторых товаров и автомобилей из Беларуси в ЕС. [S1][S3][S4]" },
@@ -44,12 +55,12 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
       ["Гибрид HEV", "Лимит 1 900 см³ не указан", "Не менее 165 мм", "Подпадает под позицию"],
       ["Подзаряжаемый гибрид PHEV", "Объём не критерий", "Не менее 165 мм", "Подпадает под позицию"],
       ["Электромобиль BEV", "Объёма ДВС нет", "Не менее 165 мм", "Подпадает под позицию"],
-      ["Другой привод / спец. CN", "Нужен точный код", "Зависит от позиции", "Автоматический вывод невозможен"],
+      ["Другой привод / спец. CN", "Нужен точный код", "Для CN 8703 10 и 8703 90 порога нет", "Риск не исключён при низком клиренсе; нужна классификация"],
     ],
   },
   { type: "p", text: "Пограничные значения важны: 1 900 см³ ровно — не «более 1 900», а 165 мм ровно — «не менее 165». Клиренс оценивается по определению приложения (вертикальное расстояние от нижней части шасси до дороги), а не по рекламной характеристике. Обозначение «ex» означает, что запрет относится только к товарам, подходящим под описание, а не ко всему коду CN. Исключения и спецтранспорт требуют анализа документов. [S2]" },
   { type: "h3", text: "2.2. Имеет ли значение год автомобиля?" },
-  { type: "p", text: "Сам по себе год выпуска не является универсальным разрешением или запретом по санкционной автомобильной таблице. Старый автомобиль 2,2 л с клиренсом 180 мм может подпадать под критерии; новый седан 1,5 л/140 мм может не подпадать, но всё равно требовать иных проверок. Возраст важен прежде всего для постоянного ввоза в ЕАЭС: тарифы различают авто до 3 лет, старше 3 до 5 лет и старше 5 лет, учитываются стоимость и объём. [S2][S13][S23]" },
+  { type: "p", text: "Сам по себе год выпуска не является универсальным разрешением или запретом по санкционной автомобильной таблице. Старый автомобиль 2,2 л с клиренсом 180 мм может подпадать под критерии; новый седан 1,5 л/140 мм может не подпадать, но всё равно требовать иных проверок. Возраст важен для постоянного ввоза в ЕАЭС наряду со стоимостью, объёмом и типом двигателя. Полная актуальная тарифная таблица S23 не была доступна для независимой сверки; точные возрастные группы и ставки уточните у таможни до покупки, статья их не рассчитывает. [S2][S13][S23]" },
   { type: "h3", text: "2.3. Цена свыше 50 000 €: почему это не универсальный запрет" },
   { type: "p", text: "Приложение XXV к Регламенту № 765/2006 содержит ограничения для отдельных категорий предметов роскоши стоимостью свыше 50 000 €. Однако Регламент (ЕС) 2025/2041 от 23.10.2025 заменил таблицу (9) Приложения XXV: в действующем перечне — CN 8702 (автобусы), 8706 (шасси), 8707 (кузова), 8708 (части), но не обычный легковой автомобиль CN 8703 как таковой. Поэтому утверждение «любой седан/внедорожник дороже 50 000 € запрещён по цене» некорректно." },
   { type: "callout", text: "Для обычного CN 8703 остаётся прежде всего тест Приложения XVIII (привод, объём, клиренс) и иные применимые запреты. Цена важна для товарной категории, таможенной стоимости и иных режимов, но не создаёт красный статус сама по себе. Для микроавтобусов, спецтехники, автокомпонентов и неоднозначного CN сверьте конкретную позицию Приложения XXV. [S1][S26]" },
@@ -66,6 +77,7 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
       "Иные гражданства: возможны двусторонние соглашения, но ВНЖ или виза ЕС сами по себе не дают права на белорусский безвиз. Проверьте режим по паспорту в белорусских официальных источниках.",
     ],
   },
+  { type: "p", text: "ГПК также требует проверить цель и документы: туристический безвиз не подходит для работы, учёбы или получения ВНЖ. На специальной странице перечислены медицинская и автомобильная страховки, электронная отметка об оплате дезинфекции и местный сбор при выезде. Для пребывания нужна регистрация: ГПК указывает 30 суток для граждан Литвы и Эстонии/лиц без гражданства Эстонии и 10 суток для остальных перечисленных категорий; применимые исключения уточняйте по своему статусу. Паспортные исключения имеют отдельные основания (в том числе для некоторых биометрических дипломатических паспортов ЕС), а не общий туристический безвиз. [S11][S21]" },
   { type: "p", text: "Наземный безвиз действует для международных автомобильных и железнодорожных пунктов пропуска, не даёт автоматического права на безвизовый маршрут через Россию и обычно не распространяется на служебные и специальные паспорта. Нужны действительный проездной документ, медицинская страховка и другие документы. [S11][S22]" },
   { type: "callout", text: "Возвращение — отдельный вопрос. Право гражданина ЕС вернуться в ЕС отличается от статуса гражданина третьей страны. Белорусский паспорт и право въезда в Беларусь не подтверждают права въезда в Польшу, Литву или Латвию: нужны визовые/миграционные основания и соблюдение шенгенских правил (в общем случае краткое пребывание до 90 дней в любые 180 дней). Визы Ирландии и Кипра не равны шенгенской визе. Учитывайте национальные ограничения и проверки безопасности. [S17][S18]" },
   { type: "h2", id: "plates", text: "4. Регистрационные номера: BY, PL, LT, LV и другие" },
@@ -76,10 +88,11 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
     headers: ["Страна возврата", "Что известно из официальных разъяснений", "Практический вывод"],
     rows: [
       ["Польша [S5]", "KAS описывает допуск определённых машин физических лиц для личного использования при наличии собственника в автомобиле и соблюдении иных условий.", "Не общее разрешение для фирменных машин, автомобилей на продажу и коммерческих перевозок."],
-      ["Литва [S6]", "Исключения уже: личный автомобиль гражданина Беларуси, который сам за рулём, имеет действительную литовскую визу или ВНЖ и не использует машину коммерчески; отдельные граждане ЕС, проживающие в Беларуси.", "Шенгенская виза другой страны автоматически не достаточна для литовского исключения."],
+      ["Литва [S6]", "В сообщении от 26.11.2024 указаны собственник-водитель BY с литовской визой/ВНЖ и собственник-водитель — гражданин ЕС, проживающий в Беларуси; только личное использование, не продажа. Там же указан запрет пребывания BY-авто после 18.01.2025.", "Применение исключений в 2026 г. этим источником однозначно не подтверждено. Не планируйте возврат без актуального письменного ответа таможни; виза другой страны, собственник-пассажир или машина компании не подтверждают исключение."],
       ["Латвия [S7]", "Объявлен запрет на въезд обычных легковых машин с белорусской регистрацией, исключения узкие (например, дипломатический транспорт).", "Не планируйте возврат через Pāternieki на BY-номерах без официально подтверждённого исключения."],
     ],
   },
+  { type: "p", text: "Статья 1ra(5) даёт компетентным органам возможность разрешить въезд, а не автоматическое право. Пункты 6 и 8 отдельно предусматривают определённый дипломатический и исключительно гуманитарный транспорт. Литовское объявление также упоминает перевозку останков умерших. Анкета не устанавливает эти специальные основания; обычная частная поездка не становится гуманитарной по заявлению водителя. [S1][S6][S7]" },
   { type: "p", text: "Номера других стран (Великобритания, Швейцария, Норвегия, США, Украина и др.): гражданство водителя не равно стране регистрации, а регистрация не исчерпывает критерии таможенного статуса и экспортного контроля — нужна проверка по маршруту и обстоятельствам. Номера ЕАЭС (BY/RU/KZ/AM/KG) нельзя объединять с номерами ЕС." },
   { type: "h2", id: "customs", text: "5. Таможня Беларуси: временный ввоз и растаможка — не одно и то же" },
   { type: "p", text: "Если иностранное физическое лицо временно ввозит в ЕАЭС личный автомобиль, зарегистрированный вне ЕАЭС, статья 264 Таможенного кодекса ЕАЭС предусматривает временный ввоз на срок не более одного года при соблюдении условий. Для физического лица из государства ЕАЭС, ввозящего иностранный автомобиль, как правило, требуется обеспечение уплаты пошлин и налогов; для второго и последующего автомобиля обеспечение возможно и для иностранного лица. Статус определяет таможенное право и фактическое постоянное проживание, а не гражданство, выбранное в анкете. [S13]" },
@@ -104,7 +117,7 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
       "Гражданка Литвы, номера LT, бензин 1 798 см³, клиренс 150 мм, 14 000 €, частная поездка: критерии Приложения XVIII для бензина не совпадают, но остаются иные санкционные проверки, граница и страховка. Безвиз для гражданки Литвы потенциально применим до 90 суток за визит.",
       "Гражданин Польши, номера PL, дизель 1 968 см³, 180 мм, 2015 год: возраст не спасает; сочетание > 1 900 см³ и ≥ 165 мм соответствует санкционной позиции. Нужна индивидуальная проверка до попытки вывоза; «личное использование» не гарантированное исключение.",
       "Гражданин Германии, номера DE, электрический SUV, 180 мм, 28 000 €: отсутствие ДВС не даёт исключения — электромобили с просветом ≥ 165 мм входят в ограниченный перечень.",
-      "Гражданин Беларуси, номера BY, возвращается в ЕС: Польша — условия собственника и личного использования; Литва — более строгие критерии, включая литовские документы; Латвия — обычный частный въезд на BY-номерах запрещён. Право человека на въезд оценивается отдельно от права автомобиля.",
+      "Гражданин Беларуси, номера BY, возвращается в ЕС: Польша — условия собственника и личного использования; Литва — исторические исключения и неразъяснённый срок 18.01.2025, поэтому нужен актуальный письменный ответ; Латвия — обычный частный въезд на BY-номерах запрещён. Право человека на въезд оценивается отдельно от права автомобиля.",
       "Гражданка Франции, номера FR, седан CN 8703, клиренс 140 мм, 68 000 €: одна цена не образует автоматический запрет по Приложению XXV после поправки 2025/2041. Для вывоза всё равно проверяют точный CN, иные санкции и документы. [S26]",
     ],
   },
@@ -124,9 +137,10 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
     ],
   },
   { type: "callout", text: "Не хотите рисковать собственным автомобилем? Трансфер с водителем ComfortLine не требует вывоза вашей машины из ЕС и не зависит от её параметров. Пассажирам по-прежнему нужны личные документы." },
-  { type: "h2", id: "official-sources", text: "Первичные и официальные источники (S1–S26)" },
+  { type: "h2", id: "official-sources", text: "Источники и результаты редакционной сверки 16.10.2026 (S1–S26)" },
+  { type: "p", text: "Дата ниже означает чтение доступного текста редакцией, не подтверждение ведомством. Историческое объявление не доказывает текущую работу перехода. S23 — вторичная публикация, её полная актуальная таблица не подтверждена; пробелы не заменены предположениями." },
   ...sourceLinks("ru"),
-  { type: "info-notice", text: "Материал основан на исследовании от 16 октября 2026 года и не проверен в реальном времени. Правила, пункты пропуска и санкции могут измениться без предупреждения. Перед поездкой сверьтесь с таможенными, пограничными и консульскими службами. Не является юридической консультацией." },
+  { type: "info-notice", text: "Исследование и редакционная сверка доступных источников: 16 октября 2026 года; объём подтверждения и пробелы описаны выше. Мониторинга в реальном времени и официального разрешения нет. Правила, пункты пропуска и санкции могут измениться без предупреждения. Перед поездкой сверьтесь с таможенными, пограничными и консульскими службами. Не является юридической консультацией." },
 ];
 
 export const BORDER_BY_CAR_BODY_EN: Block[] = [
@@ -139,21 +153,22 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
     type: "editorial-correction",
     heading: "Important: safety and legal limits",
     text:
-      "This is a research-based travel guide, not a binding customs ruling or legal opinion. The interactive checker is a preliminary screen and cannot issue permission to cross. The rules here reflect research dated 16 October 2026 and were not verified live by us. Crossings can close without notice, and some governments advise against travel to Belarus — check your own foreign ministry.\n\nDo not send passport numbers or VINs in unsecured enquiries. Verify everything with official agencies before travelling.",
+      "This is a research-based travel guide, not a binding customs ruling or legal opinion. The interactive checker is a preliminary screen and cannot issue permission to cross. Research dated 16 October 2026 was separately checked by the editors against the accessible text of all 26 references on the same date. Findings and gaps are recorded beside each source below: this is not official approval or real-time monitoring. In particular, application of Lithuania's BY-plate exceptions after 18 January 2025 and the full current EAEU tariff table remain unconfirmed. Crossings can close without notice. FCDO advises against all travel to Belarus; check your own foreign ministry too. [S6][S22][S23]\n\nDo not send passport numbers or VINs in unsecured enquiries. Verify everything with official agencies before travelling.",
   },
   { type: "h2", id: "checker", text: "Interactive screening: 15 questions about the car and route" },
   { type: "p", text: "Fill in the form below. Answers are processed only in your browser and are never transmitted. The result is a list of risks and questions for official sources — not a green light." },
   { type: "borderChecker" },
-  { type: "h2", id: "crossings", text: "1. Open routes for passenger cars" },
+  { type: "h2", id: "crossings", text: "1. Passenger-car routes in dated border notices" },
   {
     type: "table",
-    headers: ["From", "Main passenger-car crossings (as most recently confirmed)", "Notes"],
+    headers: ["From", "Crossings listed in dated sources", "Notes"],
     rows: [
       ["Poland", "Terespol–Brest; Bobrowniki–Berestovitsa; Kuźnica–Bruzgi", "Bobrowniki takes cars and coaches; Kuźnica takes cars but not coaches. Połowce and Sławatycze remain closed; Kukuryki/Koroszczyn is primarily freight. [S8][S15]"],
-      ["Lithuania", "Medininkai–Kamenny Log; Šalčininkai–Benyakoni", "Both reopened in November 2025. Do not assume Lavoriškės/Kotlovka or Raigardas/Privalka is available. [S9][S21]"],
-      ["Latvia", "Pāternieki–Grigorovshchina", "Electronic advance vehicle queue booking is mandatory. The crossing had technical disruptions in 2026, so verify its current status. [S10][S25]"],
+      ["Lithuania", "Medininkai–Kamenny Log; Šalčininkai–Benyakoni", "Reopening at 00:00 on 20 November 2025 in VSAT's 19 November notice (updated 21 November): motor vehicles only, no pedestrians/cycles. This notice does not confirm travel-day operation. Do not assume Lavoriškės/Kotlovka or Raigardas/Privalka is available. [S9][S21]"],
+      ["Latvia", "Pāternieki–Grigorovshchina", "ERRS booking is compulsory for departure from Latvia, including cars, subject to statutory exemptions. Disruption on 31 July 2026, queue processing resumed on 4 August. Not a live operating confirmation; do not assume Silene is an alternative. [S10][S12][S25]"],
     ],
   },
+  { type: "p", text: "Editorial inspection on 16 October 2026: Poland's S15 table shows car traffic at Terespol, Bobrowniki and Kuźnica and suspension at Połowce/Sławatycze. For Lithuania we checked the historical reopening notice; for Latvia, booking rules and operator notices. These do not confirm uninterrupted operation on your travel day. Check both sides of the border before departure." },
   { type: "p", text: "Rules of one state cannot be carried over to another: admission of Belarus-plated cars in Poland differs from Lithuania and Latvia. A queue slot replaces neither a visa nor a customs check." },
   { type: "h2", id: "sanctions", text: "2. EU vehicle sanctions: 1,900 cc, 165 mm, €50,000 and age" },
   { type: "p", text: "The central instrument is Council Regulation (EC) No 765/2006, as amended and consolidated through July 2026. Article 1bb / Annex XVIII regulates export of listed items to Belarus; Article 1ga / Annex XXV governs luxury goods; Article 1ra covers relevant EU import restrictions. [S1][S3][S4]" },
@@ -167,12 +182,12 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
       ["Conventional hybrid (HEV)", "No 1,900 cm³ threshold", "165 mm or greater", "Listed vehicle class"],
       ["Plug-in hybrid (PHEV)", "No displacement test", "165 mm or greater", "Listed vehicle class"],
       ["Battery electric (BEV)", "Not applicable", "165 mm or greater", "Listed vehicle class"],
-      ["Other drivetrain / special CN", "Exact code required", "Depends on position", "No automatic conclusion possible"],
+      ["Other drivetrain / special CN", "Exact code required", "No clearance threshold for 8703 10 or 8703 90", "Low clearance does not remove risk; classification required"],
     ],
   },
   { type: "p", text: "Boundary values matter: exactly 1,900 cm³ is not \"more than 1,900\", while exactly 165 mm is \"165 or greater\". Clearance follows the annex definition (vertical distance from the lowest chassis point to the road), not a marketing figure. \"ex\" means the ban covers only goods matching the description, not the whole CN code. Exceptions and special vehicles need document-level analysis. [S2]" },
   { type: "h3", text: "2.2. Does the model year matter?" },
-  { type: "p", text: "Model year is not by itself a universal permission or ban under the vehicle table. An old 2.2 L car with 180 mm clearance can fall within the criteria; a new 1.5 L / 140 mm sedan may not, yet still need other checks. Age matters mainly for permanent EAEU import: tariffs distinguish cars up to three years, three to five years and over five years, with value and displacement. [S2][S13][S23]" },
+  { type: "p", text: "Model year is not by itself a universal permission or ban under the vehicle table. An old 2.2 L car with 180 mm clearance can fall within the criteria; a new 1.5 L / 140 mm sedan may not, yet still need other checks. Age matters for permanent EAEU import alongside value, displacement and powertrain. The full current tariff table in S23 was unavailable for independent inspection; confirm exact age bands and rates with customs before buying. This article does not calculate them. [S2][S13][S23]" },
   { type: "h3", text: "2.3. A price over €50,000 does not automatically bar export" },
   { type: "p", text: "Annex XXV retains a more-than-€50,000 threshold for certain listed vehicle-related CN codes. But Regulation (EU) 2025/2041 replaced Annex XXV table (9) on 23 October 2025, listing categories such as 8702 (10+ seat vehicles), 8706 (chassis), 8707 (bodies) and 8708 (parts) — not ordinary passenger cars under CN 8703 in their own right." },
   { type: "callout", text: "A conventional CN 8703 sedan or SUV must not be labelled prohibited solely because its value exceeds €50,000. The Annex XVIII test and other controls still apply, and the exact CN classification matters. For minibuses, special vehicles, components or an unclear CN, check the specific Annex XXV entry. [S1][S26]" },
@@ -189,6 +204,7 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
       "Other nationalities: bilateral arrangements may exist, but an EU visa or residence card alone does not confer Belarus visa-free admission. Check the regime for your passport in official Belarusian sources.",
     ],
   },
+  { type: "p", text: "The Border Committee also requires checking purpose and documents: the tourist waiver is not for work, study or obtaining residence. Its dedicated page lists medical/motor insurance, an electronic disinfection-payment mark and a local departure levy. Registration of stay is required: the page gives 30 days for Lithuanian and Estonian citizens/Estonian stateless persons and 10 days for the other listed categories; check any status-specific exemption. Passport-category exceptions have separate legal bases, including for certain EU biometric diplomatic passports, not the general tourist waiver. [S11][S21]" },
   { type: "p", text: "The land waiver applies to international road and rail crossings, is not a blanket authorization for travel through Russia, and usually excludes diplomatic and official passports. Bring a valid travel document, medical insurance and other required papers. [S11][S22]" },
   { type: "callout", text: "The way back is separate. Belarusian citizenship or a Belarus visa does not grant admission to Poland, Lithuania or Latvia. EU citizens and third-country nationals follow different rules: a third-country passport holder needs an applicable EU/Schengen entry basis plus any national border requirements. Short Schengen visits usually follow the 90-days-in-180 framework. Ireland and Cyprus are EU members but do not issue standard Schengen visas. [S17][S18]" },
   { type: "h2", id: "plates", text: "4. PL/LT/LV plates vs Belarusian (BY) plates" },
@@ -199,10 +215,11 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
     headers: ["Return via", "What official guidance says", "Practical takeaway"],
     rows: [
       ["Poland [S5]", "KAS describes conditional admission of qualifying privately owned, non-commercial Belarus-registered cars, notably where the owner is physically in the car.", "Not blanket permission for corporate, for-sale or commercial vehicles."],
-      ["Lithuania [S6]", "Narrower exceptions: vehicles driven by their Belarusian-citizen owners holding a valid Lithuanian visa or residence permit and not used commercially; certain EU citizens resident in Belarus.", "Another state's Schengen visa is not automatically enough for the Lithuanian exception."],
+      ["Lithuania [S6]", "The 26 November 2024 notice lists BY owner-drivers with Lithuanian visas/permits and EU-citizen owner-drivers resident in Belarus, strictly personal use and not for sale. It also states BY vehicles cannot remain after 18 January 2025.", "Application of these exceptions in 2026 is not conclusively established by this source. Obtain current written customs guidance before planning a return. Another state's visa, an owner-passenger or a company car does not establish the exception."],
       ["Latvia [S7]", "A ban on ordinary Belarus-registered passenger cars, with narrow exceptions such as diplomatic transport.", "Do not plan a return through Pāternieki on BY plates without a confirmed exception."],
     ],
   },
+  { type: "p", text: "Article 1ra(5) allows competent authorities to authorise entry; it does not grant an automatic right. Paragraphs 6 and 8 separately provide for specified diplomatic and exclusively humanitarian vehicles. Lithuania's notice also mentions transport of human remains. The form cannot establish these special grounds; calling a private trip humanitarian does not qualify it. [S1][S6][S7]" },
   { type: "p", text: "Plates of other countries (UK, Switzerland, Norway, US, Ukraine and others): the driver's citizenship is not the registration country, and registration does not exhaust the customs-status and export-control tests, so route and circumstances need separate checking. EAEU plates (BY/RU/KZ/AM/KG) must not be lumped together with EU plates." },
   { type: "h2", id: "customs", text: "5. Belarus customs: temporary entry is not clearance" },
   { type: "p", text: "Under Article 264 of the EAEU Customs Code, a foreign individual may temporarily import a personally used, non-EAEU-registered car for up to one year, subject to conditions. EAEU-resident individuals generally face a customs-duty security/deposit for temporary import of a foreign-registered vehicle, and additional vehicles have separate security provisions. Citizenship is not an adequate proxy for customs residency. [S13]" },
@@ -227,7 +244,7 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
       "Lithuanian passport; LT plates; petrol 1,798 cc; 150 mm; €14,000; private visit: the Annex XVIII petrol thresholds do not match, but a full sanctions and customs review still applies. The visa waiver is potentially available for up to 90 days per visit.",
       "Polish passport; PL plates; diesel 1,968 cc; 180 mm; model year 2015: the old year does not defeat the combined >1,900 cc and ≥165 mm restriction; resolve the export-prohibition risk before driving out of the EU.",
       "German passport; DE plates; electric SUV, 180 mm; €28,000: battery electric does not exempt the car; Annex XVIII includes certain EVs meeting the clearance threshold.",
-      "Belarusian passport; BY plates; planned return to the EU: Polish conditional-owner rules, narrower Lithuanian exceptions and Latvia's general bar give materially different outcomes; the driver's Schengen admission is a separate test.",
+      "Belarusian passport; BY plates; planned return to the EU: Polish conditional-owner rules, historical Lithuanian exceptions with an unexplained 18 January 2025 deadline requiring current written guidance, and Latvia's general bar give materially different outcomes; the driver's Schengen admission is a separate test.",
       "French passport; FR plates; CN 8703 sedan, 140 mm, €68,000: price alone does not automatically trigger Annex XXV after the 2025 amendment. The exact CN code and other prohibitions still need checking. [S26]",
     ],
   },
@@ -247,7 +264,8 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
     ],
   },
   { type: "callout", text: "Prefer not to risk your own car? A ComfortLine chauffeured transfer does not export your vehicle from the EU and does not depend on its specification. Passengers still need their own travel documents." },
-  { type: "h2", id: "official-sources", text: "Official legal and administrative references (S1–S26)" },
+  { type: "h2", id: "official-sources", text: "Sources and editorial findings dated 16 October 2026 (S1–S26)" },
+  { type: "p", text: "The date below means the editors inspected accessible text, not that an agency approved this guide. Historical announcements do not establish current operation. S23 is a secondary publication and its full current table is unconfirmed; gaps have not been filled with assumptions." },
   ...sourceLinks("en"),
-  { type: "info-notice", text: "Based on research dated 16 October 2026; not verified in real time. Rules, crossings and sanctions can change without notice. Confirm with customs, border and consular authorities before travelling. Not legal advice." },
+  { type: "info-notice", text: "Research and editorial inspection of accessible sources: 16 October 2026; findings and gaps recorded above. No real-time monitoring or official permission. Rules, crossings and sanctions can change without notice. Confirm with customs, border and consular authorities before travelling. Not legal advice." },
 ];

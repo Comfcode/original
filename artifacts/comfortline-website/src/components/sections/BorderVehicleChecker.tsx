@@ -115,8 +115,8 @@ export function BorderVehicleChecker() {
       </h2>
       <p className="text-sm text-muted-foreground leading-relaxed mb-4">
         {t(
-          `Правила — из исследования от ${dateLabel}; они не проверялись по официальным источникам в реальном времени. Это не разрешение, не юридическое заключение и не гарантия: перед выездом сверьтесь с таможней и погранслужбой.`,
-          `Rules come from research dated ${dateLabel}; they were not verified against official sources in real time. This is not permission, legal advice or a guarantee: confirm with customs and border agencies before you travel.`,
+          `Исследование и редакционная сверка доступных источников: ${dateLabel}; результаты и пробелы — в списке источников ниже. Мониторинга в реальном времени нет. Применение литовских исключений для BY-номеров в 2026 году и полная актуальная таблица тарифов ЕАЭС не подтверждены. Это не разрешение, не юридическое заключение и не гарантия: перед выездом сверьтесь с таможней и погранслужбой.`,
+          `Research and editorial inspection of accessible sources: ${dateLabel}; findings and gaps are recorded in the source list below. No real-time monitoring. Application of Lithuania's BY-plate exceptions in 2026 and the full current EAEU tariff table remain unconfirmed. This is not permission, legal advice or a guarantee: confirm with customs and border agencies before travel.`,
         )}
       </p>
       <p className="flex items-start gap-2 text-xs text-foreground/75 mb-6 rounded-xl border border-border bg-card px-3 py-2">
