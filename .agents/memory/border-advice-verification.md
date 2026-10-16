@@ -14,3 +14,14 @@ Verify the document content, not just an official domain and HTTP success. A cus
 **Why:** Both behaviours obscured otherwise available primary customs law and could make a source check appear complete when the relevant text was never read.
 
 **How to apply:** Read the actual operative table/paragraph, its amendment coverage and any later amendment annex before claiming a rule is confirmed. Treat secondary databases as corroboration, not authentic publication.
+New publication dates on customs portals do not guarantee that linked legislation is current. The Lithuanian Mano muitinė sanctions overview published in September 2026 still linked to a 2019 consolidation.
+
+**Why:** Following that link alone would omit later banknote sanctions and exceptions, even though the overview itself looked recent.
+
+**How to apply:** Use the customs page for national guidance, but independently open the current consolidation from the EUR-Lex act landing page before stating what EU law permits.
+
+The site owner says passengers report €60 as common actual border practice on journeys from Lithuania or Latvia to Belarus and wants an explicit practical recommendation to try not to carry more than €60 per person. Preserve this distinction from the absence of a fixed €60 cap in EU law; do not erase passenger experience or present it as verified uniform customs policy.
+
+**Why:** The user explicitly asked to include the passenger-reported practical restriction alongside the legal explanation.
+
+**How to apply:** Attribute the claim to passenger reports, retain the broader sanctions warning, and avoid guaranteeing the same treatment at every checkpoint or on every date.
