@@ -23,6 +23,7 @@ function load(name) {
 
 const { evaluate, DEFAULT_INPUT, SOURCES } = load("border-checker-logic");
 const { SOURCE_REVIEW, SOURCE_REVIEW_DATE } = load("border-source-review");
+const { CUSTOMS_REVIEW_DATE, CUSTOMS_REFERENCES, CUSTOMS_ANNEX_2_URL } = load("border-customs-import");
 const { BORDER_BY_CAR_BODY_RU, BORDER_BY_CAR_BODY_EN } = load("blog-border-by-car-2026");
 const { ARTICLES } = load("blog-articles");
 const base = { ...DEFAULT_INPUT, citizenship: "DE", registration: "DE" };
@@ -77,12 +78,57 @@ for (const lang of ["ru", "en"]) {
     assert(SOURCE_REVIEW[source.id][lang].length > 30);
     const link = body.find((b) => b.type === "link" && b.label.startsWith(`[${source.id}]`));
     assert.equal(link.href, source.url);
-    assert(link.description.includes(SOURCE_REVIEW_DATE));
+    assert(link.description.includes(source.id === "S23" ? CUSTOMS_REVIEW_DATE : SOURCE_REVIEW_DATE));
     assert(link.description.includes(SOURCE_REVIEW[source.id][lang]));
   }
 }
 const article = ARTICLES.find((a) => a.slugEn === "driving-to-belarus-by-car-2026-rules-checker");
-assert.equal(article.dateModified, SOURCE_REVIEW_DATE);
-assert.equal(article.citation.length, 26);
-assert.deepEqual(article.citation, SOURCES.map((s) => s.url));
-console.log("Border guide checks passed: thresholds, special CN, visas, BY returns, customs and 26 bilingual source notes.");
+assert.equal(article.dateModified, CUSTOMS_REVIEW_DATE);
+assert.equal(article.citation.length, SOURCES.length + CUSTOMS_REFERENCES.length);
+assert.equal(new Set(article.citation).size, article.citation.length);
+for (const source of [...SOURCES, ...CUSTOMS_REFERENCES]) {
+  assert(article.citation.includes(source.url));
+}
+assert.equal(SOURCES.find((s) => s.id === "S23").url, CUSTOMS_ANNEX_2_URL);
+
+// Permanent-import guidance is conditional on classification, never inferred from year.
+for (const power of ["petrol", "diesel", "hev", "phev", "bev", "other"]) {
+  const getAge = (year) => screen({ power, year }).find((f) => f.src === "S23");
+  const age = getAge("2023");
+  assert(age, `Missing customs guidance for ${power}`);
+  assert.deepEqual(age, getAge("2021"), "Model year alone must not assign a band or quote");
+  for (const lang of ["ru", "en"]) {
+    assert(!/unconfirmed|не подтверждена/.test(age.detail[lang]));
+  }
+  assert(age.detail.en.includes("does not determine"));
+  if (["petrol", "diesel"].includes(power)) {
+    assert(age.detail.en.includes("exactly 3 included"));
+    assert(age.detail.en.includes("exactly 5 included"));
+    assert(age.detail.en.includes("not Article 264"));
+  } else if (power === "bev") {
+    assert(age.detail.en.includes("Table 2(4)"));
+    assert(age.detail.en.includes("not the ICE age scale"));
+    assert(age.detail.en.includes("remaining availability is unverified"));
+    assert(age.detail.en.includes("31 December 2028"));
+  } else {
+    assert(age.detail.en.includes("8703 80 000 5"));
+    assert(age.detail.en.includes("does not extend to hybrids"));
+  }
+}
+for (const lang of ["ru", "en"]) {
+  const body = lang === "ru" ? BORDER_BY_CAR_BODY_RU : BORDER_BY_CAR_BODY_EN;
+  for (const source of CUSTOMS_REFERENCES) {
+    const link = body.find((b) => b.type === "link" && b.label.startsWith(`[${source.id}]`));
+    assert.equal(link.href, source.url);
+    assert(link.description.includes(CUSTOMS_REVIEW_DATE));
+    assert(link.description.includes(source.note[lang]));
+  }
+  const customsIndex = body.findIndex((b) => b.type === "h2" && b.id === "customs");
+  const customs = JSON.stringify(body.slice(customsIndex, body.findIndex((b) => b.id === "documents")));
+  assert(customs.includes(lang === "ru" ? "статья 264" : "Article 264"), "Preserve separate temporary-entry law");
+  assert(customs.includes(lang === "ru" ? "ровно 3 года включено" : "exactly 3 included"));
+  assert(customs.includes(lang === "ru" ? "ровно 5 лет включено" : "exactly 5 included"));
+  assert(customs.includes("8703 80 000 5"));
+  assert(customs.includes(lang === "ru" ? "двойного НДС" : "double-counting VAT"));
+}
+console.log("Border guide checks passed, including official customs sources, exact age boundaries, powertrain distinctions, dated limits and no year-based quote.");

@@ -3,6 +3,7 @@
 import type { Block } from "./blog-articles";
 import { SOURCES } from "./border-checker-logic";
 import { SOURCE_REVIEW, SOURCE_REVIEW_DATE, VISA_DETAIL_URL, POLISH_STATUS_URL } from "./border-source-review";
+import { CUSTOMS_IMPORT_RU, CUSTOMS_IMPORT_EN, CUSTOMS_REFERENCES, CUSTOMS_REVIEW_DATE } from "./border-customs-import";
 
 const sourceLinks = (lang: "ru" | "en"): Block[] =>
   [
@@ -10,10 +11,16 @@ const sourceLinks = (lang: "ru" | "en"): Block[] =>
       type: "link",
       href: s.url,
       label: `[${s.id}] ${s[lang]}`,
-      description: `${lang === "ru" ? "Редакционная сверка" : "Editorial source inspection"} ${SOURCE_REVIEW_DATE}. ${SOURCE_REVIEW[s.id][lang]}`,
+      description: `${lang === "ru" ? "Редакционная сверка" : "Editorial source inspection"} ${s.id === "S23" ? CUSTOMS_REVIEW_DATE : SOURCE_REVIEW_DATE}. ${SOURCE_REVIEW[s.id][lang]}`,
     })),
     { type: "link", href: VISA_DETAIL_URL, label: lang === "ru" ? "Дополнение к S11/S21: ГПК — полный список, документы и условия безвиза" : "Supplement to S11/S21: Border Committee — full visa-waiver list, documents and conditions" },
     { type: "link", href: POLISH_STATUS_URL, label: lang === "ru" ? "Дополнение к S15: таблица выезда из Польши в Беларусь" : "Supplement to S15: Poland-to-Belarus departure table" },
+    ...CUSTOMS_REFERENCES.map((s): Block => ({
+      type: "link",
+      href: s.url,
+      label: `[${s.id}] ${s[lang]}`,
+      description: `${lang === "ru" ? "Таможенная сверка" : "Customs source inspection"} ${CUSTOMS_REVIEW_DATE}. ${s.note[lang]}`,
+    })),
   ];
 
 export const BORDER_BY_CAR_BODY_RU: Block[] = [
@@ -26,7 +33,7 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
     type: "editorial-correction",
     heading: "Важно о безопасности и праве",
     text:
-      "Это исследовательский информационный материал, а не заключение юриста или разрешение таможни. Проверка по анкете — предварительный скрининг, а не официальный правовой статус. Исследование от 16 октября 2026 года отдельно сверено редакцией с доступными текстами всех 26 ссылок в тот же день. Объём подтверждения и пробелы указаны у каждого источника ниже: это не официальное одобрение и не мониторинг в реальном времени. В частности, применение литовских исключений для BY-номеров после 18.01.2025 и полная актуальная тарифная таблица ЕАЭС не подтверждены. Пункты пропуска могут закрыться без предупреждения. FCDO рекомендует отказаться от любых поездок в Беларусь; проверьте также рекомендации МИД своей страны. [S6][S22][S23]\n\nНе передавайте паспортные данные и VIN в публичные формы без необходимости. Перед поездкой сверьтесь с официальными ведомствами.",
+      "Это исследовательский информационный материал, а не заключение юриста или разрешение таможни. Проверка по анкете — предварительный скрининг, а не официальный правовой статус. Исходная сверка 26 ссылок датирована 16.10.2026; таможенный раздел, S23 и дополнения C1–C9 отдельно проверены 17.10.2026. Объём подтверждения и пробелы указаны у каждого источника ниже: это не официальное одобрение и не мониторинг в реальном времени. Применение литовских исключений для BY-номеров после 18.01.2025 не подтверждено. Возрастные границы постоянного личного ввоза подтверждены в разделе 5; индивидуальный расчёт и остаток квоты EV не установлены. Пункты пропуска могут закрыться без предупреждения. FCDO рекомендует отказаться от любых поездок в Беларусь; проверьте также рекомендации МИД своей страны. [S6][S22][S23]\n\nНе передавайте паспортные данные и VIN в публичные формы без необходимости. Перед поездкой сверьтесь с официальными ведомствами.",
   },
   { type: "h2", id: "checker", text: "Интерактивная проверка: 15 вопросов об авто и маршруте" },
   { type: "p", text: "Заполните анкету ниже. Ответы обрабатываются только в вашем браузере и никуда не передаются. Результат — перечень рисков и вопросов к официальным источникам, а не «зелёный свет»." },
@@ -60,7 +67,7 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
   },
   { type: "p", text: "Пограничные значения важны: 1 900 см³ ровно — не «более 1 900», а 165 мм ровно — «не менее 165». Клиренс оценивается по определению приложения (вертикальное расстояние от нижней части шасси до дороги), а не по рекламной характеристике. Обозначение «ex» означает, что запрет относится только к товарам, подходящим под описание, а не ко всему коду CN. Исключения и спецтранспорт требуют анализа документов. [S2]" },
   { type: "h3", text: "2.2. Имеет ли значение год автомобиля?" },
-  { type: "p", text: "Сам по себе год выпуска не является универсальным разрешением или запретом по санкционной автомобильной таблице. Старый автомобиль 2,2 л с клиренсом 180 мм может подпадать под критерии; новый седан 1,5 л/140 мм может не подпадать, но всё равно требовать иных проверок. Возраст важен для постоянного ввоза в ЕАЭС наряду со стоимостью, объёмом и типом двигателя. Полная актуальная тарифная таблица S23 не была доступна для независимой сверки; точные возрастные группы и ставки уточните у таможни до покупки, статья их не рассчитывает. [S2][S13][S23]" },
+  { type: "p", text: "Сам по себе год выпуска не является универсальным разрешением или запретом по санкционной автомобильной таблице. Старый автомобиль 2,2 л с клиренсом 180 мм может подпадать под критерии; новый седан 1,5 л/140 мм может не подпадать, но всё равно требовать иных проверок. Для постоянного личного ввоза по п. 3 таблицы 2 Решения № 107 подтверждены группы: не более 3 лет, более 3–не более 5 лет, более 5 лет. Это не универсальная шкала для BEV и всех гибридов; подробности и отдельные льготы — в разделе 5. Точная дата выпуска и классификация требуют документов; анкета не вычисляет возрастную группу или платёж по одному году. [S2][S13][S23]" },
   { type: "h3", text: "2.3. Цена свыше 50 000 €: почему это не универсальный запрет" },
   { type: "p", text: "Приложение XXV к Регламенту № 765/2006 содержит ограничения для отдельных категорий предметов роскоши стоимостью свыше 50 000 €. Однако Регламент (ЕС) 2025/2041 от 23.10.2025 заменил таблицу (9) Приложения XXV: в действующем перечне — CN 8702 (автобусы), 8706 (шасси), 8707 (кузова), 8708 (части), но не обычный легковой автомобиль CN 8703 как таковой. Поэтому утверждение «любой седан/внедорожник дороже 50 000 € запрещён по цене» некорректно." },
   { type: "callout", text: "Для обычного CN 8703 остаётся прежде всего тест Приложения XVIII (привод, объём, клиренс) и иные применимые запреты. Цена важна для товарной категории, таможенной стоимости и иных режимов, но не создаёт красный статус сама по себе. Для микроавтобусов, спецтехники, автокомпонентов и неоднозначного CN сверьте конкретную позицию Приложения XXV. [S1][S26]" },
@@ -96,7 +103,8 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
   { type: "p", text: "Номера других стран (Великобритания, Швейцария, Норвегия, США, Украина и др.): гражданство водителя не равно стране регистрации, а регистрация не исчерпывает критерии таможенного статуса и экспортного контроля — нужна проверка по маршруту и обстоятельствам. Номера ЕАЭС (BY/RU/KZ/AM/KG) нельзя объединять с номерами ЕС." },
   { type: "h2", id: "customs", text: "5. Таможня Беларуси: временный ввоз и растаможка — не одно и то же" },
   { type: "p", text: "Если иностранное физическое лицо временно ввозит в ЕАЭС личный автомобиль, зарегистрированный вне ЕАЭС, статья 264 Таможенного кодекса ЕАЭС предусматривает временный ввоз на срок не более одного года при соблюдении условий. Для физического лица из государства ЕАЭС, ввозящего иностранный автомобиль, как правило, требуется обеспечение уплаты пошлин и налогов; для второго и последующего автомобиля обеспечение возможно и для иностранного лица. Статус определяет таможенное право и фактическое постоянное проживание, а не гражданство, выбранное в анкете. [S13]" },
-  { type: "p", text: "Ввоз для постоянной регистрации или продажи — другой режим: проверяют таможенную стоимость, возраст, объём, тип двигателя, пошлины, налоги, утилизационный сбор и специальные режимы (например, для некоторых электромобилей). Не используйте туристический временный ввоз, чтобы обойти постоянное оформление. [S23]" },
+  { type: "p", text: "Постоянный ввоз для местной регистрации требует отдельного оформления. Ввоз для коммерческой перепродажи не является личным: приведённые ниже ставки для товаров личного пользования не применяются автоматически. Не используйте туристический временный ввоз по ст. 264, чтобы обойти постоянное оформление. [S23][C1]" },
+  ...CUSTOMS_IMPORT_RU,
   { type: "h2", id: "documents", text: "6. Документы, страховка и процедура" },
   {
     type: "ul",
@@ -137,10 +145,10 @@ export const BORDER_BY_CAR_BODY_RU: Block[] = [
     ],
   },
   { type: "callout", text: "Не хотите рисковать собственным автомобилем? Трансфер с водителем ComfortLine не требует вывоза вашей машины из ЕС и не зависит от её параметров. Пассажирам по-прежнему нужны личные документы." },
-  { type: "h2", id: "official-sources", text: "Источники и результаты редакционной сверки 16.10.2026 (S1–S26)" },
-  { type: "p", text: "Дата ниже означает чтение доступного текста редакцией, не подтверждение ведомством. Историческое объявление не доказывает текущую работу перехода. S23 — вторичная публикация, её полная актуальная таблица не подтверждена; пробелы не заменены предположениями." },
+  { type: "h2", id: "official-sources", text: "Источники и даты редакционной сверки (S1–S26 и дополнения)" },
+  { type: "p", text: "Дата ниже означает чтение доступного текста редакцией, не подтверждение ведомством. Исходная сверка — 16.10.2026; обновление таможенного раздела, S23 и C1–C9 — 17.10.2026. S23 теперь ведёт на полное официальное Приложение 2 ЕЭК, C2 — на официальное Приложение 3 с поправками 2025/2026 гг. Историческое объявление не доказывает текущую работу перехода или наличие квоты. Пробелы не заменены предположениями." },
   ...sourceLinks("ru"),
-  { type: "info-notice", text: "Исследование и редакционная сверка доступных источников: 16 октября 2026 года; объём подтверждения и пробелы описаны выше. Мониторинга в реальном времени и официального разрешения нет. Правила, пункты пропуска и санкции могут измениться без предупреждения. Перед поездкой сверьтесь с таможенными, пограничными и консульскими службами. Не является юридической консультацией." },
+  { type: "info-notice", text: "Исходное исследование и сверка: 16.10.2026; таможенное обновление: 17.10.2026. Объём подтверждения и пробелы описаны выше. Мониторинга в реальном времени, индивидуального расчёта, подтверждения остатка квоты и официального разрешения нет. Правила, пункты пропуска и санкции могут измениться без предупреждения. Перед поездкой сверьтесь с таможенными, пограничными и консульскими службами. Не является юридической консультацией." },
 ];
 
 export const BORDER_BY_CAR_BODY_EN: Block[] = [
@@ -153,7 +161,7 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
     type: "editorial-correction",
     heading: "Important: safety and legal limits",
     text:
-      "This is a research-based travel guide, not a binding customs ruling or legal opinion. The interactive checker is a preliminary screen and cannot issue permission to cross. Research dated 16 October 2026 was separately checked by the editors against the accessible text of all 26 references on the same date. Findings and gaps are recorded beside each source below: this is not official approval or real-time monitoring. In particular, application of Lithuania's BY-plate exceptions after 18 January 2025 and the full current EAEU tariff table remain unconfirmed. Crossings can close without notice. FCDO advises against all travel to Belarus; check your own foreign ministry too. [S6][S22][S23]\n\nDo not send passport numbers or VINs in unsecured enquiries. Verify everything with official agencies before travelling.",
+      "This is a research-based travel guide, not a binding customs ruling or legal opinion. The interactive checker is a preliminary screen and cannot issue permission to cross. The initial 26-reference review is dated 16 October 2026; the customs section, S23 and supplements C1–C9 were separately checked on 17 October 2026. Findings and gaps are recorded beside each source below: this is not official approval or real-time monitoring. Application of Lithuania's BY-plate exceptions after 18 January 2025 remains unconfirmed. Permanent personal-import age boundaries are confirmed in section 5; individual payments and remaining EV quota are not determined. Crossings can close without notice. FCDO advises against all travel to Belarus; check your own foreign ministry too. [S6][S22][S23]\n\nDo not send passport numbers or VINs in unsecured enquiries. Verify everything with official agencies before travelling.",
   },
   { type: "h2", id: "checker", text: "Interactive screening: 15 questions about the car and route" },
   { type: "p", text: "Fill in the form below. Answers are processed only in your browser and are never transmitted. The result is a list of risks and questions for official sources — not a green light." },
@@ -187,7 +195,7 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
   },
   { type: "p", text: "Boundary values matter: exactly 1,900 cm³ is not \"more than 1,900\", while exactly 165 mm is \"165 or greater\". Clearance follows the annex definition (vertical distance from the lowest chassis point to the road), not a marketing figure. \"ex\" means the ban covers only goods matching the description, not the whole CN code. Exceptions and special vehicles need document-level analysis. [S2]" },
   { type: "h3", text: "2.2. Does the model year matter?" },
-  { type: "p", text: "Model year is not by itself a universal permission or ban under the vehicle table. An old 2.2 L car with 180 mm clearance can fall within the criteria; a new 1.5 L / 140 mm sedan may not, yet still need other checks. Age matters for permanent EAEU import alongside value, displacement and powertrain. The full current tariff table in S23 was unavailable for independent inspection; confirm exact age bands and rates with customs before buying. This article does not calculate them. [S2][S13][S23]" },
+  { type: "p", text: "Model year is not by itself a universal permission or ban under the vehicle table. An old 2.2 L car with 180 mm clearance can fall within the criteria; a new 1.5 L / 140 mm sedan may not, yet still need other checks. For permanent personal imports under Decision 107 Table 2(3), the confirmed groups are no more than 3 years, over 3 through 5 years, and over 5 years. This is not a universal scale for BEVs or all hybrids; see section 5 for classification and separate relief. Exact manufacture date and classification require documents; the form cannot infer your band or payment from model year alone. [S2][S13][S23]" },
   { type: "h3", text: "2.3. A price over €50,000 does not automatically bar export" },
   { type: "p", text: "Annex XXV retains a more-than-€50,000 threshold for certain listed vehicle-related CN codes. But Regulation (EU) 2025/2041 replaced Annex XXV table (9) on 23 October 2025, listing categories such as 8702 (10+ seat vehicles), 8706 (chassis), 8707 (bodies) and 8708 (parts) — not ordinary passenger cars under CN 8703 in their own right." },
   { type: "callout", text: "A conventional CN 8703 sedan or SUV must not be labelled prohibited solely because its value exceeds €50,000. The Annex XVIII test and other controls still apply, and the exact CN classification matters. For minibuses, special vehicles, components or an unclear CN, check the specific Annex XXV entry. [S1][S26]" },
@@ -223,7 +231,8 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
   { type: "p", text: "Plates of other countries (UK, Switzerland, Norway, US, Ukraine and others): the driver's citizenship is not the registration country, and registration does not exhaust the customs-status and export-control tests, so route and circumstances need separate checking. EAEU plates (BY/RU/KZ/AM/KG) must not be lumped together with EU plates." },
   { type: "h2", id: "customs", text: "5. Belarus customs: temporary entry is not clearance" },
   { type: "p", text: "Under Article 264 of the EAEU Customs Code, a foreign individual may temporarily import a personally used, non-EAEU-registered car for up to one year, subject to conditions. EAEU-resident individuals generally face a customs-duty security/deposit for temporary import of a foreign-registered vehicle, and additional vehicles have separate security provisions. Citizenship is not an adequate proxy for customs residency. [S13]" },
-  { type: "p", text: "Permanent import, resale or local registration is a different regime with age/engine/value duty bands, taxes, recycling fees and specific powertrain measures. Do not treat a travel admission as a duty-free permanent import. [S23]" },
+  { type: "p", text: "Permanent import for local registration requires separate clearance. Import for commercial resale is not personal use: the personal-use rates described below cannot automatically be applied. Do not use tourist temporary entry under Article 264 to bypass permanent clearance. [S23][C1]" },
+  ...CUSTOMS_IMPORT_EN,
   { type: "h2", id: "documents", text: "6. Documents and insurance" },
   {
     type: "ul",
@@ -264,8 +273,8 @@ export const BORDER_BY_CAR_BODY_EN: Block[] = [
     ],
   },
   { type: "callout", text: "Prefer not to risk your own car? A ComfortLine chauffeured transfer does not export your vehicle from the EU and does not depend on its specification. Passengers still need their own travel documents." },
-  { type: "h2", id: "official-sources", text: "Sources and editorial findings dated 16 October 2026 (S1–S26)" },
-  { type: "p", text: "The date below means the editors inspected accessible text, not that an agency approved this guide. Historical announcements do not establish current operation. S23 is a secondary publication and its full current table is unconfirmed; gaps have not been filled with assumptions." },
+  { type: "h2", id: "official-sources", text: "Sources and editorial inspection dates (S1–S26 and supplements)" },
+  { type: "p", text: "The date below means the editors inspected accessible text, not that an agency approved this guide. Initial inspection: 16 October 2026; customs section, S23 and C1–C9 update: 17 October 2026. S23 now links to the complete official EEC Annex 2; C2 links to official Annex 3 including 2025/2026 amendments. Historical announcements do not establish current crossing operation or quota availability. Gaps have not been filled with assumptions." },
   ...sourceLinks("en"),
-  { type: "info-notice", text: "Research and editorial inspection of accessible sources: 16 October 2026; findings and gaps recorded above. No real-time monitoring or official permission. Rules, crossings and sanctions can change without notice. Confirm with customs, border and consular authorities before travelling. Not legal advice." },
+  { type: "info-notice", text: "Initial research/inspection: 16 October 2026; customs update: 17 October 2026. Findings and gaps recorded above. No live monitoring, individual payment calculation, confirmed quota balance or official permission. Rules, crossings and sanctions can change without notice. Confirm with customs, border and consular authorities before travelling. Not legal advice." },
 ];
