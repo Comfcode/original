@@ -112,24 +112,34 @@ export const ARTICLES: Article[] = [
     intro:
       "Граница Беларусь–Литва — это самый востребованный маршрут наших трансферов. Ниже собрано всё, что нужно знать перед поездкой в 2026 году: список рабочих КПП, среднее время прохождения, документы, типичные причины отказа и советы из практики.",
     dateISO: "2026-04-15",
+    dateModified: "2026-10-16",
     disclaimerBanner: true,
     readingMin: 9,
     category: "Граница",
     tags: ["граница", "Литва", "КПП", "документы"],
     body: [
       { type: "h2", text: "Какие КПП работают в 2026" },
+      { type: "info-notice", text: "Проверено по официальным источникам 16 октября 2026 года. Статус КПП и допуск людей и машин проверяются отдельно; оценки времени не гарантируют прохождение." },
+      { type: "link", href: "/блог/как-въехать-в-беларусь-на-автомобиле-2026", label: "Новый гайд: в Беларусь на автомобиле и обратно", description: "Санкции на машины, номера BY, право въезда пассажиров, страховка и таможня." },
+      { type: "p", text: "Для BY-номеров действует запрет с узкими исключениями. Таможня Литвы описывает, в частности, личную машину гражданина Беларуси, который сам за рулём и имеет литовскую визу или литовский ВНЖ; виза другой страны Шенгена это условие не заменяет. Есть отдельное исключение для граждан ЕС, проживающих в Беларуси. Эти условия не распространяются автоматически на коммерческий трансфер. При выезде из ЕС в Беларусь отдельно проверяются санкции на вывоз автомобиля." },
+      { type: "link", href: "https://muitine.lrv.lt/en/news/updated-procedure-for-admitting-cars-with-belarusian-registration-to-enter-lithuania/", label: "Таможня Литвы: условия для автомобилей с номерами BY" },
+      { type: "link", href: "https://vrm.lrv.lt/en/news/the-operation-of-the-lavoriskes-and-raigardas-border-crossing-points-will-be-terminated-from-1-march", label: "МВД Литвы: закрытие Лаворишкес и Райгардас с 01.03.2024" },
+      { type: "link", href: "https://vsat.lrv.lt/lt/naujienos/atidaromi-salcininku-ir-medininku-pasienio-kontroles-punktai/", label: "VSAT: возобновление работы Мядининкай и Шальчининкай с 20.11.2025" },
       {
         type: "p",
         text:
-          "Из четырёх исторических переходов между Беларусью и Литвой к 2026 году для легкового транспорта стабильно работают только два: Каменный Лог (Лоша) и Бенякони. Котловка функционирует ограниченно, Лаворишкес для частных авто закрыт. Перед выездом всегда сверяемся со сводкой ГТК Беларуси и ситуацией на сайте Государственной пограничной охраны Литвы (VSAT).",
+          "Для автомобильного маршрута рассматривайте Каменный Лог–Мядининкай и Бенякони–Шальчининкай при подтверждённой работе в день поездки. Оба возобновили работу 20 ноября 2025 года. Котловка–Лаворишкес и Привалка–Райгардас закрыты с 1 марта 2024 года; Лоша–Шумскас и Видзы–Твярячюс — с 18 августа 2023 года. Лоша — отдельный переход, не другое название Каменного Лога. Переход пешком и на велосипеде через два оставшихся КПП не разрешён.",
       },
       {
         type: "table",
         headers: ["КПП", "Литовская сторона", "Авто", "Среднее время"],
         rows: [
           ["Каменный Лог", "Мядининкай", "Легковые + автобусы", "2–5 ч"],
-          ["Бенякони", "Шальчининкай", "Легковые", "3–6 ч"],
-          ["Котловка", "Лаворишкес", "Ограниченно", "—"],
+          ["Бенякони", "Шальчининкай", "Автотранспорт; разрешения перевозчика проверяются отдельно", "3–6 ч (ориентир)"],
+          ["Котловка", "Лаворишкес", "Закрыт", "—"],
+          ["Привалка", "Райгардас", "Закрыт", "—"],
+          ["Лоша", "Шумскас", "Закрыт", "—"],
+          ["Видзы", "Твярячюс", "Закрыт", "—"],
         ],
       },
       { type: "h2", text: "Документы для въезда в Литву" },
@@ -137,7 +147,7 @@ export const ARTICLES: Article[] = [
         type: "ul",
         items: [
           "Действующий паспорт (срок действия не менее 3 месяцев после выезда из ЕС).",
-          "Шенгенская виза или ВНЖ страны ЕС.",
+          "Виза, ВНЖ или право безвизового въезда, если применимо; соблюдение лимита пребывания и национальных ограничений. Виза сама по себе не гарантирует пропуск.",
           "Медицинская страховка с покрытием от 30 000 €.",
           "Подтверждение цели поездки: бронь отеля, билеты, приглашение.",
           "Подтверждение финансового обеспечения (~50 € в день).",
@@ -196,17 +206,26 @@ export const ARTICLES: Article[] = [
       "The Belarus–Lithuania border is our busiest transfer route. Here is everything you need to know for 2026: open checkpoints, average crossing times, required documents, common reasons for refusal and tips from our drivers.",
     bodyEn: [
       { type: "h2", text: "Open Checkpoints in 2026" },
+      { type: "info-notice", text: "Checked against official sources on 16 October 2026. Crossing status, passenger admission and vehicle admission are separate checks; journey-time estimates are not guarantees." },
+      { type: "link", href: "/blog/driving-to-belarus-by-car-2026-rules-checker", label: "New guide: driving to Belarus and returning to the EU", description: "Vehicle sanctions, BY plates, passenger eligibility, insurance and customs." },
+      { type: "p", text: "BY-plated passenger cars are banned with narrow exceptions. Lithuanian Customs describes, among others, a Belarusian citizen's personal car driven by that owner holding a Lithuanian visa or Lithuanian residence permit; another Schengen state's visa does not meet that condition. A separate exception covers EU citizens resident in Belarus. These private-use exceptions do not automatically cover commercial transfers. Driving from the EU to Belarus requires separate vehicle-export sanctions checks." },
+      { type: "link", href: "https://muitine.lrv.lt/en/news/updated-procedure-for-admitting-cars-with-belarusian-registration-to-enter-lithuania/", label: "Lithuanian Customs: conditions for BY-plated cars" },
+      { type: "link", href: "https://vrm.lrv.lt/en/news/the-operation-of-the-lavoriskes-and-raigardas-border-crossing-points-will-be-terminated-from-1-march", label: "Lithuanian Interior Ministry: Lavoriškės and Raigardas closed from 1 March 2024" },
+      { type: "link", href: "https://vsat.lrv.lt/lt/naujienos/atidaromi-salcininku-ir-medininku-pasienio-kontroles-punktai/", label: "VSAT: Medininkai and Šalčininkai reopened on 20 November 2025" },
       {
         type: "p",
-        text: "Of the four historic crossings between Belarus and Lithuania, only two operate reliably for private cars in 2026: Kamenny Log (Losha) and Benyakoni. Kotlovka operates on a restricted basis; Lavorishkes is closed to private vehicles. Always check the Belarusian State Customs Committee and Lithuanian State Border Guard Service (VSAT) before departure.",
+        text: "Consider Kamenny Log–Medininkai and Benyakoni–Šalčininkai for road travel, subject to confirmation on your travel date. Both reopened on 20 November 2025. Kotlovka–Lavoriškės and Privalka–Raigardas closed on 1 March 2024; Losha–Šumskas and Vidzy–Tverečius closed on 18 August 2023. Losha is a separate crossing, not another name for Kamenny Log. Pedestrians and cyclists cannot use the two remaining crossings.",
       },
       {
         type: "table",
         headers: ["Checkpoint (BY)", "Lithuanian side", "Vehicles", "Avg. wait time"],
         rows: [
           ["Kamenny Log", "Medininkai", "Cars + buses", "2–5 h"],
-          ["Benyakoni", "Šalčininkai", "Cars", "3–6 h"],
-          ["Kotlovka", "Lavorishkes", "Restricted", "—"],
+          ["Benyakoni", "Šalčininkai", "Motor vehicles; carrier permits checked separately", "3–6 h (estimate)"],
+          ["Kotlovka", "Lavoriškės", "Closed", "—"],
+          ["Privalka", "Raigardas", "Closed", "—"],
+          ["Losha", "Šumskas", "Closed", "—"],
+          ["Vidzy", "Tverečius", "Closed", "—"],
         ],
       },
       { type: "h2", text: "Documents for Entry into Lithuania" },
@@ -214,7 +233,7 @@ export const ARTICLES: Article[] = [
         type: "ul",
         items: [
           "Valid passport (at least 3 months' validity beyond the planned EU exit date).",
-          "Schengen visa or EU residence permit.",
+          "Visa, residence permit or visa-free entitlement where applicable; compliance with stay limits and national restrictions. A visa alone does not guarantee admission.",
           "Medical insurance with coverage of at least €30,000.",
           "Proof of purpose of trip: hotel booking, tickets, invitation letter.",
           "Proof of sufficient funds (~€50 per day).",
@@ -483,6 +502,7 @@ export const ARTICLES: Article[] = [
     body: [
       { type: "editorial-correction", heading: "Обновление редакции от 30 июля 2026 года", text: "Ранее опубликованная таблица показывала общие беспошлинные нормы для въезда в ЕС из третьих стран, но недостаточно учитывала санкционные запреты для товаров белорусского происхождения, дополнительные ограничения Литвы, правила для частых пересечений границы и транспортных экипажей, а также действующие правила для парфюмерии.\n\nТаблица и пояснения ниже были исправлены. Общие беспошлинные нормы применяются только к товарам, ввоз которых не запрещён санкциями или национальным законодательством страны въезда." },
       { type: "info-notice", text: "Информация предназначена для обычных пассажиров, перевозящих товары для личного пользования. Для водителей, транспортных экипажей, приграничных работников и лиц, часто пересекающих границу, могут действовать другие нормы." },
+      { type: "link", href: "/блог/как-въехать-в-беларусь-на-автомобиле-2026", label: "Автомобиль — отдельная проверка: новый гайд по поездке в Беларусь", description: "Багажные нормы ниже не разрешают автоматически ввоз или вывоз машины. Проверьте санкции, номера, временный ввоз и обратный маршрут." },
       { type: "h2", text: "Товары, запрещённые к ввозу из Беларуси в ЕС" },
       {
         type: "p",
@@ -747,6 +767,7 @@ export const ARTICLES: Article[] = [
     bodyEn: [
       { type: "editorial-correction", heading: "Editorial correction, 30 July 2026", text: "The previously published table showed general EU duty-free allowances for travellers arriving from third countries, but did not adequately reflect the sanctions-based prohibitions for goods of Belarusian origin, Lithuania's additional national restrictions, rules for frequent border crossings and transport crews, or the current rules for perfume and eau de toilette.\n\nThe table and explanations below have been corrected. General duty-free allowances apply only to goods whose import is not prohibited by sanctions or the national legislation of the country of entry." },
       { type: "info-notice", text: "The information is intended for ordinary passengers carrying goods for personal use. Different rules may apply to drivers, transport crew members, border workers and persons who cross the border frequently." },
+      { type: "link", href: "/blog/driving-to-belarus-by-car-2026-rules-checker", label: "The car needs a separate check: the new Belarus driving guide", description: "The baggage allowances below do not authorise vehicle import or export. Check sanctions, registration, temporary admission and the return route separately." },
       { type: "h2", text: "Goods Prohibited from Belarus into the EU" },
       {
         type: "p",
@@ -1020,8 +1041,9 @@ export const ARTICLES: Article[] = [
     description:
       "Сравнение литовских КПП Каменный Лог, Котловка и Бенякони в 2026: время прохождения, инфраструктура, плюсы и минусы каждого пункта пропуска.",
     intro:
-      "Если вы едете из Минска в Литву, у вас три варианта пунктов пропуска. Выбор КПП может сэкономить или, наоборот, отнять до 4 часов. Разбираем каждый — на основе ежедневной статистики наших водителей.",
+      "Для поездки из Минска в Литву сравнивайте Каменный Лог и Бенякони, предварительно проверив их работу. Котловка закрыта и не является запасным вариантом. Ниже — особенности маршрутов и ориентиры по ожиданию, а не гарантия времени прохождения.",
     dateISO: "2026-03-28",
+    dateModified: "2026-10-16",
     disclaimerBanner: true,
     readingMin: 6,
     category: "Граница",
@@ -1055,11 +1077,13 @@ export const ARTICLES: Article[] = [
           "Когда выбирать: пятница вечер и воскресенье день, когда Каменный Лог встал.",
         ],
       },
-      { type: "h2", text: "Котловка — ограниченно работает" },
+      { type: "h2", text: "Котловка — закрыта" },
+      { type: "link", href: "https://vrm.lrv.lt/en/news/the-operation-of-the-lavoriskes-and-raigardas-border-crossing-points-will-be-terminated-from-1-march", label: "МВД Литвы: решение о закрытии с 1 марта 2024 года", description: "Проверено 16 октября 2026 года; Котловка не доступна как запасной КПП." },
+      { type: "link", href: "/блог/как-въехать-в-беларусь-на-автомобиле-2026", label: "Проверьте не только КПП: новый гайд для поездки на машине", description: "Открытый переход не гарантирует допуск пассажиров или автомобиля; отдельные правила для номеров BY, виз и санкций." },
       {
         type: "p",
         text:
-          "С 2023 года движение через Котловку ограничено. Для большинства легковых пассажирских маршрутов в 2026 году КПП фактически недоступен. Перед поездкой обязательно сверяйтесь с актуальной сводкой.",
+          "Котловка–Лаворишкес закрыт с 1 марта 2024 года решением Литвы, как и Привалка–Райгардас. Это не переход с ограниченным режимом для частных машин. Не направляйтесь туда без нового официального сообщения об открытии. Каменный Лог и Бенякони возобновили работу 20 ноября 2025 года; временные закрытия возможны.",
       },
       { type: "h2", text: "Как выбрать КПП в день поездки" },
       {
@@ -1067,7 +1091,7 @@ export const ARTICLES: Article[] = [
         items: [
           "Зайдите на сайт ГТК Беларуси и проверьте текущее количество авто в очереди.",
           "Сравните: если на Каменном Логе >150 авто, рассмотрите Бенякони.",
-          "Учитывайте день недели: пятница–воскресенье — точно Бенякони.",
+          "Сравните очереди, время объезда и статус обоих КПП: день недели не гарантирует более быстрого прохождения.",
           "Проверьте VSAT (литовская сторона) — иногда литовцы тормозят сильнее белорусов.",
           "Доверьтесь водителю — у нас данные обновляются каждые 30 минут.",
         ],
@@ -1093,7 +1117,7 @@ export const ARTICLES: Article[] = [
     ],
     categoryEn: "Border",
     introEn:
-      "Travelling from Minsk to Lithuania, you have three checkpoint options. The choice of crossing can save — or cost — up to 4 hours. Here is a breakdown based on our drivers' daily statistics.",
+      "For Minsk–Lithuania trips, compare Kamenny Log and Benyakoni after checking that they are operating. Kotlovka is closed, not a backup option. Below are route differences and indicative waits, not guaranteed crossing times.",
     bodyEn: [
       { type: "h2", text: "Kamenny Log — The Main Choice" },
       {
@@ -1121,10 +1145,12 @@ export const ARTICLES: Article[] = [
           "When to choose: Friday evening and Sunday afternoon when Kamenny Log is backed up.",
         ],
       },
-      { type: "h2", text: "Kotlovka — Restricted Operation" },
+      { type: "h2", text: "Kotlovka — Closed" },
+      { type: "link", href: "https://vrm.lrv.lt/en/news/the-operation-of-the-lavoriskes-and-raigardas-border-crossing-points-will-be-terminated-from-1-march", label: "Lithuanian Interior Ministry: closure from 1 March 2024", description: "Checked on 16 October 2026; Kotlovka is not a backup crossing." },
+      { type: "link", href: "/blog/driving-to-belarus-by-car-2026-rules-checker", label: "Check more than the crossing: the new driving guide", description: "An open crossing does not guarantee admission of passengers or vehicles; separate rules apply to BY plates, visas and sanctions." },
       {
         type: "p",
-        text: "Since 2023, traffic through Kotlovka has been restricted. For most private passenger routes in 2026 the checkpoint is effectively unavailable. Always check the latest situation before departure.",
+        text: "Kotlovka–Lavoriškės closed on 1 March 2024 by Lithuania's decision, as did Privalka–Raigardas. This is not restricted operation for private cars. Do not route there without a new official reopening announcement. Kamenny Log and Benyakoni reopened on 20 November 2025; temporary closures remain possible.",
       },
       { type: "h2", text: "How to Choose a Crossing on the Day of Travel" },
       {
@@ -1132,7 +1158,7 @@ export const ARTICLES: Article[] = [
         items: [
           "Check the Belarusian State Customs Committee website for the current queue length.",
           "Compare: if Kamenny Log shows more than 150 cars, consider Benyakoni.",
-          "Factor in the day of the week: Friday–Sunday — strongly consider Benyakoni.",
+          "Compare queues, detour time and the status of both crossings: the day of the week does not guarantee a faster crossing.",
           "Check VSAT (Lithuanian side) — Lithuanian processing sometimes takes longer than Belarusian.",
           "Trust your driver — our queue data is updated every 30 minutes.",
         ],
@@ -1334,8 +1360,9 @@ export const ARTICLES: Article[] = [
       {
         type: "p",
         text:
-          "Хороший вариант, если поездка короткая (3–5 дней). На длительные поездки добавляются расходы на парковку в аэропорту, топливо туда-обратно и страховку «Зелёная карта».",
+          "Перед поездкой проверьте допуск автомобиля в Литву, особенно на номерах BY, и оформите действующее в ЕС автострахование: белорусская «Зелёная карта» не заменяет пограничный полис. Добавьте расходы на парковку и топливо; короткая поездка не освобождает от ограничений.",
       },
+      { type: "link", href: "/блог/как-въехать-в-беларусь-на-автомобиле-2026", label: "Поездка на машине: правила въезда и возвращения", description: "Номера BY, санкции и страховка — отдельно от выбора транспорта до аэропорта." },
       {
         type: "callout",
         text:
@@ -1370,8 +1397,9 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Own Car" },
       {
         type: "p",
-        text: "A good option for short trips of 3–5 days. For longer trips, costs add up: airport parking fees, fuel for the return journey and a Green Card insurance policy.",
+        text: "Check whether your car may enter Lithuania, especially on BY plates, and arrange motor insurance valid in the EU: a Belarusian Green Card does not replace frontier insurance. Add parking and fuel costs; a short trip does not exempt you from restrictions.",
       },
+      { type: "link", href: "/blog/driving-to-belarus-by-car-2026-rules-checker", label: "Driving guide: entry and return rules", description: "BY plates, sanctions and insurance — separate from choosing airport transport." },
       {
         type: "callout",
         text: "If catching your flight without surprises matters — choose a private ComfortLine transfer. Book online or by phone; quote shortly.",
@@ -1505,12 +1533,19 @@ export const ARTICLES: Article[] = [
     intro:
       "Граница Беларусь–Польша — второй по востребованности маршрут после литовского. Расстояние от Минска до Бреста — около 350 км, затем пересечение границы и дорога до Варшавы ещё 200 км. Рассказываем, как это устроено в 2026.",
     dateISO: "2026-05-10",
+    dateModified: "2026-10-16",
     disclaimerBanner: true,
     readingMin: 8,
     category: "Граница",
     tags: ["граница", "Польша", "Брест", "КПП", "Тересполь"],
     body: [
       { type: "h2", text: "Рабочие КПП в 2026" },
+      { type: "info-notice", text: "Проверено 16 октября 2026 года. Домачево закрыт; оценки ожидания не гарантируют время пересечения. Виза пассажира не подтверждает допуск машины." },
+      { type: "link", href: "/блог/как-въехать-в-беларусь-на-автомобиле-2026", label: "Новый гайд: въезд в Беларусь на авто и обратный путь", description: "Право въезда пассажиров, санкции, номера BY, страховка и таможня." },
+      { type: "p", text: "Для BY-номеров KAS допускает определённые личные автомобили физических лиц при наличии собственника в машине и некоммерческом использовании с соблюдением остальных условий. Это не общее разрешение для фирменных автомобилей, продажи или платных перевозок. Польские исключения не переносятся на Литву и Латвию. Вывоз автомобиля из ЕС в Беларусь проверяется отдельно по санкциям." },
+      { type: "link", href: "https://www.gov.pl/web/kas/nowe-zasady-przywozu-samochodow-osobowych-zarejestrowanych-na-bialorusi", label: "KAS: условия для автомобилей с белорусской регистрацией" },
+      { type: "link", href: "https://www.gov.pl/web/kas/przejscia-graniczne-z-bialorusia-w-bobrownikach-i-kuznicy-otwarte", label: "KAS: Бобровники — легковые и автобусы; Кузница — легковые без автобусов" },
+      { type: "link", href: "https://granica.gov.pl/index_wait.php?k=w&p=b&v=ru", label: "Текущий статус польских КПП и очередь на выезд из Польши" },
       {
         type: "p",
         text: "Для легковых автомобилей на белорусско-польской границе в 2026 году работают три основных пункта пропуска. Выбор КПП сильно влияет на время ожидания — учитывайте это при планировании поездки.",
@@ -1520,8 +1555,10 @@ export const ARTICLES: Article[] = [
         headers: ["КПП (BY)", "КПП (PL)", "Маршрут", "Среднее время"],
         rows: [
           ["Брест (Тересполь)", "Тересполь", "М1 / Е30 → Варшава", "3–7 ч"],
-          ["Домачево", "Словатыче", "Южный объезд", "1–3 ч"],
-          ["Брузги", "Кузница Белостоцкая", "Гродно → Белосток", "2–5 ч"],
+          ["Берестовица", "Бобровники", "Легковые и автобусы → Белосток", "Проверить очередь"],
+          ["Брузги", "Кузница Белостоцкая", "Легковые, без автобусов → Белосток", "Проверить очередь"],
+          ["Домачево", "Словатыче", "Движение приостановлено", "—"],
+          ["Песчатка", "Половце", "Движение приостановлено", "—"],
         ],
       },
       { type: "h2", text: "Брест–Тересполь: самый загруженный" },
@@ -1529,26 +1566,26 @@ export const ARTICLES: Article[] = [
         type: "p",
         text: "Основной и самый известный переход. Находится прямо на трассе М1 (Берлинское шоссе). Здесь проходит основной поток легковых автомобилей, поэтому в пятницу–воскресенье и накануне праздников очереди могут достигать 6–10 часов. Рекомендуем ехать во вторник–четверг, рано утром.",
       },
-      { type: "h2", text: "Домачево: тихая альтернатива" },
+      { type: "h2", text: "Домачево: закрыт, не альтернатива Бресту" },
       {
         type: "p",
-        text: "КПП Домачево находится в 43 км южнее Бреста. Маршрут длиннее на 60–80 км, но очереди — в 2–3 раза меньше. Отличный выбор, если попали в пятничный час пик. Дорога до Варшавы через Люблин добавляет около часа.",
+        text: "По официальной сводке granica.gov.pl, проверенной 16 октября 2026 года, движение через Домачево–Словатыче и Песчатка–Половце приостановлено. Не используйте их для объезда очереди. Берестовица–Бобровники возобновил работу 17 ноября 2025 года для легковых и автобусов; сравнивайте его с Брестом с учётом объезда и актуального статуса.",
       },
       { type: "h2", text: "Брузги (Гродно): для северного направления" },
       {
         type: "p",
-        text: "Переход Брузги–Кузница идеально подходит для поездок из Гродно или тем, кто едет в Белосток, Гданьск или Трёхградье. Из Минска до Брузгов около 330 км. Очереди обычно умеренные, но в летний сезон могут вырастать.",
+        text: "Брузги–Кузница возобновил работу 17 ноября 2025 года для легковых автомобилей, но не автобусов. Он удобен для северного направления; перед поездкой проверьте статус и очередь. Козловичи–Кукурыки/Корощин — грузовое направление, не замена пассажирскому КПП.",
       },
       { type: "h2", text: "Документы для въезда в Польшу" },
       {
         type: "ul",
         items: [
           "Паспорт со сроком действия не менее 3 месяцев после предполагаемой даты выезда из ЕС.",
-          "Шенгенская виза или действующий ВНЖ страны ЕС.",
+          "Виза, ВНЖ или право безвизового въезда, если применимо. Дополнительно проверьте, разрешён ли вам въезд из Беларуси по действующим польским ограничениям: одной визы может быть недостаточно.",
           "Медицинская страховка (минимум 30 000 €, действующая во всех странах Шенгена).",
           "Подтверждение брони отеля или приглашение от принимающей стороны.",
           "Обратные билеты или подтверждение цели поездки.",
-          "«Зелёная карта» — если едете на личном авто.",
+          "Автострахование, действующее в стране въезда. Не полагайтесь на белорусскую «Зелёную карту» для ЕС: заранее проверьте необходимость пограничного полиса.",
         ],
       },
       { type: "h2", text: "Советы водителей ComfortLine" },
@@ -1566,18 +1603,18 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Электронная очередь в зонах ожидания — mon.declarant.by",
-        description: "Лучший источник живой информации об очередях на границе в интернете: официальный сервис мониторинга регистрации транспорта в электронной очереди на белорусских КПП, включая Брест и Домачево, обновляется в реальном времени. Если сайт не открывается — попробуйте зайти через VPN.",
+        description: "Регистрация транспорта в белорусских зонах ожидания. Сначала проверьте, открыт ли КПП: наличие его названия в системе не означает, что проезд разрешён.",
       },
       { type: "liveQueue" },
       {
         type: "callout",
-        text: "Водители ComfortLine отслеживают ситуацию на обоих переходах онлайн. При необходимости — оперативно перестраиваем маршрут на Домачево, чтобы вы не теряли лишние часы.",
+        text: "Водитель сравнивает только работающие КПП, подходящие автомобилю и пассажирам. Закрытое Домачево не используется для объезда. Смена маршрута зависит от допуска, очереди и дополнительного времени в пути.",
       },
       { type: "h2", id: "official-sources", text: "Официальные источники" },
       { type: "link", href: "https://www.granica.gov.pl/", label: "Служба охраны государственной границы Польши — granica.gov.pl", description: "Статус КПП, условия въезда, актуальная обстановка на границе" },
       { type: "link", href: "https://www.podatki.gov.pl/clo/clo-dla-podroznych/", label: "Таможня Польши — podatki.gov.pl", description: "Нормы беспошлинного ввоза для путешественников, запрещённые товары" },
       { type: "link", href: "https://gtk.gov.by", label: "Государственный таможенный комитет Беларуси — gtk.gov.by", description: "Официальный сайт ГТК: нормативная база, правила ввоза и вывоза товаров" },
-      { type: "link", href: "https://mon.declarant.by/#/zone", label: "Электронная очередь на КПП — mon.declarant.by", description: "Актуальное количество автомобилей в электронной очереди на Бресте, Домачево и других КПП — обновляется в реальном времени." },
+      { type: "link", href: "https://mon.declarant.by/#/zone", label: "Электронная очередь на КПП — mon.declarant.by", description: "Регистрация в зонах ожидания работающих белорусских КПП; не подтверждает открытие закрытого перехода." },
       { type: "info-notice", text: "Правила въезда, визовые требования и таможенные нормы могут изменяться без уведомления. Всегда проверяйте актуальную информацию на официальных сайтах перед поездкой." },
     ],
     categoryEn: "Border",
@@ -1585,6 +1622,12 @@ export const ARTICLES: Article[] = [
       "The Belarus–Poland border is the second busiest route after Lithuania. Minsk to Brest is around 350 km, then the border crossing and another 200 km to Warsaw. Here is how it works in 2026.",
     bodyEn: [
       { type: "h2", text: "Working Checkpoints in 2026" },
+      { type: "info-notice", text: "Checked on 16 October 2026. Domachevo is closed; waiting-time estimates do not guarantee crossing times. A passenger's visa does not establish vehicle admissibility." },
+      { type: "link", href: "/blog/driving-to-belarus-by-car-2026-rules-checker", label: "New guide: driving to Belarus and returning", description: "Passenger eligibility, sanctions, BY plates, insurance and customs." },
+      { type: "p", text: "KAS allows certain privately owned BY-plated cars where the owner is in the vehicle and use is non-commercial, subject to the other conditions. This is not blanket permission for corporate cars, vehicles for sale or paid passenger transport. Poland's exceptions do not apply automatically in Lithuania or Latvia. Taking a car from the EU to Belarus requires a separate export-sanctions check." },
+      { type: "link", href: "https://www.gov.pl/web/kas/nowe-zasady-przywozu-samochodow-osobowych-zarejestrowanych-na-bialorusi", label: "KAS: conditions for Belarus-registered cars" },
+      { type: "link", href: "https://www.gov.pl/web/kas/przejscia-graniczne-z-bialorusia-w-bobrownikach-i-kuznicy-otwarte", label: "KAS: Bobrowniki takes cars and coaches; Kuźnica takes cars, not coaches" },
+      { type: "link", href: "https://granica.gov.pl/index_wait.php?k=w&p=b&v=en", label: "Current Polish crossing status and queues leaving Poland" },
       {
         type: "p",
         text: "Three main checkpoints operate for private cars on the Belarus–Poland border in 2026. Your choice of crossing significantly affects waiting time — factor this into your travel planning.",
@@ -1594,8 +1637,10 @@ export const ARTICLES: Article[] = [
         headers: ["Checkpoint (BY)", "Checkpoint (PL)", "Route", "Avg. wait time"],
         rows: [
           ["Brest (Terespol)", "Terespol", "M1 / E30 → Warsaw", "3–7 h"],
-          ["Domachevo", "Sławatycze", "Southern bypass", "1–3 h"],
-          ["Bruzgi", "Kuźnica Białostocka", "Grodno → Białystok", "2–5 h"],
+          ["Berestovitsa", "Bobrowniki", "Cars and coaches → Białystok", "Check current queue"],
+          ["Bruzgi", "Kuźnica Białostocka", "Cars, no coaches → Białystok", "Check current queue"],
+          ["Domachevo", "Sławatycze", "Traffic suspended", "—"],
+          ["Peschatka", "Połowce", "Traffic suspended", "—"],
         ],
       },
       { type: "h2", text: "Brest–Terespol: The Busiest Crossing" },
@@ -1603,26 +1648,26 @@ export const ARTICLES: Article[] = [
         type: "p",
         text: "The main and best-known crossing, located directly on the M1 highway (the Berlin road). It handles the largest volume of private cars, so on Friday–Sunday and before public holidays queues can reach 6–10 hours. We recommend travelling Tuesday–Thursday, early in the morning.",
       },
-      { type: "h2", text: "Domachevo: The Quiet Alternative" },
+      { type: "h2", text: "Domachevo: Closed, Not a Brest Alternative" },
       {
         type: "p",
-        text: "Domachevo is 43 km south of Brest. The route is 60–80 km longer, but queues are 2–3 times shorter. An excellent choice if you get caught in Friday rush hour. The route to Warsaw via Lublin adds about one hour.",
+        text: "The official granica.gov.pl bulletin, checked on 16 October 2026, lists Domachevo–Sławatycze and Peschatka–Połowce as suspended. Do not use them as queue bypasses. Berestovitsa–Bobrowniki reopened on 17 November 2025 for cars and coaches; compare it with Brest using current status and the extra driving distance.",
       },
       { type: "h2", text: "Bruzgi (Grodno): For the Northern Direction" },
       {
         type: "p",
-        text: "The Bruzgi–Kuźnica crossing is ideal for travellers from Grodno, or for those heading to Białystok, Gdańsk or the Tri-City. Minsk to Bruzgi is about 330 km. Queues are usually moderate but can grow in summer.",
+        text: "Bruzgi–Kuźnica reopened on 17 November 2025 for passenger cars, but not coaches. It suits northern routes; check its status and queue before travelling. Kozlovichi–Kukuryki/Koroszczyn is a freight route, not a passenger-crossing alternative.",
       },
       { type: "h2", text: "Documents for Entry into Poland" },
       {
         type: "ul",
         items: [
           "Passport valid for at least 3 months beyond your planned EU departure date.",
-          "Schengen visa or a valid EU residence permit.",
+          "Visa, residence permit or visa-free entitlement where applicable. Also check whether Poland's current restrictions permit your entry from Belarus: a visa alone may be insufficient.",
           "Medical insurance (minimum €30,000, valid across all Schengen countries).",
           "Hotel booking confirmation or invitation from a host.",
           "Return tickets or confirmation of purpose of visit.",
-          "Green Card — if driving your own vehicle.",
+          "Motor insurance valid in the destination country. Do not rely on a Belarusian Green Card for the EU: check frontier insurance requirements in advance.",
         ],
       },
       { type: "h2", text: "ComfortLine Driver Tips" },
@@ -1640,18 +1685,18 @@ export const ARTICLES: Article[] = [
         type: "link",
         href: "https://mon.declarant.by/#/zone",
         label: "Electronic queue at waiting zones — mon.declarant.by",
-        description: "The best live queue information available online: the official Belarusian customs monitoring service for vehicle registration in the electronic border-crossing queue, including Brest and Domachevo, updated in real time. If the site doesn't load, try opening it with a VPN.",
+        description: "Vehicle registration in Belarusian waiting zones. Check that the crossing is open first: its name appearing in a queue system is not permission to cross.",
       },
       { type: "liveQueue" },
       {
         type: "callout",
-        text: "ComfortLine drivers monitor both crossings online. If needed, we reroute to Domachevo quickly so you don't lose unnecessary hours.",
+        text: "Drivers compare only operating crossings suitable for the vehicle and passengers. Closed Domachevo is not used as a bypass. Rerouting depends on admission rules, queues and additional driving time.",
       },
       { type: "h2", id: "official-sources", text: "Official Sources" },
       { type: "link", href: "https://www.granica.gov.pl/", label: "Polish Border Guard — granica.gov.pl", description: "Checkpoint status, entry conditions and current border situation" },
       { type: "link", href: "https://www.podatki.gov.pl/clo/clo-dla-podroznych/", label: "Polish Customs — podatki.gov.pl", description: "Duty-free allowances for travellers, prohibited goods" },
       { type: "link", href: "https://gtk.gov.by", label: "Belarusian State Customs Committee — gtk.gov.by", description: "Official customs regulations and import/export rules" },
-      { type: "link", href: "https://mon.declarant.by/#/zone", label: "Live border queue — mon.declarant.by", description: "Current vehicle queue counts at Brest, Domachevo and other checkpoints, updated in real time." },
+      { type: "link", href: "https://mon.declarant.by/#/zone", label: "Live border queue — mon.declarant.by", description: "Waiting-zone registration at operating Belarusian checkpoints; not evidence that a closed crossing has reopened." },
       { type: "info-notice", text: "Entry requirements and customs allowances may change without notice. Always check official sources before travelling." },
     ],
     related: ["стоимость-трансфер-минск-варшава", "что-нельзя-ввозить-в-ес", "аэропорт-варшавы-вав"],
@@ -1713,8 +1758,11 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Трансфер Минск–Рига: что важно знать" },
       {
         type: "p",
-        text: "Маршрут Минск–Рига проходит через границу Беларусь–Латвия (КПП Григоровщина / Патерниеки). Это менее загруженный переход, чем литовские — среднее время прохождения в будни 1,5–3 часа. Общее время в пути 7–9 часов. Рекомендуем выезжать с запасом 3–4 часа до вылета.",
+        text: "Маршрут Минск–Рига проходит через Григоровщину–Патерниеки — это две стороны одного перехода. Силене закрыт. При выезде из Латвии на автомобиле нужна предварительная запись на lvborder.lv, кроме предусмотренных законом исключений. Обычный въезд в Латвию на легковом авто с номерами BY запрещён; допуск пассажиров проверяют отдельно. Рассчитывайте время с учётом всей дороги, очереди и регистрации на рейс, а не только запаса 3–4 часа.",
       },
+      { type: "link", href: "/блог/как-въехать-в-беларусь-на-автомобиле-2026", label: "Новый гайд: КПП, автомобиль и право въезда", description: "Для личного авто и обратного маршрута условия отличаются от пассажирского трансфера." },
+      { type: "link", href: "https://www.lvborder.lv/en/", label: "Официальная запись в очередь для выезда из Латвии" },
+      { type: "link", href: "https://www.vid.gov.lv/lv/jaunums/personas-ar-baltkrievijas-republika-registretu-transportlidzekli-turpmak-nevares-iebraukt-latvija", label: "СГД Латвии: запрет въезда легковых автомобилей с регистрацией BY" },
       {
         type: "callout",
         text: "ComfortLine выполняет трансферы в аэропорт Риги (RIX). Подача от двери, помощь с багажом, актуальная информация по очереди на границе — всё включено.",
@@ -1763,8 +1811,11 @@ export const ARTICLES: Article[] = [
       { type: "h2", text: "Minsk–Riga Transfer: Key Facts" },
       {
         type: "p",
-        text: "The Minsk–Riga route passes through the Belarus–Latvia border (checkpoints Grigorovshchina / Patarnieki). This is a less congested crossing than the Lithuanian ones — average waiting time on weekdays is 1.5–3 hours. Total journey time is 7–9 hours. We recommend departing 3–4 hours before your flight.",
+        text: "The Minsk–Riga route uses Grigorovshchina–Pāternieki, the two sides of one crossing. Silene is closed. Vehicles departing Latvia require advance registration at lvborder.lv, except for statutory exemptions. Ordinary BY-plated passenger cars are banned from entering Latvia; passenger eligibility is checked separately. Allow for the entire drive, queue and airline check-in, not just a 3–4-hour pre-flight buffer.",
       },
+      { type: "link", href: "/blog/driving-to-belarus-by-car-2026-rules-checker", label: "New guide: crossings, vehicles and entry eligibility", description: "Conditions for your own car and the return route differ from passenger-transfer arrangements." },
+      { type: "link", href: "https://www.lvborder.lv/en/", label: "Official queue booking for vehicles leaving Latvia" },
+      { type: "link", href: "https://www.vid.gov.lv/lv/jaunums/personas-ar-baltkrievijas-republika-registretu-transportlidzekli-turpmak-nevares-iebraukt-latvija", label: "Latvian Revenue Service: ban on entry of BY-registered passenger cars" },
       {
         type: "callout",
         text: "ComfortLine transfers to Riga Airport (RIX). Door-to-door pick-up, luggage assistance and live border queue information — all included.",
@@ -2166,6 +2217,7 @@ export const ARTICLES: Article[] = [
     intro:
       "Беларусь открыта для гостей из Европы: в 2026 году граждане десятков стран могут въехать без оформления визы. Замки Мир и Несвиж, Беловежская пуща, Брестская крепость, рестораны Минска — всё это доступно без визовых хлопот. Разбираем действующие режимы, нужные документы, пограничные переходы и лучший способ добраться.",
     dateISO: "2026-06-13",
+    dateModified: "2026-10-16",
     disclaimerBanner: true,
     readingMin: 12,
     category: "Въезд в Беларусь",
@@ -2176,6 +2228,10 @@ export const ARTICLES: Article[] = [
         text: "Актуальный официальный список стран и условий безвизового въезда публикует Министерство иностранных дел Республики Беларусь: mfa.gov.by/visa/freemove/general/ — проверяйте перед поездкой, правила периодически обновляются.",
       },
       { type: "h2", text: "Два основных безвизовых режима в 2026 году" },
+      { type: "editorial-correction", heading: "Условия перепроверены 16 октября 2026", text: "Наземный европейский безвиз: 38 государств, до 31.12.2026, суммарно не более 90 суток за календарный год. Аэропортовый безвиз — другой режим: выезд по нему только через указанные аэропорты. Въезд в Беларусь, возвращение в ЕС и допуск автомобиля проверяются отдельно." },
+      { type: "link", href: "https://mfa.gov.by/en/visa/freemove/europe", label: "МИД Беларуси: наземный безвиз, страны, сроки и исключения" },
+      { type: "link", href: "https://mfa.gov.by/en/visa/freemove/airport", label: "МИД Беларуси: аэропортовый безвиз и дополнительные документы" },
+      { type: "link", href: "/блог/как-въехать-в-беларусь-на-автомобиле-2026", label: "Новый гайд: автомобиль, КПП и обратный въезд", description: "Виза или безвиз пассажира не отменяет санкции и таможенные требования к машине." },
       {
         type: "p",
         text: "Беларусь предлагает два основных формата безвизового въезда, различающихся по способу прибытия: воздушный и наземный. Помимо них существуют специальные региональные программы (Гродненская область, Августовский канал). Важно заранее определить, какой режим подходит именно вам.",
@@ -2184,73 +2240,71 @@ export const ARTICLES: Article[] = [
         type: "table",
         headers: ["Режим", "Длительность", "Въезд через", "Охват стран"],
         rows: [
-          ["Аэропорты Беларуси", "до 30 суток", "Нац. аэропорт Минск, аэропорты Бреста, Витебска, Гомеля, Гродно, Могилёва (кроме рейсов из РФ)", "76 государств"],
-          ["Наземная граница (авто и ж/д)", "до 30 суток; для граждан Польши, Литвы, Латвии и лиц со статусом негражданина Латвии — до 90 суток", "Все международные автодорожные и железнодорожные КПП", "35 европейских государств"],
+          ["Аэропорты Беларуси", "до 30 суток", "Въезд и выезд: Минск, Брест, Витебск, Гомель, Гродно, Могилёв; не рейсы из/в РФ", "76 государств"],
+          ["Наземная граница (авто и ж/д)", "до 30 суток за въезд; PL/LT/LV и неграждане Латвии — до 90; всего не более 90 суток в календарном году", "Работающие международные автодорожные и железнодорожные КПП", "38 европейских государств; до 31.12.2026"],
         ],
       },
       { type: "h2", text: "Режим 1 — через аэропорты Беларуси: до 30 суток" },
       {
         type: "p",
-        text: "Граждане 76 государств — включая все страны Евросоюза, Великобританию, США, Канаду, Австралию, Японию и многие другие — могут прилететь в Беларусь без визы и остаться до 30 суток. Въезд возможен через Национальный аэропорт Минск, а также аэропорты Бреста, Витебска, Гомеля, Гродно и Могилёва. Важное исключение: рейсы, прилетающие из Российской Федерации, под этот режим не подпадают.",
+        text: "Аэропортовый режим до 30 суток относится к гражданам 76 государств из отдельного списка МИД. Въезд и выезд — только через Национальный аэропорт Минск и аэропорты Бреста, Витебска, Гомеля, Гродно, Могилёва. Рейсы из России и в Россию исключены. Для ряда гражданств нужны дополнительные документы, включая использованную многократную визу ЕС/Шенгена и билет на вылет; проверьте свою страну по ссылке МИД ниже.",
       },
       {
         type: "ul",
         items: [
           "Срок пребывания — не более 30 суток со дня въезда.",
           "Въезд — через Нац. аэропорт Минск (MSQ), аэропорты Бреста, Витебска, Гомеля, Гродно, Могилёва.",
-          "Режим не распространяется на прилетающих рейсами из России.",
-          "Выезд — через любой пограничный переход.",
+          "Режим не распространяется на рейсы из России и в Россию.",
+          "Выезд — только через один из шести перечисленных аэропортов, не через наземную границу.",
           "Цель визита — туризм, деловые встречи, транзит, посещение родственников.",
           "При себе обязательно: медицинская страховка с покрытием в Беларуси.",
         ],
       },
       {
         type: "callout",
-        text: "Если вы летите в Минск из Варшавы, Вильнюса, Риги, Берлина или другого европейского города — этот режим действует автоматически. После прилёта можно добраться до нужного города в Беларуси частным трансфером, а выехать — через любой наземный или воздушный пункт пропуска.",
+        text: "Аэропортовый безвиз не действует автоматически для любого пассажира и не разрешает выехать по земле. Если вы прилетаете в Вильнюс, Варшаву или Ригу и затем едете в Беларусь на автомобиле, нужен наземный безвиз, отдельное соглашение или виза. Проверяйте фактическое авиасообщение, не предполагая наличие прямых рейсов в Минск из ЕС.",
       },
       { type: "h2", text: "Режим 2 — наземная и железнодорожная граница: до 30 суток" },
       {
         type: "p",
-        text: "Граждане 35 европейских государств могут въезжать в Беларусь через все международные автодорожные и железнодорожные пункты пропуска без визы — на срок до 30 суток со дня въезда. Для граждан Польши, Литвы, Латвии, а также лиц, имеющих статус негражданина Латвии, срок увеличен до 90 суток.",
+        text: "По странице МИД, проверенной 16 октября 2026 года, наземный безвиз охватывает 38 европейских государств и действует до 31 декабря 2026 года включительно. Обычный срок — до 30 суток за въезд; гражданам Польши, Литвы, Латвии и негражданам Латвии — до 90 суток. Для всех действует общий предел 90 суток в календарном году. Въезд возможен через работающие международные автодорожные и железнодорожные КПП; транзит в Россию этим режимом не разрешён.",
       },
       {
         type: "ul",
         items: [
-          "Въезд — через любой международный автодорожный или железнодорожный КПП.",
+          "Въезд — через работающий международный автодорожный или железнодорожный КПП; ограничения соседней страны проверяются отдельно.",
           "Срок пребывания — до 30 суток для большинства стран.",
           "Для граждан Польши, Литвы, Латвии и лиц со статусом негражданина Латвии — до 90 суток.",
-          "Охват: 35 европейских государств (полный список — на сайте МИД РБ).",
+          "Охват: 38 европейских государств; для Эстонии также указаны постоянно проживающие там лица без гражданства. Полный список и документы — на странице МИД о европейском безвизе.",
+          "Повторные въезды возможны до 31.12.2026, но не обнуляют предел 90 суток за календарный год.",
           "Медицинская страховка обязательна.",
         ],
       },
       {
         type: "callout",
-        text: "Граждане Польши, Литвы и Латвии могут находиться в Беларуси до 90 суток без визы — въезд через любой международный автодорожный или железнодорожный КПП.",
+        text: "Для граждан Польши, Литвы, Латвии и неграждан Латвии — до 90 суток за въезд, но суммарно не более 90 суток в календарном году по этому режиму. Право въезда в Беларусь не заменяет право вернуться в ЕС и допуск автомобиля.",
       },
       { type: "h3", text: "Специальные региональные программы" },
       {
         type: "p",
-        text: "Помимо основных двух режимов, МИД Беларуси ведёт отдельные программы: посещение Гродненской области (до 15 суток, только через КПП Брузги, Берестовица, Песчатка на границе с Польшей) и зоны Августовского канала (до 10 суток, через КПП Лесная). Эти программы ограничены определёнными регионами страны и подходят для узкотематических туристических маршрутов.",
+        text: "Региональный туристический безвиз Брест–Гродно — отдельная программа с территориальными ограничениями и требованиями к туристическим документам. Не смешивайте её с общенациональным европейским безвизом и не используйте старые списки КПП: наличие перехода в описании программы не означает, что он открыт. Условия конкретного маршрута уточняйте в МИД и у пограничной службы.",
       },
       { type: "h2", text: "Страны с правом безвизового въезда" },
       {
         type: "p",
-        text: "Полный и актуальный перечень публикуется на сайте МИД РБ. В числе стран, граждане которых могут въехать без визы через аэропорты Беларуси (76 государств):",
+        text: "МИД публикует отдельные списки для аэропортового режима, европейского наземного безвиза и двусторонних соглашений. Проверяйте гражданство и тип документа именно по своему режиму:",
       },
       {
         type: "ul",
         items: [
-          "Все 27 стран Европейского союза — Польша, Германия, Франция, Италия, Испания, Нидерланды, Швеция, Австрия, Бельгия, Дания, Финляндия, Греция, Чехия, Венгрия, Румыния, Болгария и другие.",
-          "Великобритания, Швейцария, Норвегия, Исландия, Лихтенштейн.",
-          "США, Канада, Австралия, Новая Зеландия.",
-          "Япония, Южная Корея, Сингапур.",
-          "Бразилия, Аргентина, Мексика.",
-          "Всего 76 государств — полный список на mfa.gov.by/visa/freemove/general/",
+          "Аэропортовый список — 76 государств; у некоторых гражданств есть дополнительные визовые и билетные условия.",
+          "Европейский наземный безвиз — 38 государств по списку МИД, до 31.12.2026.",
+          "Отдельные двусторонние соглашения могут давать иные сроки и основания въезда; не переносите их условия на аэропортовый режим.",
         ],
       },
       {
         type: "link",
-        href: "https://mfa.gov.by/visa/freemove/general/",
+        href: "https://mfa.gov.by/en/visa/freemove/airport",
         label: "Официальный список стран и актуальные условия — МИД Республики Беларусь",
         description: "Проверяйте перед поездкой: правила могут обновляться",
       },
@@ -2262,27 +2316,27 @@ export const ARTICLES: Article[] = [
       {
         type: "ol",
         items: [
-          "Действующий загранпаспорт — срок действия не менее 90 дней на момент въезда.",
-          "Медицинская страховка, действующая на территории Беларуси, на весь срок пребывания. Минимальная страховая сумма — эквивалент 10 000 долларов США. Многие европейские полисы EHIC не покрывают Беларусь — уточняйте у страховщика.",
+          "Действующий паспорт или иной признаваемый проездной документ для вашего режима. Для аэропортового безвиза — обычный паспорт, действующий не менее 90 дней после планируемого выезда.",
+          "Медицинская страховка на весь срок пребывания, действующая в Беларуси, с покрытием не менее 10 000 евро. EHIC не заменяет такой полис.",
           "Документы, подтверждающие цель поездки: бронь отеля, приглашение, программа деловой встречи, туристический маршрут.",
-          "Наличие средств к существованию — ориентировочно от 25–50 EUR в сутки (размер не фиксирован законодательно, оценивается индивидуально).",
+          "Средства к существованию: для аэропортового режима МИД указывает не менее двух базовых величин за день или 50 базовых величин за полные 30 суток. Пересчитайте по действующим величине и курсу; для своего режима проверьте условия отдельно.",
           "Для несовершеннолетних без обоих родителей — нотариально заверенное согласие на выезд от родителей или законных представителей.",
         ],
       },
       { type: "h3", text: "Медицинская страховка: на что обратить внимание" },
       {
         type: "p",
-        text: "Это самое распространённое основание для отказа во въезде. Важно: европейская карта медицинского страхования (EHIC) действует только в странах ЕС/ЕЭЗ, в Беларуси она не принимается. Потребуется отдельный полис. Оформить его можно онлайн за несколько минут — стоимость для поездки на 5–7 дней в Беларусь составляет 5–15 EUR в зависимости от страховщика.",
+        text: "Проверьте территорию действия, срок и покрытие полиса. EHIC не заменяет страховку для Беларуси. При необходимости оформите отдельный полис до поездки; стоимость и условия уточняйте у страховщика.",
       },
       { type: "h3", text: "Нужна ли регистрация по месту пребывания" },
       {
         type: "p",
-        text: "При размещении в отеле регистрацию оформляет гостиница автоматически. При проживании у частных лиц — хозяин жилья обязан зарегистрировать гостя в течение 5 рабочих дней через местный орган внутренних дел или портал gosuslugi.by. Нарушение этого требования может повлечь штраф при выезде.",
+        text: "Гостиницы оформляют регистрацию при заселении. МИД указывает необходимость регистрации при пребывании более 10 рабочих дней — в подразделении по гражданству и миграции или через portal.gov.by. Проверьте применимые к вашему гражданству исключения и сроки заранее.",
       },
       { type: "h2", text: "Почему частный трансфер — это лучший вариант для въезда в Беларусь" },
       {
         type: "p",
-        text: "Большинство безвизовых туристов прилетают в Минск через промежуточный европейский аэропорт — Варшаву, Вильнюс, Ригу или Каунас. Дальше возникает вопрос: как добраться до Беларуси комфортно и без стресса? Автобусы и маршрутки существуют, но у них есть серьёзные ограничения.",
+        text: "Можно прилететь в Варшаву, Вильнюс, Ригу или Каунас, а затем ехать в Беларусь по земле — только при наличии права наземного въезда. Аэропортовый безвиз Беларуси для такого маршрута не подходит. Ниже сравниваем автобусы и частный трансфер.",
       },
       {
         type: "table",
@@ -2317,7 +2371,7 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "Вильнюс / Аэропорт VNO → Минск" },
       {
         type: "p",
-        text: "Самый востребованный маршрут. Многие европейцы летят до Вильнюса — прямые рейсы из большинства европейских городов — а затем добираются до Беларуси наземным транспортом. Расстояние Вильнюс–Минск около 175 км. Пограничный переход Каменный Лог / Котловка. Время в пути с учётом границы — 3,5–6 часов.",
+        text: "Из аэропорта Вильнюса в Беларусь едут через Каменный Лог–Мядининкай или Бенякони–Шальчининкай, если они работают в день поездки. Котловка–Лаворишкес закрыт. Для этого маршрута нужен наземный безвиз, другое действующее основание или виза. Время в пути зависит от выбранного КПП и очереди.",
       },
       { type: "h3", text: "Варшава / Аэропорт WAW и Модлин → Минск" },
       {
@@ -2332,8 +2386,10 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "Рига / Аэропорт RIX → Минск" },
       {
         type: "p",
-        text: "Рига — удобная точка въезда для путешественников из скандинавских стран и Прибалтики. Расстояние Рига–Минск около 470 км. Граница проходит через Григоровщину или Патарниеки. Время в пути — 5,5–8 часов с учётом пограничного контроля.",
+        text: "Из Риги едут через Григоровщину–Патерниеки: это две стороны одного перехода, не альтернативные КПП. Силене закрыт. Для выезда из Латвии на авто нужна запись на lvborder.lv, кроме предусмотренных законом исключений. Проверьте статус КПП и заложите запас; возвращение обычного легкового авто на BY-номерах через Латвию запрещено.",
       },
+      { type: "link", href: "https://www.lvborder.lv/en/", label: "Официальная латвийская запись в автомобильную очередь" },
+      { type: "link", href: "https://www.vid.gov.lv/en/article/operation-silene-border-crossing-point-halted-19-september-2023", label: "СГД Латвии: Силене закрыт, маршрут через Патерниеки" },
       { type: "h2", text: "Что посмотреть в Беларуси: топ-10 направлений" },
       {
         type: "p",
@@ -2370,12 +2426,12 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "Можно ли въехать по внутреннему паспорту ЕС?" },
       {
         type: "p",
-        text: "Нет. Для въезда в Беларусь требуется только загранпаспорт. Внутренние удостоверения личности (ID-карты), действующие внутри ЕС, в Беларуси не принимаются.",
+        text: "Не считайте любую ID-карту ЕС достаточным документом для Беларуси. Для аэропортового режима МИД требует обычный паспорт, а для европейского наземного режима указывает действительный проездной документ. Признание именно вашего документа и его срок действия подтвердите в консульстве до поездки.",
       },
       { type: "h3", text: "Нужна ли виза при въезде через польскую или литовскую границу?" },
       {
         type: "p",
-        text: "Для граждан 35 европейских государств — нет: въезд через любой международный автодорожный или железнодорожный КПП возможен без визы на срок до 30 суток. Для граждан Польши, Литвы и Латвии срок увеличен до 90 суток. Граждане стран за пределами этого списка 35 государств для наземного въезда по-прежнему нуждаются в визе, однако могут воспользоваться аэропортовым режимом (76 государств, въезд через аэропорты Беларуси).",
+        text: "Для граждан 38 европейских государств действует наземный безвиз до 31.12.2026: обычно 30 суток за въезд, для PL/LT/LV и неграждан Латвии — 90, всего не более 90 суток за календарный год. Для других гражданств проверьте отдельные безвизовые соглашения или необходимость визы. Аэропортовый режим для 76 государств не разрешает въезд по земле.",
       },
       { type: "h3", text: "Что будет, если превысить 30-дневный лимит?" },
       {
@@ -2385,7 +2441,7 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "Можно ли въехать и сразу выехать, чтобы обнулить дни?" },
       {
         type: "p",
-        text: "Формально правила не запрещают повторный въезд после выезда. Однако пограничники могут усмотреть злоупотребление режимом и отказать во въезде. Для длительного пребывания рекомендуем оформить обычную визу.",
+        text: "Нет: выезд не обнуляет суммарный лимит. Европейский наземный безвиз допускает повторные въезды до 31.12.2026, но всего не более 90 суток в календарном году. Для более долгого пребывания заранее оформите подходящее законное основание.",
       },
       { type: "h3", text: "Можно ли работать в Беларуси по безвизовому режиму?" },
       {
@@ -2411,6 +2467,10 @@ export const ARTICLES: Article[] = [
         text: "The official list of countries and visa-free entry conditions is published by the Ministry of Foreign Affairs of the Republic of Belarus: mfa.gov.by/visa/freemove/general/ — check before your trip, rules are updated periodically.",
       },
       { type: "h2", text: "Two Main Visa-Free Entry Regimes in 2026" },
+      { type: "editorial-correction", heading: "Conditions rechecked on 16 October 2026", text: "The European land waiver covers 38 states until 31 December 2026, with a combined maximum of 90 days per calendar year. The airport waiver is separate: departure under it must be through the listed airports. Entry to Belarus, return to the EU and vehicle admission are separate checks." },
+      { type: "link", href: "https://mfa.gov.by/en/visa/freemove/europe", label: "Belarus MFA: land waiver, countries, limits and exceptions" },
+      { type: "link", href: "https://mfa.gov.by/en/visa/freemove/airport", label: "Belarus MFA: airport waiver and additional documents" },
+      { type: "link", href: "/blog/driving-to-belarus-by-car-2026-rules-checker", label: "New guide: vehicles, crossings and the return journey", description: "Passenger visa or waiver eligibility does not remove vehicle sanctions or customs requirements." },
       {
         type: "p",
         text: "Belarus offers two main visa-free entry formats differing by arrival method: by air and by land. There are also special regional programmes (Grodno region, Augustów Canal). It is important to determine which regime applies to you before you travel.",
@@ -2422,80 +2482,78 @@ export const ARTICLES: Article[] = [
           [
             "Belarusian airports",
             "up to 30 days",
-            "Minsk National Airport, airports of Brest, Vitebsk, Gomel, Grodno, Mogilev (except flights from Russia)",
+            "Entry and exit: Minsk, Brest, Vitebsk, Gomel, Grodno, Mogilev; no flights from/to Russia",
             "76 states",
           ],
           [
             "Land border (road & rail)",
-            "up to 30 days; citizens of Poland, Lithuania, Latvia and stateless persons of Latvia — up to 90 days",
-            "All international road and railway border crossings",
-            "35 European states",
+            "up to 30 days per entry; PL/LT/LV citizens and Latvian non-citizens — up to 90; maximum 90 days per calendar year",
+            "Operating international road and railway border crossings",
+            "38 European states; until 31 December 2026",
           ],
         ],
       },
       { type: "h2", text: "Regime 1 — Belarusian Airports: Up to 30 Days" },
       {
         type: "p",
-        text: "Citizens of 76 states — including all EU countries, the United Kingdom, USA, Canada, Australia, Japan and many others — can fly to Belarus without a visa and stay for up to 30 days. Entry is through Minsk National Airport as well as the airports of Brest, Vitebsk, Gomel, Grodno and Mogilev. Important exception: flights arriving from the Russian Federation do not fall under this regime.",
+        text: "The airport waiver allows citizens of the 76 states on the MFA's separate list to stay for up to 30 days. Both entry and exit must be via Minsk National Airport or the airports of Brest, Vitebsk, Gomel, Grodno or Mogilev. Flights from and to Russia are excluded. Some nationalities need additional documents, including a previously used multiple-entry EU/Schengen visa and an outbound flight ticket; check your country on the MFA page below.",
       },
       {
         type: "ul",
         items: [
           "Duration — no more than 30 days from the date of entry.",
           "Entry — through Minsk National Airport (MSQ), airports of Brest, Vitebsk, Gomel, Grodno, Mogilev.",
-          "The regime does not apply to passengers arriving on flights from Russia.",
-          "Exit — through any border crossing.",
+          "The regime does not apply to flights from or to Russia.",
+          "Exit — only through one of the six listed airports, not through a land crossing.",
           "Purpose — tourism, business meetings, transit, visiting relatives.",
           "Required: medical insurance valid in Belarus.",
         ],
       },
       {
         type: "callout",
-        text: "If you are flying to Minsk from Warsaw, Vilnius, Riga, Berlin or any other European city — this regime applies automatically. After landing, a private transfer can take you anywhere in Belarus, and you can exit through any land or air checkpoint.",
+        text: "The airport waiver is not automatic for every passenger and does not allow departure by land. If you fly to Vilnius, Warsaw or Riga and then drive to Belarus, you need the land-entry waiver, a separate visa-free agreement or a visa. Check actual flight connections rather than assuming direct EU–Minsk flights exist.",
       },
       { type: "h2", text: "Regime 2 — Land and Railway Border: Up to 30 Days" },
       {
         type: "p",
-        text: "Citizens of 35 European states can enter Belarus through any international road or railway border crossing without a visa, for up to 30 days from the date of entry. Citizens of Poland, Lithuania, Latvia and stateless persons of Latvia are granted a longer stay of up to 90 days.",
+        text: "The MFA page checked on 16 October 2026 covers 38 European states through 31 December 2026 inclusive. The usual limit is 30 days per entry; citizens of Poland, Lithuania and Latvia, including holders of Latvia's non-citizen status, may stay up to 90 days. All are subject to a combined maximum of 90 days per calendar year. Entry is via operating international road and railway checkpoints; this scheme does not permit transit to Russia.",
       },
       {
         type: "ul",
         items: [
-          "Entry — through any international road or railway border crossing.",
+          "Entry — through an operating international road or railway checkpoint; check the neighbouring country's restrictions separately.",
           "Duration — up to 30 days for most countries.",
-          "For citizens of Poland, Lithuania, Latvia and stateless persons of Latvia — up to 90 days.",
-          "Coverage: 35 European states (full list on the MFA website).",
+          "For citizens of Poland, Lithuania and Latvia, including holders of Latvia's non-citizen status — up to 90 days per entry.",
+          "Coverage: 38 European states; the Estonia entry also includes stateless permanent residents. Check the MFA's European waiver page for the full list and travel documents.",
+          "Repeated entries are allowed until 31 December 2026, but do not reset the 90-day calendar-year total.",
           "Medical insurance is mandatory.",
         ],
       },
       {
         type: "callout",
-        text: "Citizens of Poland, Lithuania and Latvia can stay in Belarus for up to 90 days without a visa — entry through any international road or railway border crossing.",
+        text: "Polish, Lithuanian and Latvian citizens and Latvian non-citizens may stay up to 90 days per entry, but no more than 90 days per calendar year under this scheme. Permission to enter Belarus does not establish the right to return to the EU or the vehicle's admissibility.",
       },
       { type: "h3", text: "Special Regional Programmes" },
       {
         type: "p",
-        text: "Beyond the two main regimes, the Belarusian MFA runs separate programmes: a visit to the Grodno region (up to 15 days, only through checkpoints Bruzgi, Berestovitsa, Peschatka on the Polish border) and the Augustów Canal zone (up to 10 days, through checkpoint Lesnaya). These programmes are restricted to specific areas and suit narrow themed itineraries.",
+        text: "The Brest–Grodno regional tourist waiver is a separate programme with territorial limits and tourist-document requirements. Do not confuse it with the nationwide European waiver or rely on old crossing lists: a checkpoint named in a programme is not necessarily open. Confirm your specific route with the MFA and border authorities.",
       },
       { type: "h2", text: "Countries with Visa-Free Entry Rights" },
       {
         type: "p",
-        text: "The full and current list is published on the MFA website. Countries whose citizens can enter visa-free through Belarusian airports (76 states) include:",
+        text: "The MFA publishes separate lists for the airport scheme, the European land waiver and bilateral agreements. Check your nationality and document type under the scheme you will actually use:",
       },
       {
         type: "ul",
         items: [
-          "All 27 EU member states — Poland, Germany, France, Italy, Spain, Netherlands, Sweden, Austria, Belgium, Denmark, Finland, Greece, Czech Republic, Hungary, Romania, Bulgaria and others.",
-          "United Kingdom, Switzerland, Norway, Iceland, Liechtenstein.",
-          "USA, Canada, Australia, New Zealand.",
-          "Japan, South Korea, Singapore.",
-          "Brazil, Argentina, Mexico.",
-          "76 states in total — full list at mfa.gov.by/visa/freemove/general/",
+          "Airport list — 76 states; some nationalities have additional visa and flight-ticket requirements.",
+          "European land waiver — 38 states on the MFA list, until 31 December 2026.",
+          "Separate bilateral agreements can provide different durations or entry rights; do not transfer those conditions to the airport scheme.",
         ],
       },
       {
         type: "link",
-        href: "https://mfa.gov.by/visa/freemove/general/",
+        href: "https://mfa.gov.by/en/visa/freemove/airport",
         label: "Official list of countries and current conditions — Ministry of Foreign Affairs of Belarus",
         description: "Check before your trip: rules may be updated",
       },
@@ -2507,27 +2565,27 @@ export const ARTICLES: Article[] = [
       {
         type: "ol",
         items: [
-          "Valid international passport — at least 90 days of validity remaining at the time of entry.",
-          "Medical insurance valid in Belarus for the entire duration of stay. Minimum coverage — equivalent to USD 10,000. Many European EHIC cards do not cover Belarus — check with your insurer.",
+          "Valid passport or other recognised travel document for your scheme. The airport waiver requires an ordinary passport valid at least 90 days beyond your planned departure.",
+          "Medical insurance valid in Belarus throughout your stay with at least EUR 10,000 coverage. EHIC does not replace this policy.",
           "Documents confirming purpose of visit: hotel booking, invitation letter, business meeting agenda, tourist itinerary.",
-          "Proof of sufficient funds — approximately EUR 25–50 per day (not fixed by law, assessed individually).",
+          "Sufficient funds: for the airport scheme the MFA specifies at least two base rates per day or 50 base rates for a full 30-day stay. Use the current base rate and exchange rate; check your specific scheme separately.",
           "For minors travelling without both parents — notarised parental consent.",
         ],
       },
       { type: "h3", text: "Medical Insurance: What to Check" },
       {
         type: "p",
-        text: "This is the most common reason for entry refusal. Important: the European Health Insurance Card (EHIC) is valid only in EU/EEA countries and is not accepted in Belarus. A separate policy is required. You can get one online in minutes — a 5–7 day policy for Belarus typically costs EUR 5–15 depending on the insurer.",
+        text: "Check the policy's territorial scope, dates and coverage. EHIC does not replace insurance valid in Belarus. Arrange a separate policy before travel if needed; confirm price and conditions with the insurer.",
       },
       { type: "h3", text: "Is Registration Required?" },
       {
         type: "p",
-        text: "Hotels register guests automatically. If staying with a private individual, the host must register the guest within 5 working days through the local internal affairs office or via gosuslugi.by. Failure to comply may result in a fine upon departure.",
+        text: "Hotels register guests at check-in. The MFA specifies registration for stays exceeding 10 working days, through a citizenship and migration office or portal.gov.by. Check nationality-specific exemptions and deadlines before travel.",
       },
       { type: "h2", text: "Why a Private Transfer Is the Best Way to Enter Belarus" },
       {
         type: "p",
-        text: "Most visa-free tourists fly to Minsk via a European hub — Warsaw, Vilnius, Riga or Kaunas. Then comes the question: how to reach Belarus comfortably and without stress? Buses and shared minivans exist, but come with serious limitations.",
+        text: "You can fly to Warsaw, Vilnius, Riga or Kaunas and continue to Belarus by road only if you qualify for land entry. Belarus's airport-only waiver does not cover this route. Below we compare buses with private transfers.",
       },
       {
         type: "table",
@@ -2562,7 +2620,7 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "Vilnius / VNO Airport → Minsk" },
       {
         type: "p",
-        text: "The most popular route. Many Europeans fly to Vilnius — direct flights from most European cities — then travel on to Belarus by road. Vilnius–Minsk is around 175 km. Border crossing at Kamenny Log / Kotlovka. Journey time including the border: 3.5–6 hours.",
+        text: "From Vilnius airport, travel to Belarus via Kamenny Log–Medininkai or Benyakoni–Šalčininkai if operating on your travel date. Kotlovka–Lavoriškės is closed. This route requires the land waiver, another applicable entitlement or a visa. Journey time depends on the chosen checkpoint and queue.",
       },
       { type: "h3", text: "Warsaw / WAW and Modlin Airports → Minsk" },
       {
@@ -2577,8 +2635,10 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "Riga / RIX Airport → Minsk" },
       {
         type: "p",
-        text: "Riga is a convenient entry point for travellers from Scandinavia and the Baltic states. Riga–Minsk is around 470 km. The border crossing is at Grigorovshchina or Patarnieki. Journey time including border control: 5.5–8 hours.",
+        text: "From Riga, the road route uses Grigorovshchina–Pāternieki: these are the two sides of one crossing, not alternatives. Silene is closed. Vehicles leaving Latvia require advance queue registration at lvborder.lv, subject to statutory exceptions. Confirm the crossing's status and allow extra time; BY-plated passenger cars generally cannot return to the EU through Latvia.",
       },
+      { type: "link", href: "https://www.lvborder.lv/en/", label: "Official Latvian vehicle queue booking" },
+      { type: "link", href: "https://www.vid.gov.lv/en/article/operation-silene-border-crossing-point-halted-19-september-2023", label: "Latvian Revenue Service: Silene closed, use Pāternieki" },
       { type: "h2", text: "What to See in Belarus: Top 10 Destinations" },
       {
         type: "p",
@@ -2615,12 +2675,12 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "Can I enter on an EU national ID card?" },
       {
         type: "p",
-        text: "No. Entry to Belarus requires an international passport. National identity cards (ID cards) valid within the EU are not accepted in Belarus.",
+        text: "Do not assume any EU ID card is sufficient for Belarus. The MFA requires an ordinary passport for the airport scheme and specifies a valid travel document for the European land scheme. Confirm recognition of your particular document and its required validity with a consulate before travel.",
       },
       { type: "h3", text: "Is a visa needed when entering through the Polish or Lithuanian border?" },
       {
         type: "p",
-        text: "For citizens of 35 European states — no: entry through any international road or railway border crossing is possible without a visa for up to 30 days. For citizens of Poland, Lithuania and Latvia the limit is 90 days. Citizens of countries outside that list still need a visa for land entry, but may use the airport regime (76 states, entry through Belarusian airports).",
+        text: "The land waiver covers 38 European states until 31 December 2026: usually 30 days per entry, or 90 for PL/LT/LV citizens and Latvian non-citizens, with a combined maximum of 90 days per calendar year. Other nationalities must check separate visa-free agreements or obtain a visa where required. The 76-state airport scheme does not permit land entry.",
       },
       { type: "h3", text: "What happens if I overstay the 30-day limit?" },
       {
@@ -2630,7 +2690,7 @@ export const ARTICLES: Article[] = [
       { type: "h3", text: "Can I exit and re-enter immediately to reset the days?" },
       {
         type: "p",
-        text: "The rules do not formally prohibit re-entry after exit. However, border guards may treat it as abuse of the regime and refuse entry. For a longer stay we recommend obtaining a regular visa.",
+        text: "No: leaving does not reset the total. The European land waiver allows repeated entries until 31 December 2026, but no more than 90 days in a calendar year. Arrange an appropriate lawful basis in advance for any longer stay.",
       },
       { type: "h3", text: "Can I work in Belarus on the visa-free regime?" },
       {
