@@ -2,6 +2,8 @@
 // are Belarus / RU-speaker focused. Each article ships a structured body so we
 // can render it in React AND prerender the full text into the static HTML.
 
+import { BORDER_BY_CAR_BODY_RU, BORDER_BY_CAR_BODY_EN } from "./blog-border-by-car-2026";
+
 export type Block =
   | { type: "p"; text: string }
   | { type: "h2"; text: string; id?: string }
@@ -13,6 +15,7 @@ export type Block =
   | { type: "link"; href: string; label: string; description?: string }
   | { type: "img"; src: string; alt: string; caption?: string }
   | { type: "liveQueue" }
+  | { type: "borderChecker" }
   | { type: "editorial-correction"; heading: string; text: string }
   | { type: "info-notice"; text: string };
 
@@ -44,6 +47,59 @@ export const BLOG_BASE_RU = "/блог";
 export const BLOG_BASE_EN = "/blog";
 
 export const ARTICLES: Article[] = [
+  {
+    slug: "как-въехать-в-беларусь-на-автомобиле-2026",
+    slugEn: "driving-to-belarus-by-car-2026-rules-checker",
+    titleEn: "Belarus by Car: Rules & Checker 2026",
+    descriptionEn: "Driving to Belarus from Poland, Lithuania or Latvia in 2026: passports, vehicle sanctions, BY plates and customs, with a private preliminary trip checker.",
+    ogSlug: "blog-v-belarus-na-avtomobile-2026",
+    title: "Въезд в Беларусь на авто: правила 2026",
+    description:
+      "Въезд в Беларусь из Польши, Литвы и Латвии на авто в 2026 году: документы, санкции ЕС, номера BY и таможня. Интерактивная анкета для предварительной проверки.",
+    intro:
+      "Законность поездки на автомобиле в Беларусь не сводится к одному паспорту или номерному знаку: отдельно проверяются человек, переход, санкции на вывоз машины, возврат в ЕС и таможня ЕАЭС. Ниже — разбор по исследованию от 16 октября 2026 года и анкета предварительной проверки, которая работает только в вашем браузере.",
+    introEn:
+      "Driving to Belarus is not decided by one passport or one number plate: the traveller, the crossing, EU export sanctions, the return to the EU and EAEU customs are separate checks. Below: a guide based on research dated 16 October 2026, plus a preliminary screening form that runs only in your browser.",
+    dateISO: "2026-10-16",
+    readingMin: 16,
+    category: "Граница",
+    categoryEn: "Border",
+    tags: ["граница", "Беларусь", "автомобиль", "санкции", "таможня", "безвиз", "номера BY", "Польша", "Литва", "Латвия"],
+    disclaimerBanner: true,
+    citation: [
+      "https://eur-lex.europa.eu/eli/reg/2006/765/2026-07-24/eng",
+      "https://mano.muitine.lt/en/knowledge-bank/prohibitions-and-restrictions/international-sanctions/restrictions-export-passenger-vehicles-belarus",
+      "https://eur-lex.europa.eu/eli/reg/2025/1472/oj/eng",
+      "https://eur-lex.europa.eu/eli/reg/2026/513/oj/eng",
+      "https://www.gov.pl/web/kas/nowe-zasady-przywozu-samochodow-osobowych-zarejestrowanych-na-bialorusi",
+      "https://muitine.lrv.lt/en/news/updated-procedure-for-admitting-cars-with-belarusian-registration-to-enter-lithuania/",
+      "https://www.vid.gov.lv/lv/jaunums/personas-ar-baltkrievijas-republika-registretu-transportlidzekli-turpmak-nevares-iebraukt-latvija",
+      "https://www.gov.pl/web/kas/przejscia-graniczne-z-bialorusia-w-bobrownikach-i-kuznicy-otwarte",
+      "https://vsat.lrv.lt/lt/naujienos/atidaromi-salcininku-ir-medininku-pasienio-kontroles-punktai/",
+      "https://www.lvborder.lv/en/",
+      "https://t.me/s/gpkgovby?before=8073",
+      "https://www.mfa.bg/en/embassyinfo/belarus",
+      "https://eec.eaeunion.org/upload/iblock/93c/TK-EAES.pdf",
+      "https://www.consilium.europa.eu/en/policies/sanctions-against-belarus/",
+      "https://granica.gov.pl/",
+      "https://www.gov.pl/web/bialorus/komunikat-dla-kierowcow-udajacych-sie-na-bialorus",
+      "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en",
+      "https://www.consilium.europa.eu/en/policies/eu-visa-policy/",
+      "https://eur-lex.europa.eu/eli/reg_impl/2026/1817/oj/eng",
+      "https://eur-lex.europa.eu/eli/reg/2026/1846/oj/eng",
+      "https://gpk.gov.by/",
+      "https://www.gov.uk/foreign-travel-advice/belarus/entry-requirements",
+      "https://base.garant.ru/71903282/",
+      "https://www.consilium.europa.eu/en/policies/sanctions-against-belarus/timeline-eu-sanctions-against-belarus/",
+      "https://www.lvrtc.lv/en/news/jaunumi/no-sodienas-latvijas-robezu-ar-krieviju-un-baltkrieviju-var-skersot-tikai-pec-registracijas-elektroniskas-rindas-rezervacijas-sistema/",
+      "https://eur-lex.europa.eu/eli/reg/2025/2041/oj/eng",
+    ],
+    body: BORDER_BY_CAR_BODY_RU,
+    bodyEn: BORDER_BY_CAR_BODY_EN,
+    related: ["виза-свободный-въезд-в-беларусь-2026", "что-нельзя-ввозить-в-ес", "какой-кпп-выбрать", "граница-беларусь-польша"],
+    ctaRoute: { label: "Трансфер в Европу с водителем", labelEn: "Chauffeured transfer to Europe", path: "/трансфер-в-европу" },
+  },
+
   {
     slug: "граница-беларусь-литва",
     slugEn: "belarus-lithuania-border-crossing-guide",

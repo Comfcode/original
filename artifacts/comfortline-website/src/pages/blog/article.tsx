@@ -8,6 +8,7 @@ import { useLang } from "@/context/language-context";
 import NotFound from "@/pages/not-found";
 import { Seo } from "@/seo/Seo";
 import { GlobalBookingModal } from "@/components/sections/GlobalBookingModal";
+import { BorderVehicleChecker } from "@/components/sections/BorderVehicleChecker";
 import { BorderQueueWidget } from "@/components/sections/BorderQueueWidget";
 import {
   ARTICLES,
@@ -153,6 +154,8 @@ function renderBlock(block: Block, idx: number) {
       );
     case "liveQueue":
       return <BorderQueueWidget key={idx} />;
+    case "borderChecker":
+      return <BorderVehicleChecker key={idx} />;
   }
 }
 
@@ -202,6 +205,8 @@ export default function BlogArticlePage() {
   const relatedArticles = article.related
     .map((s) => ARTICLES.find((a) => a.slug === s))
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
+  const body = isRu ? article.body : (article.bodyEn ?? article.body);
+  const hasChecker = body.some((block) => block.type === "borderChecker");
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -256,6 +261,16 @@ export default function BlogArticlePage() {
           <p className="text-lg text-muted-foreground leading-relaxed mb-10 border-l-2 border-primary/40 pl-4 italic">
             {isRu ? article.intro : (article.introEn ?? article.intro)}
           </p>
+          {hasChecker && (
+            <nav aria-label={isRu ? "Содержание статьи" : "Article contents"} className="mb-8 rounded-2xl border border-border bg-card p-5">
+              <p className="text-sm font-bold text-foreground mb-3">{isRu ? "В этой статье" : "In this guide"}</p>
+              <ul className="grid gap-2 text-sm sm:grid-cols-2">
+                {body.filter((block): block is Extract<Block, { type: "h2" }> => block.type === "h2" && Boolean(block.id)).map((block) => (
+                  <li key={block.id}><a href={`#${block.id}`} className="text-primary hover:underline underline-offset-4">{block.text}</a></li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -263,7 +278,7 @@ export default function BlogArticlePage() {
             transition={{ duration: 0.4 }}
             className="prose-comfortline"
           >
-            {(isRu ? article.body : (article.bodyEn ?? article.body)).map(renderBlock)}
+            {body.map(renderBlock)}
           </motion.div>
 
           {/* Tags */}

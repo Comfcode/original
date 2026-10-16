@@ -56,9 +56,9 @@ const data: RoutePageData = {
     steps: [
       {
         icon: MapPin,
-        title: "Подача в Минске или Варшаве",
+        title: "Подача автомобиля в Минске",
         desc:
-          "Водитель заберёт вас по адресу в Минске либо в центре Варшавы, районах Śródmieście, Mokotów, Wola, у вокзала или отеля.",
+          "Водитель заберёт вас от дома, гостиницы, офиса, вокзала или другого согласованного адреса в Минске. Не требуется добираться до общего места отправления.",
       },
       {
         icon: ShieldCheck,
@@ -68,9 +68,9 @@ const data: RoutePageData = {
       },
       {
         icon: Building2,
-        title: "Доставка от двери до двери",
+        title: "Доставка по адресу в Варшаве",
         desc:
-          "Довезём до согласованного адреса в Варшаве либо Минске. Дополнительные остановки можно согласовать до поездки.",
+          "Довезём в центр Варшавы, Śródmieście, Mokotów, Wola, к Warszawa Centralna, Warszawa Zachodnia, гостинице, квартире, офису или другому согласованному адресу.",
       },
     ],
 
@@ -282,9 +282,9 @@ const data: RoutePageData = {
     steps: [
       {
         icon: MapPin,
-        title: "Pickup in Minsk or Warsaw",
+        title: "Pickup in Minsk",
         desc:
-          "Your driver collects you from a Minsk address or in central Warsaw, Śródmieście, Mokotów, Wola, at a station or your hotel.",
+          "Your driver collects you from your home, hotel, office, railway station or another agreed address in Minsk.",
       },
       {
         icon: ShieldCheck,
@@ -294,9 +294,9 @@ const data: RoutePageData = {
       },
       {
         icon: Building2,
-        title: "Door-to-door drop-off",
+        title: "Drop-off in Warsaw",
         desc:
-          "We take you directly to the agreed address in Warsaw or Minsk. Additional stops can be arranged before the journey.",
+          "We take you directly to central Warsaw, Śródmieście, Mokotów, Wola, Warszawa Centralna, Warszawa Zachodnia, a hotel, apartment, office or another agreed address.",
       },
     ],
 
@@ -453,16 +453,16 @@ const data: RoutePageData = {
 
   seo: {
     titleRu:
-       "Трансфер Варшава — Минск и обратно 24/7 | ComfortLine",
+       "Трансфер Варшава — Минск и обратно | ComfortLine",
 
     titleEn:
-       "Private Warsaw to Minsk & Return Transfer | ComfortLine",
+       "Warsaw to Minsk & Return Transfer | ComfortLine",
 
     descRu:
-       "Трансфер Варшава — Минск и Минск — Варшава. Подача в центре, районах Śródmieście, Mokotów, Wola или у вокзалов. Цена по запросу. Без попутчиков, 24/7.",
+       "Трансфер Варшава — Минск и Минск — Варшава. Подача в центре, районах Śródmieście, Mokotów, Wola или у вокзалов. Цена по запросу.",
 
     descEn:
-       "Private Warsaw to Minsk and Minsk to Warsaw transfer. Pickup in central Warsaw, Śródmieście, Mokotów, Wola or at main stations. Door-to-door service, 24/7.",
+       "Private Warsaw to Minsk and Minsk to Warsaw transfer. Pickup in central Warsaw, Śródmieście, Mokotów, Wola or at main stations. Door-to-door service.",
 
     pathRu: "/трансфер-варшава",
     pathEn: "/warsaw-transfer",

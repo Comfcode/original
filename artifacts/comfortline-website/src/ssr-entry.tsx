@@ -69,7 +69,11 @@ import MinskKlaipedaTransferPage from "@/pages/minsk-klaipeda-transfer";
 import MinskDruskininkaiTransferPage from "@/pages/minsk-druskininkai-transfer";
 import MinskKaunasTransferPage from "@/pages/minsk-kaunas-transfer";
 
-const queryClient = new QueryClient();
+// Prerender installs jsdom globals, so Query treats this CLI as a browser.
+// Disable browser-style cache GC timers that otherwise keep the build alive.
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { gcTime: Infinity } },
+});
 
 function VehiclePageMercedes() { return <VehiclePage slug="mercedes-e-class" />; }
 function VehiclePageKia()      { return <VehiclePage slug="kia-carnival" />; }
